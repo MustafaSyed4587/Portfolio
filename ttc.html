@@ -1,0 +1,378 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>TTC Bus Delay Dashboard</title><style id="sbcss">
+html body{margin:0;padding-top:56px!important}
+[hidden]{display:none!important}
+#sb{position:fixed;top:0;left:0;right:0;z-index:2147483000;height:48px;box-sizing:border-box;display:flex;align-items:center;gap:6px;padding:0 12px;background:#0B0C0E;border-bottom:1px solid #C9A55C;font:500 13px/1 "Jost","Helvetica Neue",Arial,sans-serif;color:#ECE8DF}
+#sb a{color:#ECE8DF;text-decoration:none;white-space:nowrap;padding:8px 10px;border:1px solid transparent;border-radius:2px;letter-spacing:.04em}
+#sb a:hover,#sb a:focus-visible{border-color:#C9A55C;color:#C9A55C;outline:none}
+#sb a.back{background:#C9A55C;color:#0B0C0E;font-weight:700;flex:none}
+#sb a.back:hover{background:#ECE8DF;color:#0B0C0E;border-color:#ECE8DF}
+#sb .sbt{display:flex;gap:2px;overflow-x:auto;min-width:0;scrollbar-width:none;flex:1}
+#sb .sbt::-webkit-scrollbar{display:none}
+#sb .sbt a[aria-current=page]{color:#C9A55C;border-bottom-color:#C9A55C;border-radius:0}
+</style></head><body><div id="sb"><a class="back" href="index.html#projects">&larr; Portfolio</a><div class="sbt" role="navigation" aria-label="Projects"><a href="ttc.html" aria-current="page">TTC Delays</a><a href="pipeda.html">PIPEDA</a><a href="risk.html">Risk Assessment</a><a href="seclog.html">Log Hunt</a><a href="subnet.html">Subnets</a><a href="aipolicy.html">AI Policy</a><a href="bizcase.html">Business Case</a><a href="cvss.html">CVSS Triage</a><a href="games.html">Game Dev</a></div></div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: signage-style report. Narrow text column beside each chart, findings ordered cause, time, place, trend. */
+:root {
+  --bg: #F3F5F7;
+  --surface: #FFFFFF;
+  --ink: #131E29;
+  --ink2: #4A5865;
+  --line: #DCE2E8;
+  --mute: #A3AFBA;
+  --accent: #C93B22;
+  --accent-soft: rgba(201, 59, 34, 0.12);
+  --f-display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --f-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --f-data: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1620; --surface: #16212D; --ink: #E8EEF3; --ink2: #A2B1BF; --line: #26343F;
+    --mute: #566574; --accent: #FF7B5A; --accent-soft: rgba(255, 123, 90, 0.16);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1620; --surface: #16212D; --ink: #E8EEF3; --ink2: #A2B1BF; --line: #26343F;
+  --mute: #566574; --accent: #FF7B5A; --accent-soft: rgba(255, 123, 90, 0.16);
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.55; padding-inline: 20px; padding-block: 40px 64px; }
+.wrap { max-width: 1040px; margin-inline: auto; display: flex; flex-direction: column; gap: 56px; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 700; line-height: 1.05; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.3rem, 6vw, 3.6rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.6rem, 3.6vw, 2.15rem); }
+h3 { font-size: 1.15rem; font-weight: 600; letter-spacing: 0.02em; }
+p { margin: 0; }
+.eyebrow { font-family: var(--f-data); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink2); }
+.lede { font-size: 1.2rem; max-width: 62ch; color: var(--ink); margin-top: 16px; }
+.meta { font-family: var(--f-data); font-size: 0.78rem; color: var(--ink2); margin-top: 16px; max-width: 80ch; line-height: 1.6; }
+header { display: flex; flex-direction: column; }
+
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-block: 2px solid var(--ink); margin-top: 32px; }
+.kpi { padding: 16px 16px 16px 0; min-width: 0; }
+.kpi + .kpi { padding-left: 16px; border-left: 1px solid var(--line); }
+.kpi b { display: block; font-family: var(--f-display); font-weight: 700; font-size: clamp(2rem, 5vw, 2.9rem); line-height: 1; font-variant-numeric: tabular-nums; }
+.kpi span { display: block; font-size: 0.9rem; color: var(--ink2); margin-top: 6px; }
+.kpi.hot b { color: var(--accent); }
+
+section.finding { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 40px; align-items: start; }
+.copy { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.copy p { color: var(--ink2); max-width: 52ch; }
+.copy p strong { color: var(--ink); font-weight: 600; }
+.chart { background: var(--surface); border: 1px solid var(--line); padding: 20px; min-width: 0; }
+.chart h3 { margin-bottom: 4px; }
+.chart .cap { font-size: 0.85rem; color: var(--ink2); margin-bottom: 16px; }
+.chart + .chart { margin-top: 20px; }
+.stack { display: flex; flex-direction: column; min-width: 0; }
+
+/* horizontal bars */
+.hb { display: grid; gap: 14px; }
+.hb-row { display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) 4.2rem; gap: 12px; align-items: center; }
+.hb-label { font-size: 0.92rem; line-height: 1.25; min-width: 0; }
+.hb-label small { display: block; color: var(--ink2); font-size: 0.78rem; margin-top: 2px; }
+.hb-track { height: 16px; background: transparent; }
+.hb-bar { height: 100%; background: var(--mute); border-radius: 0 4px 4px 0; min-width: 2px; }
+.hb-row.hi .hb-bar { background: var(--accent); }
+.hb-val { font-family: var(--f-data); font-size: 0.85rem; text-align: right; font-variant-numeric: tabular-nums; }
+.hb-row.hi .hb-val { color: var(--accent); font-weight: 500; }
+
+svg.plot { width: 100%; height: auto; display: block; overflow: visible; }
+svg .ax { font-family: var(--f-data); font-size: 11px; fill: var(--ink2); }
+svg .grid { stroke: var(--line); stroke-width: 1; }
+svg .col { fill: var(--mute); }
+svg .col.hi { fill: var(--accent); }
+svg .ln { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+svg .area { fill: var(--accent-soft); stroke: none; }
+svg .dot { fill: var(--accent); stroke: var(--surface); stroke-width: 2; }
+svg .hit { fill: transparent; }
+svg .note { font-family: var(--f-body); font-size: 12px; fill: var(--ink); }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.82rem; color: var(--ink2); margin-bottom: 12px; }
+.legend i { display: inline-block; width: 10px; height: 10px; margin-right: 6px; vertical-align: -1px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { text-align: left; padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); }
+th { font-family: var(--f-data); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink2); font-weight: 500; }
+td.n, th.n { text-align: right; font-family: var(--f-data); font-variant-numeric: tabular-nums; padding-right: 0; padding-left: 10px; }
+.tscroll { overflow-x: auto; }
+
+.recs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 20px; }
+.rec { border-top: 2px solid var(--ink); padding-top: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.rec h3 { font-size: 1.3rem; }
+.rec p { color: var(--ink2); font-size: 0.95rem; }
+.rec .ev { font-family: var(--f-data); font-size: 0.78rem; color: var(--ink); }
+
+.method { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 40px; border-top: 1px solid var(--line); padding-top: 32px; }
+.method ul { margin: 0; padding-left: 1.1rem; color: var(--ink2); display: flex; flex-direction: column; gap: 8px; max-width: 70ch; }
+.method li strong { color: var(--ink); font-weight: 600; }
+details { margin-top: 16px; }
+summary { cursor: pointer; font-weight: 600; }
+summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+footer { font-size: 0.82rem; color: var(--ink2); border-top: 1px solid var(--line); padding-top: 20px; }
+
+#tip { position: fixed; z-index: 10; pointer-events: none; background: var(--ink); color: var(--bg); font-family: var(--f-data); font-size: 0.78rem; padding: 6px 9px; border-radius: 3px; max-width: 260px; line-height: 1.4; display: none; }
+
+@media (max-width: 860px) {
+  section.finding, .method { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .recs { grid-template-columns: minmax(0, 1fr); }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kpi:nth-child(3) { padding-left: 0; border-left: 0; }
+  .kpi:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 520px) {
+  .hb-row { grid-template-columns: minmax(0, 1fr) 3.6rem; row-gap: 4px; }
+  .hb-label { grid-column: 1 / -1; }
+  .hb-track { grid-column: 1; }
+  .chart { padding: 16px; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Toronto Transit Commission · Bus service · Jan 2025 to Aug 2026</p>
+    <h1>Where TTC bus delay minutes come from</h1>
+    <p class="lede" id="lede"></p>
+    <p class="meta" id="meta"></p>
+    <div class="kpis" id="kpis"></div>
+  </header>
+
+  <section class="finding" id="cause">
+    <div class="copy">
+      <p class="eyebrow">Finding 1 · Cause</p>
+      <h2 id="cause-h"></h2>
+      <p id="cause-p1"></p>
+      <p id="cause-p2"></p>
+    </div>
+    <div class="stack">
+      <div class="chart">
+        <h3>Share of delay minutes by cause group</h3>
+        <p class="cap">Small grey text under each label shows that group's share of incidents and its median delay.</p>
+        <div class="hb" id="groups"></div>
+      </div>
+      <div class="chart">
+        <h3>Most frequent individual causes</h3>
+        <p class="cap">City of Toronto delay codes, ranked by number of incidents.</p>
+        <div class="tscroll"><table id="causes"></table></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finding" id="when">
+    <div class="copy">
+      <p class="eyebrow">Finding 2 · Timing</p>
+      <h2 id="when-h"></h2>
+      <p id="when-p1"></p>
+      <p id="when-p2"></p>
+    </div>
+    <div class="stack">
+      <div class="chart">
+        <h3>Delay incidents by hour of day</h3>
+        <p class="cap">Highlighted: 2 pm to 7 pm.</p>
+        <svg class="plot" id="hours" role="img" aria-label="Column chart of delay incidents by hour of day"></svg>
+      </div>
+      <div class="chart">
+        <h3>Delay incidents by day of week</h3>
+        <p class="cap">Highlighted: the busiest day.</p>
+        <svg class="plot" id="days" role="img" aria-label="Column chart of delay incidents by day of week"></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="finding" id="where">
+    <div class="copy">
+      <p class="eyebrow">Finding 3 · Routes</p>
+      <h2 id="where-h"></h2>
+      <p id="where-p1"></p>
+      <p id="where-p2"></p>
+    </div>
+    <div class="chart">
+      <h3>Ten routes with the most delay incidents</h3>
+      <p class="cap">Diversions excluded, so this ranks routes by real service problems. Grey text shows median delay.</p>
+      <div class="hb" id="routes"></div>
+    </div>
+  </section>
+
+  <section class="finding" id="trend">
+    <div class="copy">
+      <p class="eyebrow">Finding 4 · Trend</p>
+      <h2 id="trend-h"></h2>
+      <p id="trend-p1"></p>
+    </div>
+    <div class="chart">
+      <h3>Delay incidents per month</h3>
+      <p class="cap">Every month from January 2025 to August 2026.</p>
+      <svg class="plot" id="months" role="img" aria-label="Line chart of delay incidents per month"></svg>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Recommendations</p>
+    <h2 style="margin-top:8px">Three changes the data supports</h2>
+    <div class="recs" id="recs"></div>
+  </section>
+
+  <section class="method">
+    <div class="copy">
+      <p class="eyebrow">Method and limits</p>
+      <h2>How the numbers were built</h2>
+      <p>Cleaning and analysis were done in Python with pandas. Every figure on this page comes from the cleaned file.</p>
+    </div>
+    <div>
+      <ul id="method"></ul>
+      <details>
+        <summary>View the cause-group data as a table</summary>
+        <div class="tscroll" style="margin-top:12px"><table id="gtable"></table></div>
+      </details>
+    </div>
+  </section>
+
+  <footer>Analysis by Mustafa Syed, a student project using public data. Not affiliated with or endorsed by the Toronto Transit Commission or the City of Toronto.</footer>
+</div>
+<div id="tip" role="tooltip"></div>
+
+<script>
+const D = {"overall": {"incidents": 88997, "total_delay_hours": 35982, "median_delay_min": 14.0, "mean_delay_min": 24.3, "long_delay_share_of_minutes": 0.266, "long_delay_incidents": 1509}, "log": {"raw_rows": 102257, "duplicates_removed": 298, "zero_delay_rows": 12962, "clean_rows": 101959, "delay_incidents": 88997, "date_range": ["2025-01-01", "2026-08-31"]}, "groups": [{"name": "Diversions", "incidents": 6799, "minutes": 871242, "median": 70.0, "shareInc": 0.076, "shareMin": 0.404}, {"name": "Vehicle equipment", "incidents": 29640, "minutes": 420480, "median": 12.0, "shareInc": 0.333, "shareMin": 0.195}, {"name": "Passengers & other", "incidents": 20734, "minutes": 317288, "median": 12.0, "shareInc": 0.233, "shareMin": 0.147}, {"name": "Operator & scheduling", "incidents": 17563, "minutes": 288545, "median": 15.0, "shareInc": 0.197, "shareMin": 0.134}, {"name": "Collisions & injuries", "incidents": 8362, "minutes": 141807, "median": 12.0, "shareInc": 0.094, "shareMin": 0.066}, {"name": "Safety & security", "incidents": 5196, "minutes": 82234, "median": 13.0, "shareInc": 0.058, "shareMin": 0.038}, {"name": "Weather", "incidents": 703, "minutes": 37323, "median": 20.0, "shareInc": 0.008, "shareMin": 0.017}], "hourly": [{"Hour": 0, "incidents": 1920, "minutes": 44291}, {"Hour": 1, "incidents": 1087, "minutes": 25838}, {"Hour": 2, "incidents": 917, "minutes": 39898}, {"Hour": 3, "incidents": 726, "minutes": 20420}, {"Hour": 4, "incidents": 955, "minutes": 25358}, {"Hour": 5, "incidents": 3586, "minutes": 92780}, {"Hour": 6, "incidents": 4793, "minutes": 118287}, {"Hour": 7, "incidents": 4469, "minutes": 118471}, {"Hour": 8, "incidents": 4358, "minutes": 129804}, {"Hour": 9, "incidents": 4387, "minutes": 111147}, {"Hour": 10, "incidents": 4332, "minutes": 108112}, {"Hour": 11, "incidents": 4103, "minutes": 101219}, {"Hour": 12, "incidents": 4176, "minutes": 89582}, {"Hour": 13, "incidents": 5010, "minutes": 115790}, {"Hour": 14, "incidents": 5654, "minutes": 124236}, {"Hour": 15, "incidents": 5861, "minutes": 122790}, {"Hour": 16, "incidents": 5670, "minutes": 124227}, {"Hour": 17, "incidents": 5981, "minutes": 120829}, {"Hour": 18, "incidents": 5489, "minutes": 122032}, {"Hour": 19, "incidents": 3871, "minutes": 97793}, {"Hour": 20, "incidents": 3563, "minutes": 85538}, {"Hour": 21, "incidents": 3213, "minutes": 91400}, {"Hour": 22, "incidents": 2594, "minutes": 70509}, {"Hour": 23, "incidents": 2282, "minutes": 58568}], "weekday": [{"Day": "Monday", "incidents": 12283, "minutes": 295651}, {"Day": "Tuesday", "incidents": 13515, "minutes": 313971}, {"Day": "Wednesday", "incidents": 13927, "minutes": 333834}, {"Day": "Thursday", "incidents": 14044, "minutes": 335906}, {"Day": "Friday", "incidents": 14196, "minutes": 344203}, {"Day": "Saturday", "incidents": 11887, "minutes": 300090}, {"Day": "Sunday", "incidents": 9145, "minutes": 235264}], "monthly": [{"Month": "2025-01", "incidents": 3491, "minutes": 72618}, {"Month": "2025-02", "incidents": 4811, "minutes": 113845}, {"Month": "2025-03", "incidents": 4191, "minutes": 98455}, {"Month": "2025-04", "incidents": 4069, "minutes": 104941}, {"Month": "2025-05", "incidents": 4536, "minutes": 108403}, {"Month": "2025-06", "incidents": 5013, "minutes": 116825}, {"Month": "2025-07", "incidents": 4669, "minutes": 113823}, {"Month": "2025-08", "incidents": 4879, "minutes": 117286}, {"Month": "2025-09", "incidents": 4694, "minutes": 105432}, {"Month": "2025-10", "incidents": 4596, "minutes": 106292}, {"Month": "2025-11", "incidents": 4822, "minutes": 106163}, {"Month": "2025-12", "incidents": 5096, "minutes": 120539}, {"Month": "2026-01", "incidents": 5259, "minutes": 142698}, {"Month": "2026-02", "incidents": 4234, "minutes": 111710}, {"Month": "2026-03", "incidents": 4648, "minutes": 98098}, {"Month": "2026-04", "incidents": 4295, "minutes": 94369}, {"Month": "2026-05", "incidents": 4216, "minutes": 104905}, {"Month": "2026-06", "incidents": 3895, "minutes": 102068}, {"Month": "2026-07", "incidents": 3790, "minutes": 110163}, {"Month": "2026-08", "incidents": 3793, "minutes": 110286}], "routes": [{"name": "52 Lawrence West", "incidents": 2088, "median": 20.0, "minutes": 40230}, {"name": "102 Markham Road", "incidents": 1804, "median": 12.0, "minutes": 28954}, {"name": "32 Eglinton West", "incidents": 1788, "median": 12.0, "minutes": 22470}, {"name": "29 Dufferin", "incidents": 1533, "median": 8.0, "minutes": 19816}, {"name": "7 Bathurst", "incidents": 1531, "median": 10.0, "minutes": 15957}, {"name": "939 Finch Express", "incidents": 1515, "median": 15.0, "minutes": 21047}, {"name": "54 Lawrence East", "incidents": 1406, "median": 13.0, "minutes": 21389}, {"name": "116 Morningside", "incidents": 1389, "median": 8.0, "minutes": 12863}, {"name": "86 Scarborough", "incidents": 1362, "median": 18.0, "minutes": 21472}, {"name": "63 Ossington", "incidents": 1342, "median": 10.0, "minutes": 13330}], "causes": [{"code": "EFO", "cause": "Other", "incidents": 17672, "minutes": 251072, "median": 12.0}, {"code": "TFCNO", "cause": "No operator available", "incidents": 8628, "minutes": 127777, "median": 12.0}, {"code": "MFSH", "cause": "Used as shuttle bus", "incidents": 7260, "minutes": 94049, "median": 10.0}, {"code": "MFDV", "cause": "On diversion", "incidents": 6799, "minutes": 871242, "median": 70.0}, {"code": "TFPD", "cause": "Ttc collision - property damage", "incidents": 5801, "minutes": 83756, "median": 11.0}, {"code": "TFO", "cause": "Other - switch violation", "incidents": 5133, "minutes": 90569, "median": 16.0}, {"code": "EFD", "cause": "Doors", "incidents": 4019, "minutes": 57700, "median": 12.0}, {"code": "SFDP", "cause": "Disorderly patron", "incidents": 2775, "minutes": 42930, "median": 13.0}], "peak": 0.322, "cmp": [{"Year": 2025, "incidents": 35659, "minutes": 846196}, {"Year": 2026, "incidents": 34130, "minutes": 874297}]};
+const N = (x) => Math.round(x).toLocaleString("en-CA");
+const P = (x, d = 0) => (x * 100).toFixed(d) + "%";
+const $ = (id) => document.getElementById(id);
+const grp = (name) => D.groups.find((g) => g.name === name);
+const div = grp("Diversions"), veh = grp("Vehicle equipment");
+const ov = D.overall;
+const nonDivMedian = 12;
+const longDiv = 1380, longAll = ov.long_delay_incidents;
+const tfcno = { n: 8628, peak: 0.398 };
+const efo = { n: 17672, share: 0.199 };
+
+/* header */
+$("lede").textContent = "Diversions are " + P(div.shareInc) + " of delay incidents but " + P(div.shareMin) + " of delay minutes. Vehicle equipment failures are the most frequent cause, and the afternoon rush is the busiest window.";
+$("meta").textContent = N(ov.incidents) + " delay incidents · " + D.log.date_range[0] + " to " + D.log.date_range[1] + " · Source: City of Toronto Open Data, TTC Bus Delay Data · Analysis by Mustafa Syed";
+$("kpis").innerHTML = [
+  [N(ov.incidents), "delay incidents", ""],
+  [N(ov.total_delay_hours), "hours of delay in total", ""],
+  [ov.median_delay_min + " min", "median delay per incident", ""],
+  [P(longDiv / longAll), "of delays over 3 hours were diversions (" + N(longDiv) + " of " + N(longAll) + ")", "hot"],
+].map((k) => '<div class="kpi ' + k[2] + '"><b>' + k[0] + "</b><span>" + k[1] + "</span></div>").join("");
+
+/* finding 1 */
+$("cause-h").textContent = "Diversions are rare, but they make up " + P(div.shareMin) + " of delay minutes";
+$("cause-p1").innerHTML = "A diversion is logged when a bus is sent off its normal route. The median one lasts <strong>" + div.median + " minutes</strong>, against <strong>" + nonDivMedian + " minutes</strong> for every other kind of incident.";
+$("cause-p2").innerHTML = "That gap is why " + N(div.incidents) + " diversions add up to <strong>" + N(div.minutes / 60) + " hours</strong>, more than any other group. The City counts time on diversion as delay minutes, so this group measures detour time rather than a stopped bus.";
+
+const maxShare = Math.max(...D.groups.map((g) => g.shareMin));
+$("groups").innerHTML = D.groups.map((g) =>
+  '<div class="hb-row ' + (g.name === "Diversions" ? "hi" : "") + '" data-tip="' + g.name + ": " + N(g.minutes / 60) + " hours of delay, " + N(g.incidents) + " incidents, median " + g.median + ' min">' +
+  '<div class="hb-label">' + g.name + "<small>" + P(g.shareInc, 1) + " of incidents · median " + g.median + " min</small></div>" +
+  '<div class="hb-track"><div class="hb-bar" style="width:' + (g.shareMin / maxShare * 100) + '%"></div></div>' +
+  '<div class="hb-val">' + P(g.shareMin, 1) + "</div></div>").join("");
+
+const totalInc = ov.incidents;
+$("causes").innerHTML = "<thead><tr><th>Code</th><th>Cause</th><th class='n'>Incidents</th><th class='n'>Share</th><th class='n'>Median</th></tr></thead><tbody>" +
+  D.causes.map((c) => "<tr><td>" + c.code + "</td><td>" + c.cause.replace(/^Ttc/, "TTC") + "</td><td class='n'>" + N(c.incidents) + "</td><td class='n'>" + P(c.incidents / totalInc, 1) + "</td><td class='n'>" + c.median + " min</td></tr>").join("") + "</tbody>";
+
+/* finding 2 */
+const hrs = D.hourly, wk = D.weekday;
+const fri = wk.reduce((a, b) => (b.incidents > a.incidents ? b : a));
+const sun = wk.reduce((a, b) => (b.incidents < a.incidents ? b : a));
+$("when-h").textContent = "The afternoon rush is the busiest window, and " + fri.Day + " is the busiest day";
+$("when-p1").innerHTML = "<strong>" + P(D.peak) + "</strong> of delay incidents happen between 2 pm and 7 pm. That is 5 of 24 hours, so an even spread would give about 21%.";
+$("when-p2").innerHTML = fri.Day + " has the most incidents (" + N(fri.incidents) + ") and " + sun.Day + " the fewest (" + N(sun.incidents) + "). Missing operators skew even later: <strong>" + P(tfcno.peak) + "</strong> of \"no operator available\" incidents fall in the same 2 to 7 pm window.";
+
+const tip = $("tip");
+function niceMax(v) { const p = Math.pow(10, Math.floor(Math.log10(v))); const m = v / p; return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 5 ? 5 : 10) * p; }
+function columns(svg, vals, labels, hiSet, tickEvery, tips) {
+  const W = 640, H = 230, l = 46, r = 6, t = 10, b = 26;
+  const max = niceMax(Math.max(...vals)), pw = W - l - r, ph = H - t - b, n = vals.length, bw = pw / n;
+  let s = "";
+  for (let i = 0; i <= 4; i++) {
+    const y = t + ph - (ph * i) / 4;
+    s += '<line class="grid" x1="' + l + '" x2="' + (W - r) + '" y1="' + y + '" y2="' + y + '"/><text class="ax" x="' + (l - 6) + '" y="' + (y + 4) + '" text-anchor="end">' + N((max * i) / 4) + "</text>";
+  }
+  vals.forEach((v, i) => {
+    const h = (v / max) * ph, x = l + i * bw + bw * 0.14, w = bw * 0.72, y = t + ph - h;
+    s += '<path class="col ' + (hiSet.has(i) ? "hi" : "") + '" d="M' + x + " " + (y + h) + "V" + (y + 3) + "Q" + x + " " + y + " " + (x + 3) + " " + y + "H" + (x + w - 3) + "Q" + (x + w) + " " + y + " " + (x + w) + " " + (y + 3) + "V" + (y + h) + 'Z"/>';
+    s += '<rect class="hit" x="' + (l + i * bw) + '" y="' + t + '" width="' + bw + '" height="' + ph + '" data-tip="' + tips[i] + '"/>';
+    if (i % tickEvery === 0) s += '<text class="ax" x="' + (x + w / 2) + '" y="' + (H - 8) + '" text-anchor="middle">' + labels[i] + "</text>";
+  });
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+  svg.innerHTML = s;
+}
+const h12 = (h) => (h % 12 === 0 ? 12 : h % 12) + (h < 12 ? " am" : " pm");
+columns($("hours"), hrs.map((x) => x.incidents), hrs.map((x) => (x.Hour % 12 === 0 ? 12 : x.Hour % 12) + (x.Hour < 12 ? "a" : "p")),
+  new Set([14, 15, 16, 17, 18]), 3, hrs.map((x) => h12(x.Hour) + " hour: " + N(x.incidents) + " incidents"));
+const wkMax = Math.max(...wk.map((x) => x.incidents));
+columns($("days"), wk.map((x) => x.incidents), wk.map((x) => x.Day.slice(0, 3)),
+  new Set([wk.findIndex((x) => x.incidents === wkMax)]), 1, wk.map((x) => x.Day + ": " + N(x.incidents) + " incidents"));
+
+/* finding 3 */
+const rt = D.routes, best = rt[0];
+$("where-h").textContent = best.name.replace(/^\d+ /, "") + " leads the list, with " + N(best.incidents) + " delay incidents";
+$("where-p1").innerHTML = "<strong>Route " + best.name + "</strong> has the most delay incidents once diversions are set aside, and its median delay is " + best.median + " minutes, above the system median of " + ov.median_delay_min + ".";
+$("where-p2").innerHTML = "For the longest typical delay, look at <strong>97 Yonge</strong>: among routes with at least 300 incidents, its median is 30 minutes, more than double most of the routes shown here.";
+const maxR = Math.max(...rt.map((x) => x.incidents));
+$("routes").innerHTML = rt.map((x, i) =>
+  '<div class="hb-row ' + (i === 0 ? "hi" : "") + '" data-tip="' + x.name + ": " + N(x.incidents) + " incidents, " + N(x.minutes / 60) + " hours, median " + x.median + ' min">' +
+  '<div class="hb-label">' + x.name + "<small>median " + x.median + " min</small></div>" +
+  '<div class="hb-track"><div class="hb-bar" style="width:' + (x.incidents / maxR * 100) + '%"></div></div>' +
+  '<div class="hb-val">' + N(x.incidents) + "</div></div>").join("");
+
+/* finding 4 */
+const c25 = D.cmp.find((x) => x.Year === 2025), c26 = D.cmp.find((x) => x.Year === 2026);
+const dInc = (c26.incidents - c25.incidents) / c25.incidents, dMin = (c26.minutes - c25.minutes) / c25.minutes;
+const sgn = (v) => (v >= 0 ? "+" : "-") + Math.abs(v * 100).toFixed(1) + "%";
+$("trend-h").textContent = "Fewer incidents, but slightly more delay minutes";
+$("trend-p1").innerHTML = "Comparing January to August of each year, 2026 has <strong>" + N(c26.incidents) + "</strong> delay incidents against <strong>" + N(c25.incidents) + "</strong> in 2025 (" + sgn(dInc) + "), while total delay minutes moved " + sgn(dMin) + ". Fewer incidents with more total minutes suggests individual delays got longer, not that delays became more frequent.";
+const mo = D.monthly;
+(function line() {
+  const svg = $("months"), W = 640, H = 230, l = 46, r = 10, t = 12, b = 28, pw = W - l - r, ph = H - t - b;
+  const vals = mo.map((m) => m.incidents), max = niceMax(Math.max(...vals)), n = vals.length;
+  const X = (i) => l + (pw * i) / (n - 1), Y = (v) => t + ph - (v / max) * ph;
+  const mn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const lab = (m) => mn[+m.Month.slice(5) - 1] + " " + m.Month.slice(2, 4);
+  let s = "";
+  for (let i = 0; i <= 4; i++) { const y = t + ph - (ph * i) / 4; s += '<line class="grid" x1="' + l + '" x2="' + (W - r) + '" y1="' + y + '" y2="' + y + '"/><text class="ax" x="' + (l - 6) + '" y="' + (y + 4) + '" text-anchor="end">' + N((max * i) / 4) + "</text>"; }
+  const pts = vals.map((v, i) => X(i) + "," + Y(v)).join(" ");
+  s += '<polygon class="area" points="' + l + "," + (t + ph) + " " + pts + " " + X(n - 1) + "," + (t + ph) + '"/><polyline class="ln" points="' + pts + '"/>';
+  s += '<circle class="dot" cx="' + X(n - 1) + '" cy="' + Y(vals[n - 1]) + '" r="4.5"/>';
+  vals.forEach((v, i) => {
+    s += '<rect class="hit" x="' + (X(i) - pw / (n - 1) / 2) + '" y="' + t + '" width="' + pw / (n - 1) + '" height="' + ph + '" data-tip="' + lab(mo[i]) + ": " + N(v) + ' incidents"/>';
+    if (i % 3 === 0) s += '<text class="ax" x="' + X(i) + '" y="' + (H - 8) + '" text-anchor="middle">' + lab(mo[i]) + "</text>";
+  });
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H); svg.innerHTML = s;
+})();
+
+/* recommendations */
+$("recs").innerHTML = [
+  ["Report diversions on their own line", "Diversions are " + P(div.shareInc, 1) + " of incidents yet " + P(div.shareMin) + " of delay minutes, and " + P(longDiv / longAll) + " of delays over 3 hours. Mixing them into one delay total hides both problems.", "Median 70 min vs 12 min for all other incidents"],
+  ["Cut the \"Other\" equipment code", "One code, \"Other\" under equipment failures, covers " + N(efo.n) + " incidents, about " + P(efo.share) + " of the total. A more specific code list would show which failures to fix first.", N(efo.n) + " incidents with no specific cause"],
+  ["Cover the 2 to 7 pm window with spare operators", "\"No operator available\" caused " + N(tfcno.n) + " incidents (" + P(tfcno.n / totalInc, 1) + "), and " + P(tfcno.peak) + " of them land in the afternoon rush, above that window's " + P(D.peak) + " share of all incidents.", P(tfcno.peak) + " in the window vs " + P(D.peak) + " overall"],
+].map((r) => '<div class="rec"><h3>' + r[0] + "</h3><p>" + r[1] + '</p><p class="ev">' + r[2] + "</p></div>").join("");
+
+/* method */
+$("method").innerHTML = [
+  "<strong>Source:</strong> City of Toronto Open Data, \"TTC Bus Delay Data since 2025\" and its code list. " + N(D.log.raw_rows) + " rows to start.",
+  "<strong>Duplicates:</strong> " + N(D.log.duplicates_removed) + " rows that were identical apart from the row id were removed.",
+  "<strong>Zero-minute rows:</strong> " + N(D.log.zero_delay_rows) + " entries with 0 minutes of delay were set aside, leaving " + N(D.log.delay_incidents) + " delay incidents.",
+  "<strong>Routes:</strong> only numbered routes are ranked, and only routes with at least 300 incidents. Shuttle and training labels are excluded from route rankings.",
+  "<strong>Cause groups:</strong> the seven groups are my own grouping of the City's codes, based on each code's description.",
+  "<strong>What the data cannot show:</strong> it lists incidents, not total trips or riders, so it cannot give delay per trip or per rider.",
+].map((x) => "<li>" + x + "</li>").join("");
+$("gtable").innerHTML = "<thead><tr><th>Group</th><th class='n'>Incidents</th><th class='n'>Share of incidents</th><th class='n'>Delay hours</th><th class='n'>Share of minutes</th><th class='n'>Median (min)</th></tr></thead><tbody>" +
+  D.groups.map((g) => "<tr><td>" + g.name + "</td><td class='n'>" + N(g.incidents) + "</td><td class='n'>" + P(g.shareInc, 1) + "</td><td class='n'>" + N(g.minutes / 60) + "</td><td class='n'>" + P(g.shareMin, 1) + "</td><td class='n'>" + g.median + "</td></tr>").join("") + "</tbody>";
+
+/* tooltip */
+function showTip(e) {
+  const t = e.target.closest("[data-tip]");
+  if (!t) { tip.style.display = "none"; return; }
+  tip.textContent = t.getAttribute("data-tip");
+  tip.style.display = "block";
+  const w = tip.offsetWidth, x = Math.min(e.clientX + 14, window.innerWidth - w - 8);
+  tip.style.left = Math.max(8, x) + "px"; tip.style.top = e.clientY + 16 + "px";
+}
+document.addEventListener("mousemove", showTip);
+document.addEventListener("click", showTip);
+document.addEventListener("mouseleave", () => (tip.style.display = "none"));
+</script>
+</body></html>

@@ -1,0 +1,1206 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Mustafa Syed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Jost:wght@300;400;500&family=Courier+Prime:wght@400;700&display=swap">
+<style>
+/* Concept: a classified dossier. Black and gunmetal, ivory type, one brushed-gold accent, typewriter file labels. */
+:root {
+  --bg: #0B0C0E;
+  --surface: #14161A;
+  --ink: #ECE8DF;
+  --ink2: #A4A29B;
+  --line: #2A2D33;
+  --accent: #C9A55C;
+  --board: #101216;
+  --chalk: #ECE8DF;
+  --chalk2: #A4A29B;
+  --lit: #D8B76B;
+  --mute: #3A3E46;
+  --ring: rgba(201, 165, 92, 0.13);
+  --g1: #F3E6BF; --g2: #C9A55C; --g3: #E9D7A0;
+  --f-display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --f-body: "Jost", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "Courier Prime", "Courier New", ui-monospace, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #F3EFE6; --surface: #FBF9F3; --ink: #14161A; --ink2: #55524B; --line: #D6D0C1;
+    --accent: #8A6A24; --board: #14161A; --chalk: #ECE8DF; --chalk2: #A4A29B; --lit: #D8B76B;
+    --mute: #C4BEAE; --ring: rgba(138, 106, 36, 0.12); --g1: #5E430D; --g2: #9A7622; --g3: #6E5014; color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #F3EFE6; --surface: #FBF9F3; --ink: #14161A; --ink2: #55524B; --line: #D6D0C1;
+  --accent: #8A6A24; --board: #14161A; --chalk: #ECE8DF; --chalk2: #A4A29B; --lit: #D8B76B;
+  --mute: #C4BEAE; --ring: rgba(138, 106, 36, 0.12); --g1: #5E430D; --g2: #9A7622; --g3: #6E5014; color-scheme: light;
+}
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-weight: 400; font-size: 17px; line-height: 1.65; padding-inline: 20px; padding-block: 0 56px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1120px; margin-inline: auto; overflow-x: clip; position: relative; z-index: 1; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 500; line-height: 1.05; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(3.2rem, 11vw, 7rem); font-weight: 500; letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.9rem, 4.6vw, 2.8rem); }
+h3 { font-size: 1.45rem; }
+p { margin: 0; }
+.label { font-family: var(--f-mono); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+
+nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-block: 22px; border-bottom: 1px solid var(--line); }
+nav a.brand { color: inherit; text-decoration: none; border: 0; padding: 0; transition: color .2s; }
+nav a.brand:hover, nav a.brand:focus-visible { color: var(--accent); outline: none; }
+.ic { width: 26px; height: 26px; fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; display: block; margin-bottom: 10px; flex: none; }
+.ib { display: inline-block; vertical-align: -4px; width: 20px; height: 20px; margin: 0 9px 0 0; }
+.skill h3 .ic { display: inline-block; vertical-align: -5px; width: 22px; height: 22px; margin: 0 10px 0 0; }
+nav b { font-family: var(--f-display); font-size: 1.15rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 22px; flex-wrap: wrap; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; }
+nav a { color: var(--ink); text-decoration: none; }
+nav a:hover { color: var(--accent); }
+
+.hero { position: relative; padding-block: 72px 48px; display: flex; flex-direction: column; gap: 26px; isolation: isolate; }
+.hero::before { content: ""; position: absolute; z-index: -1; right: -60px; top: 10px; width: 420px; max-width: 80vw; aspect-ratio: 1; border-radius: 50%; background: repeating-radial-gradient(circle at center, transparent 0 22px, var(--ring) 22px 23px); -webkit-mask-image: radial-gradient(circle, #000 30%, transparent 72%); mask-image: radial-gradient(circle, #000 30%, transparent 72%); }
+.hero .sub { font-family: var(--f-display); font-style: italic; font-size: clamp(1.25rem, 2.8vw, 1.7rem); line-height: 1.35; max-width: 34ch; color: var(--ink); }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-block; font-family: var(--f-mono); font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 13px 20px; text-decoration: none; border: 1px solid var(--accent); color: var(--accent); background: transparent; cursor: pointer; }
+.btn.solid { background: var(--accent); color: var(--bg); font-weight: 700; }
+.btn:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+
+.board { background: var(--board); color: var(--chalk); padding: 22px 24px 26px; border: 1px solid var(--line); border-top: 2px solid var(--accent); margin-block: 8px 80px; }
+.board .label { color: var(--chalk2); }
+.board-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; margin-top: 14px; }
+.cell { padding: 8px 14px 8px 0; min-width: 0; }
+.cell + .cell { padding-left: 14px; border-left: 1px solid rgba(236, 232, 223, 0.16); }
+.cell b { display: block; font-family: var(--f-display); font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.05; color: var(--lit); font-variant-numeric: lining-nums tabular-nums; overflow-wrap: anywhere; }
+.cell span { display: block; font-size: 0.86rem; line-height: 1.4; color: var(--chalk); margin-top: 8px; }
+
+section { padding-block: 0; }
+.head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
+.head .label::before { content: ""; display: inline-block; width: 28px; height: 1px; background: var(--accent); vertical-align: middle; margin-right: 12px; }
+.about { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; }
+.about p + p { margin-top: 16px; }
+.facts { display: grid; gap: 0; align-content: start; border-top: 1px solid var(--accent); }
+.facts div { padding-block: 13px; border-bottom: 1px solid var(--line); display: grid; gap: 2px; }
+.facts b { font-weight: 500; font-family: var(--f-mono); font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+
+.project { background: var(--surface); border: 1px solid var(--line); padding: 30px; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 36px; }
+.project + .project { margin-top: 24px; }
+.tags { font-family: var(--f-mono); font-size: 0.78rem; letter-spacing: 0.04em; color: var(--ink2); margin-top: 8px; }
+.tag-case { display: inline-block; font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid var(--accent); padding: 2px 8px; margin-bottom: 12px; color: var(--accent); }
+.project .lede { font-size: 1.12rem; margin-top: 14px; }
+.project ul { margin: 16px 0 0; padding-left: 1.1rem; display: grid; gap: 8px; color: var(--ink2); }
+.project ul strong { color: var(--ink); font-weight: 500; }
+.pstats { display: grid; gap: 0; align-content: start; border-top: 1px solid var(--accent); }
+.pstats div { padding-block: 14px; border-bottom: 1px solid var(--line); }
+.pstats b { display: block; font-family: var(--f-display); font-weight: 500; font-size: 2.5rem; line-height: 1.05; color: var(--accent); font-variant-numeric: lining-nums tabular-nums; }
+.pstats span { display: block; font-size: 0.9rem; color: var(--ink2); margin-top: 4px; }
+.plink { margin-top: 22px; }
+.note { font-size: 0.82rem; color: var(--ink2); margin-top: 14px; }
+
+.role { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 24px; padding-block: 24px; border-top: 1px solid var(--line); }
+.role:last-child { border-bottom: 1px solid var(--line); }
+.role h3 { font-size: 1.4rem; }
+.role .when { font-family: var(--f-mono); font-size: 0.78rem; color: var(--ink2); margin-top: 6px; }
+.role ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 6px; color: var(--ink2); }
+.role .org { color: var(--accent); font-weight: 500; margin-top: 4px; }
+
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 32px; }
+.skill { border-top: 1px solid var(--accent); padding-top: 16px; }
+.skill h3 { margin-bottom: 12px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span { font-size: 0.88rem; border: 1px solid var(--line); background: var(--surface); padding: 4px 11px; }
+
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.list { display: grid; gap: 0; border-top: 1px solid var(--accent); }
+.list div { padding-block: 13px; border-bottom: 1px solid var(--line); display: grid; gap: 2px; }
+.list b { font-weight: 500; }
+.list span { color: var(--ink2); font-size: 0.93rem; }
+
+.contact { background: var(--board); color: var(--chalk); padding: 44px 30px; border: 1px solid var(--line); border-top: 2px solid var(--accent); display: grid; gap: 20px; }
+.contact h2 { color: var(--chalk); }
+.contact p { max-width: 52ch; color: var(--chalk); }
+.contact .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.contact code { font-family: var(--f-mono); font-size: 1rem; background: rgba(236, 232, 223, 0.08); padding: 10px 14px; overflow-wrap: anywhere; user-select: all; }
+.contact .btn { border-color: var(--lit); color: var(--lit); }
+.contact .btn:hover { background: var(--lit); border-color: var(--lit); color: #0B0C0E; }
+#copied { font-family: var(--f-mono); font-size: 0.8rem; color: var(--lit); }
+footer .ver { color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; }
+footer { padding-top: 28px; line-height: 1.8; font-family: var(--f-mono); font-size: 0.76rem; letter-spacing: 0.04em; color: var(--ink2); }
+
+.now { font-size: 0.98rem; color: var(--ink2); max-width: 62ch; }
+.now .label { display: block; margin-bottom: 4px; }
+.chartband { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: 22px; }
+.chartband h4 { font-family: var(--f-display); font-weight: 500; font-size: 1.25rem; margin: 0 0 4px; }
+.chartband .cap { font-size: 0.88rem; color: var(--ink2); margin-bottom: 12px; }
+svg.plot { width: 100%; height: auto; display: block; overflow: visible; }
+svg .ax { font-family: var(--f-mono); font-size: 11px; fill: var(--ink2); }
+svg .grid { stroke: var(--line); stroke-width: 1; }
+svg .col { fill: var(--mute); }
+svg .col.hi { fill: var(--accent); }
+svg .callout { font-family: var(--f-body); font-size: 12px; fill: var(--ink); font-weight: 500; }
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.steps.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.step { border-top: 1px solid var(--accent); padding-top: 14px; display: grid; gap: 8px; align-content: start; }
+.step b { font-family: var(--f-display); font-weight: 500; font-style: italic; font-size: 2.2rem; line-height: 1; color: var(--accent); }
+.step h3 { font-size: 1.25rem; }
+.step p { color: var(--ink2); font-size: 0.95rem; }
+.step .eg { font-family: var(--f-mono); font-size: 0.76rem; color: var(--ink); }
+.why { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; }
+.why .big { font-family: var(--f-display); font-style: italic; font-weight: 500; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.12; text-wrap: balance; }
+.why p + p { margin-top: 16px; }
+.why .look { border-left: 2px solid var(--accent); padding-left: 16px; margin-top: 22px; color: var(--ink); }
+
+@media (max-width: 860px) {
+  .steps.three { grid-template-columns: minmax(0, 1fr); }
+  .board-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 8px; }
+  .cell:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .cell:nth-child(n+3) { border-top: 1px solid rgba(236, 232, 223, 0.16); padding-top: 14px; }
+  .about, .project, .role, .two { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .skills { grid-template-columns: minmax(0, 1fr); }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .why { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .project { padding: 22px; }
+}
+@media (max-width: 520px) { .steps { grid-template-columns: minmax(0, 1fr); } .hero { padding-block: 48px 40px; } }
+pre.sql { grid-column: 1 / -1; margin: 0; overflow-x: auto; background: var(--bg); border: 1px solid var(--line); border-left: 2px solid var(--accent); padding: 16px 18px; font-family: var(--f-mono); font-size: 0.8rem; line-height: 1.55; color: var(--ink); }
+table.res { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 4px; }
+table.res th { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); text-align: left; font-weight: 400; padding: 6px 8px 6px 0; border-bottom: 1px solid var(--accent); }
+table.res td { padding: 7px 8px 7px 0; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+table.res td:not(:first-child), table.res th:not(:first-child) { text-align: right; padding-right: 0; }
+table.res tr.lo td { color: var(--accent); font-weight: 500; }
+.resbox { overflow-x: auto; }
+details.case { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: 16px; }
+details.case summary { cursor: pointer; font-family: var(--f-mono); font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); list-style: none; }
+details.case summary::-webkit-details-marker { display: none; }
+details.case summary::before { content: "+ "; }
+details.case[open] summary::before { content: "\2212  "; }
+.casegrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 18px; }
+.casegrid h5 { font-family: var(--f-mono); font-weight: 400; font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); margin: 0 0 6px; padding-bottom: 6px; border-bottom: 1px solid var(--accent); }
+.casegrid p { font-size: 0.93rem; color: var(--ink2); }
+.avail { display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: center; align-items: center; padding-block: 9px; margin-inline: -20px; padding-inline: 20px; background: transparent; color: var(--accent); font-family: var(--f-mono); font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; border-bottom: 1px solid var(--line); }
+.avail i { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--lit); margin-right: 8px; }
+.notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.note-card { border-top: 1px solid var(--accent); padding-top: 14px; display: grid; gap: 8px; align-content: start; }
+.note-card h3 { font-size: 1.25rem; }
+.note-card p { color: var(--ink2); font-size: 0.95rem; }
+@media (max-width: 860px) { .casegrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .notes { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) { .casegrid { grid-template-columns: minmax(0, 1fr); } }
+.strip { display: flex; flex-wrap: wrap; gap: 14px 40px; }
+.strip div { display: flex; align-items: baseline; gap: 10px; }
+.strip b { font-family: var(--f-display); font-weight: 500; font-size: 2rem; line-height: 1; color: var(--accent); }
+.strip span { font-family: var(--f-mono); font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink2); }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 22px; }
+.filters .cnt { font-family: var(--f-mono); font-size: 0.76rem; letter-spacing: 0.08em; color: var(--ink2); margin-left: auto; }
+.chip { font-family: var(--f-mono); font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 14px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; }
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 700; }
+.chip:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ctl { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 10px; align-items: center; }
+.ctl .grp { display: flex; gap: 6px; flex-wrap: wrap; }
+.readout { font-family: var(--f-mono); font-size: 0.84rem; color: var(--ink); min-height: 1.4em; margin-top: 8px; }
+svg .col { transition: fill 0.15s; } svg .col:hover, svg .col:focus { fill: var(--ink); outline: none; }
+select.qsel { font-family: var(--f-body); font-size: 0.98rem; background: var(--bg); color: var(--ink); border: 1px solid var(--line); padding: 10px 12px; max-width: 100%; }
+nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: transparent; transition: background .25s, box-shadow .25s; }
+nav.stuck { background: var(--bg); box-shadow: 0 1px 0 var(--line); padding-inline: 20px; margin-inline: -20px; }
+nav a[aria-current="true"] { color: var(--accent); border-bottom: 1px solid var(--accent); }
+section, header { scroll-margin-top: 76px; }
+.project[hidden] { display: none; }
+html { scroll-behavior: smooth; }
+@media (max-width: 620px) { nav { position: static; } section, header { scroll-margin-top: 12px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.navcta { display: flex; align-items: center; }
+nav a.navc { border: 1px solid var(--accent); color: var(--accent); padding: 7px 14px; transition: background .2s, color .2s; }
+nav a.navc:hover, nav a.navc[aria-current="true"] { background: var(--accent); color: var(--bg); border-bottom-color: var(--accent); }
+nav .navres { font: inherit; letter-spacing: inherit; text-transform: inherit; background: none; border: 0; color: var(--ink); cursor: pointer; padding: 0; }
+nav .navres:hover { color: var(--accent); }
+nav ul { gap: 20px; align-items: center; }
+@media (max-width: 1100px) { nav ul { gap: 14px; letter-spacing: 0.1em; } }
+@media (max-width: 960px) {
+  nav { flex-direction: column; align-items: flex-start; gap: 10px; padding-block: 16px 10px; }
+  nav ul { flex-wrap: nowrap; overflow-x: auto; width: 100%; gap: 18px; padding-block: 4px 10px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  nav ul::-webkit-scrollbar { display: none; }
+  nav ul { -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); padding-right: 24px; }
+  nav ul li { flex: none; }
+}
+.quick { margin-bottom: 22px; }
+.quick .label { display: block; margin-bottom: 12px; }
+.quick .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.quick .btn svg { width: 15px; height: 15px; vertical-align: -2px; margin-right: 8px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+#qcopied { font-family: var(--f-mono); font-size: 0.8rem; color: var(--accent); }
+dialog.rs { background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-top: 2px solid var(--accent); padding: 0; width: calc(100% - 32px); max-width: 780px; max-height: 88vh; }
+dialog.rs::backdrop { background: rgba(0, 0, 0, 0.72); }
+.rs-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 22px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--surface); }
+.rs-body { padding: 8px 22px 44px; overflow-y: auto; max-height: calc(88vh - 62px); }
+.rs-body h3 { font-family: var(--f-mono); font-weight: 400; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin: 22px 0 8px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.rs-body p, .rs-body li { font-size: 0.95rem; color: var(--ink2); }
+.rs-note { margin-top: 22px; border: 1px solid var(--accent); border-left-width: 3px; background: var(--bg); padding: 16px 18px; display: grid; gap: 10px; justify-items: start; }
+.rs-note p { margin: 0; color: var(--ink); }
+.rs-note code { font-family: var(--f-mono); font-size: 0.9rem; color: var(--accent); overflow-wrap: anywhere; user-select: all; }
+.rs-body ul { margin: 4px 0 10px; padding-left: 1.1rem; display: grid; gap: 3px; }
+.rs-body .t { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: var(--ink); font-weight: 500; margin-top: 12px; }
+.rs-body .t span { font-family: var(--f-mono); font-size: 0.78rem; color: var(--ink2); font-weight: 400; }
+
+/* ---- classic finish ---- */
+.hero h1 { color: var(--ink); }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero h1 { background: linear-gradient(100deg, var(--g1) 0%, var(--g2) 48%, var(--g3) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; padding-bottom: 0.08em; }
+}
+.project, .board, .contact { position: relative; }
+.project { box-shadow: inset 0 0 0 6px var(--surface), inset 0 0 0 7px var(--line); }
+.project::before, .board::before, .contact::before, .project::after, .board::after, .contact::after { content: ""; position: absolute; width: 18px; height: 18px; pointer-events: none; border: 0 solid var(--accent); }
+.project::before, .board::before, .contact::before { top: 10px; left: 10px; border-top-width: 1px; border-left-width: 1px; }
+.project::after, .board::after, .contact::after { bottom: 10px; right: 10px; border-bottom-width: 1px; border-right-width: 1px; }
+.board, .contact { box-shadow: inset 0 0 0 6px var(--board), inset 0 0 0 7px rgba(201, 165, 92, 0.35); }
+.fileno { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.fileno::before { content: ""; display: inline-block; width: 22px; height: 1px; background: var(--accent); vertical-align: middle; margin-right: 10px; }
+section { position: relative; }
+section::after { content: ""; display: block; height: 14px; margin-block: 44px 44px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath d='M7 1l6 6-6 6-6-6z' fill='none' stroke='%23B8933F' stroke-width='1.2'/%3E%3Cpath d='M7 4.5l2.5 2.5L7 9.5 4.5 7z' fill='%23B8933F'/%3E%3C/svg%3E") center / 14px 14px no-repeat, linear-gradient(90deg, transparent, var(--line) 12%, var(--line) 46%, transparent 46%, transparent 54%, var(--line) 54%, var(--line) 88%, transparent) center / 100% 1px no-repeat; }
+#contact::after { display: none; }
+#contact { padding-bottom: 20px; }
+.head { position: relative; }
+.head::after { content: attr(data-n); position: absolute; right: 0; top: -18px; font-family: var(--f-display); font-style: italic; font-size: clamp(4rem, 11vw, 7.5rem); line-height: 1; color: var(--accent); opacity: 0.11; pointer-events: none; }
+.head h2 { padding-bottom: 12px; background: linear-gradient(var(--accent), var(--accent)) left bottom / 64px 1px no-repeat; transition: background-size 0.9s ease; }
+.head.rv:not(.in) h2 { background-size: 0 1px; }
+.rv { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.rv.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+  @keyframes sweep { from { opacity: 0; transform: scale(0.55) rotate(-25deg); } }
+  .hero::before { animation: sweep 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; }
+  .hero > .label { animation: rise 0.8s ease-out 0.1s backwards; }
+  .hero h1 { animation: rise 1s ease-out 0.35s backwards; }
+  .hero .sub { animation: rise 0.9s ease-out 0.75s backwards; }
+  .hero .cta, .hero .strip, .hero .now { animation: rise 0.9s ease-out 1.05s backwards; }
+}
+@media (max-width: 860px) { .head::after { top: -8px; } }
+#proof .skills { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 860px) { #proof .skills { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---- polish: progress, hero, ticker, cards, dialog, pictures ---- */
+#prog { position: fixed; top: 0; left: 0; height: 3px; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--g2), var(--g1), var(--g2)); z-index: 60; pointer-events: none; }
+#totop, #tobot { position: fixed; right: 18px; bottom: 18px; width: 44px; height: 44px; border: 1px solid var(--accent); background: var(--bg); color: var(--accent); cursor: pointer; z-index: 40; opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity .3s, transform .3s, background .2s, color .2s; display: grid; place-items: center; padding: 0; }
+#tobot { right: auto; left: 18px; }
+#totop.on, #tobot.on { opacity: 1; pointer-events: auto; transform: none; }
+#totop:hover, #totop:focus-visible, #tobot:hover, #tobot:focus-visible { background: var(--accent); color: var(--bg); outline: none; }
+#totop svg, #tobot svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+html { background: var(--bg); }
+#bgfx { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+#bgfx .glow { position: absolute; width: 60vw; height: 60vw; max-width: 900px; max-height: 900px; border-radius: 50%; background: radial-gradient(circle, var(--ring) 0%, transparent 65%); filter: blur(10px); }
+#bgfx .g1 { left: -20vw; top: 6vh; } #bgfx .g2 { right: -20vw; top: 48vh; }
+#bgfx .lat { position: absolute; inset: 0; background: var(--accent); opacity: .16; -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath d='M28 3 53 28 28 53 3 28Z M28 13 43 28 28 43 13 28Z' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E"), linear-gradient(90deg, #000 0, transparent 30%, transparent 70%, #000 100%); -webkit-mask-composite: source-in; mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath d='M28 3 53 28 28 53 3 28Z M28 13 43 28 28 43 13 28Z' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E"), linear-gradient(90deg, #000 0, transparent 30%, transparent 70%, #000 100%); mask-composite: intersect; }
+#sparks { position: absolute; inset: 0; width: 100%; height: 100%; }
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes drift1 { 50% { transform: translate(6vw, 8vh) scale(1.08); } }
+  @keyframes drift2 { 50% { transform: translate(-6vw, -8vh) scale(1.1); } }
+  #bgfx .g1 { animation: drift1 26s ease-in-out infinite; } #bgfx .g2 { animation: drift2 32s ease-in-out infinite; }
+    @keyframes latmove { to { -webkit-mask-position: 56px 56px, 0 0; mask-position: 56px 56px, 0 0; } }
+  #bgfx .lat { animation: latmove 40s linear infinite; }
+}
+.portrait { position: absolute; right: 50px; top: 64px; width: 210px; height: 262px; z-index: -1; display: none; }
+@media (min-width: 900px) { .portrait { display: block; } }
+.portrait svg { width: 100%; height: 100%; overflow: visible; }
+.portrait .rays { transform-origin: 120px 150px; }
+.roles { font-family: var(--f-mono); font-size: 0.92rem; letter-spacing: 0.06em; color: var(--ink2); margin: -6px 0 0; min-height: 1.5em; }
+.roles .label { margin-right: 10px; }
+.roles #tw { color: var(--ink); }
+.roles .caret { display: inline-block; width: 2px; height: 1.05em; background: var(--accent); margin-left: 3px; vertical-align: -2px; }
+.ticker { overflow: hidden; border-block: 1px solid var(--line); margin-block: 8px 34px; position: relative; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.ticker .trk { display: flex; width: max-content; gap: 0; }
+.ticker span { font-family: var(--f-mono); font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); padding: 13px 22px; white-space: nowrap; }
+.ticker span::after { content: "\25C6"; margin-left: 44px; font-size: 0.6rem; opacity: .7; }
+.board { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Cpath d='M22 2 42 22 22 42 2 22Z' fill='none' stroke='%23C9A55C' stroke-opacity='.07' stroke-width='1'/%3E%3C/svg%3E"); }
+.pgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+@media (max-width: 980px) { .pgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .pgrid { grid-template-columns: minmax(0, 1fr); } }
+.pcard { position: relative; display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); overflow: hidden; transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .25s, box-shadow .35s; cursor: pointer; }
+.pcard[hidden] { display: none; }
+.pcard::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(201, 165, 92, 0.16), transparent 70%); }
+.pcard:hover, .pcard:focus-within { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22); }
+.pcard:hover::after { opacity: 1; }
+.pimg { position: relative; aspect-ratio: 16 / 10; background: var(--board); overflow: hidden; border-bottom: 1px solid var(--accent); }
+.pimg img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.pcard:hover .pimg img { transform: scale(1.06); }
+.pimg i { position: absolute; left: 10px; top: 10px; font-style: normal; font-family: var(--f-mono); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; background: var(--bg); color: var(--accent); padding: 4px 8px; border: 1px solid var(--accent); }
+.pbody { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.pbody h3 { font-size: 1.35rem; }
+.pbody .tags { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--ink2); margin: 0; }
+.pbody .plede { font-size: 0.95rem; color: var(--ink2); margin: 4px 0 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.pact { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 14px; }
+.pact .btn { padding: 9px 14px; font-size: 0.72rem; }
+.pmore { display: flex; justify-content: center; margin-top: 26px; }
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes cardIn { from { opacity: 0; transform: translateY(18px); } }
+  .pcard { animation: cardIn .6s cubic-bezier(.2,.7,.2,1) backwards; animation-delay: var(--d, 0s); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes raypulse { 50% { opacity: .15; } }
+  @keyframes cbob { 50% { transform: translateY(-5px); } }
+  .portrait .cbob { animation: cbob 5s ease-in-out infinite; }
+  .portrait .cb2 { animation-delay: -2.5s; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .roles .caret { animation: blink 1s steps(1) infinite; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+  .ticker .trk { animation: slide 55s linear infinite; }
+  .ticker:hover .trk { animation-play-state: paused; }
+  @keyframes dashmove { to { stroke-dashoffset: -40; } }
+  .pic .flow { animation: dashmove 2.4s linear infinite; }
+  @keyframes floaty { 50% { transform: translateY(-5px); } }
+  .pic .bob { animation: floaty 3.2s ease-in-out infinite; }
+  @keyframes shine { from { background-position: 200% 0; } to { background-position: -100% 0; } }
+  .hero h1 { background-size: 250% 100%; animation: shine 9s linear infinite; }
+}
+dialog.pd { background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-top: 2px solid var(--accent); padding: 0; width: calc(100% - 24px); max-width: 1040px; max-height: 92vh; }
+dialog.pd::backdrop { background: rgba(0, 0, 0, 0.78); backdrop-filter: blur(3px); }
+.pd-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 18px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--bg); z-index: 2; }
+.pd-head .nv { display: flex; gap: 8px; }
+.pd-head .btn { padding: 8px 12px; font-size: 0.72rem; }
+.pd-body { overflow-y: auto; max-height: calc(92vh - 58px); padding: 14px; }
+.pd-body .project { margin: 0; box-shadow: none; border: 0; }
+@media (max-width: 760px) { .pd-body .project { padding: 18px; } }
+.pic { background: var(--board); border: 1px solid var(--line); border-bottom: 1px solid var(--accent); margin-bottom: 16px; color: var(--lit); overflow: hidden; }
+.pic svg { display: block; width: 100%; height: auto; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.pic .soft { stroke: var(--mute); }
+.pic + .ic { display: none; }
+
+a.avail { text-decoration: none; gap: 8px 14px; position: relative; overflow: hidden; border-bottom: 0; transition: background .25s; }
+a.avail .av-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lit); position: relative; flex: none; }
+a.avail .av-dot::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--lit); opacity: 0; }
+a.avail .av-s { width: 1px; height: 12px; background: var(--mute); }
+a.avail .av-go { margin-left: 6px; padding: 4px 12px; border: 1px solid var(--accent); color: var(--accent); font-weight: 700; transition: background .25s, color .25s; white-space: nowrap; }
+a.avail .av-go b { display: inline-block; font-weight: 400; transition: transform .25s; }
+a.avail:hover, a.avail:focus-visible { background: transparent; outline: none; }
+a.avail:hover .av-go, a.avail:focus-visible .av-go { background: var(--lit); color: #14161A; }
+a.avail:hover .av-go b, a.avail:focus-visible .av-go b { transform: translateX(4px); }
+a.avail:focus-visible { box-shadow: inset 0 0 0 2px var(--lit); }
+@media (max-width: 560px) { a.avail .av-s, a.avail .av-l { display: none; } a.avail { font-size: 0.68rem; letter-spacing: 0.1em; } }
+#talk { scroll-margin-top: 90px; }
+.contact.flash { animation: flashc 1.8s ease-out; }
+@keyframes flashc { 0% { box-shadow: 0 0 0 0 rgba(201,165,92,.0), inset 0 0 0 0 rgba(201,165,92,0); } 25% { box-shadow: 0 0 0 4px rgba(201,165,92,.55), inset 0 0 40px rgba(201,165,92,.12); } 100% { box-shadow: 0 0 0 0 rgba(201,165,92,0), inset 0 0 0 0 rgba(201,165,92,0); } }
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes ping { 0% { transform: scale(.6); opacity: .8; } 100% { transform: scale(1.8); opacity: 0; } }
+  a.avail .av-dot::after { animation: ping 2s ease-out infinite; }
+  @keyframes shimmer { 0% { transform: translateX(-120%); } 60%, 100% { transform: translateX(120%); } }
+  a.avail::before { display: none; content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 35%, rgba(216,183,107,.16) 50%, transparent 65%); transform: translateX(-120%); animation: shimmer 6s ease-in-out infinite; pointer-events: none; }
+}
+
+.mform { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); display: grid; gap: 14px; max-width: 760px; }
+.mout { border: 1px solid var(--accent); background: var(--bg); padding: 16px 18px; display: grid; gap: 12px; }
+.mout p { margin: 0; }
+.mout code { font-family: var(--f-mono); overflow-wrap: anywhere; word-break: break-all; user-select: all; display: inline-block; max-width: 100%; }
+.mform h3 { font-size: 1.35rem; }
+.mrow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 620px) { .mrow { grid-template-columns: minmax(0, 1fr); } }
+.mf { display: grid; gap: 6px; min-width: 0; }
+.mf label { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink2); }
+.mf input, .mf textarea { font-family: var(--f-body); font-size: 1rem; color: var(--ink); background: var(--bg); border: 1px solid var(--line); padding: 12px 14px; width: 100%; box-sizing: border-box; border-radius: 0; transition: border-color .2s, box-shadow .2s; resize: vertical; }
+.mf input::placeholder, .mf textarea::placeholder { color: var(--mute); }
+.mf input:focus, .mf textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--ring); }
+.mf.bad input, .mf.bad textarea { border-color: #b5443a; }
+.mact .btn.solid { color: #14161A; background: var(--lit); border-color: var(--lit); font-weight: 700; }
+.mact .btn.solid:hover { background: var(--ink); color: var(--bg); }
+.mact { display: flex; flex-wrap: wrap; gap: 10px; }
+.mact .btn svg { width: 15px; height: 15px; vertical-align: -2px; margin-right: 8px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.mst, .mnote { max-width: none !important; }
+.mst { margin: 0; min-height: 1.4em; font-family: var(--f-mono); font-size: 0.82rem; color: var(--accent); }
+.mst.err { color: #c2603e; }
+.mnote { margin: 0; font-size: 0.82rem; color: var(--ink2); }
+
+.sgroups { display: grid; gap: 22px; }
+.sgroup { border: 1px solid var(--line); background: var(--surface); padding: 22px; position: relative; }
+.sgroup h3 { font-family: var(--f-mono); font-weight: 400; font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+.sgroup h3::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent); }
+.tiles { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.tile { width: 132px; box-sizing: border-box; }
+.tile { border: 1px solid var(--line); background: var(--bg); padding: 18px 10px 14px; display: grid; justify-items: center; align-content: start; gap: 10px; text-align: center; position: relative; overflow: hidden; transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .25s, box-shadow .3s; }
+.tile::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(201,165,92,.16), transparent 70%); opacity: 0; transition: opacity .3s; }
+.tile svg { width: 34px; height: 34px; fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; position: relative; transition: transform .3s, stroke .25s; }
+.tile span { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.05em; line-height: 1.35; color: var(--ink); position: relative; }
+.tile:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+.tile:hover::before { opacity: 1; }
+.tile:hover svg { transform: scale(1.12); stroke: var(--lit); }
+.tile .brands { display: flex; gap: 8px; align-items: center; justify-content: center; position: relative; height: 34px; }
+.tile .brands svg { width: 34px; height: 34px; fill: var(--accent); stroke: none; transition: transform .3s, fill .25s; }
+.tile .brands.two svg { width: 28px; height: 28px; }
+.tile:hover .brands svg { transform: scale(1.12); fill: var(--lit); stroke: none; }
+.bh { font-family: var(--f-display); font-weight: 500; font-size: 1.3rem; margin: 40px 0 6px; }
+.bn { color: var(--ink2); margin: 0 0 18px; font-size: 0.95rem; }
+.badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+.badge small { color: var(--ink2); font-size: 0.68rem; }
+.badge { width: 170px; box-sizing: border-box; border: 1px solid var(--line); background: var(--surface); padding: 16px 12px 12px; display: grid; justify-items: center; gap: 8px; text-align: center; text-decoration: none; color: var(--ink); position: relative; transition: transform .3s, border-color .3s, box-shadow .3s; }
+.badge img { width: 112px; height: 112px; object-fit: contain; }
+.badge span { font-size: 0.78rem; line-height: 1.35; }
+.badge em { font-style: normal; font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.badge:hover, .badge:focus-visible { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 10px 24px rgba(0,0,0,.2); outline: none; }
+@media (max-width: 520px) { .badge { width: calc(50% - 7px); } }
+.certs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; margin-top: 14px; }
+.cert { display: flex; gap: 14px; align-items: center; border: 1px solid var(--line); background: var(--surface); padding: 14px 16px; min-width: 0; transition: border-color .3s, transform .3s; }
+.cert:hover { border-color: var(--accent); transform: translateY(-2px); }
+.cert .ci { flex: none; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line); background: var(--bg); }
+.cert .ci svg { width: 26px; height: 26px; fill: var(--accent); stroke: none; }
+.cert .ci svg.aw { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linejoin: round; }
+.cert b { display: block; font-weight: 600; font-size: 0.92rem; line-height: 1.35; overflow-wrap: anywhere; }
+.cert span { display: block; color: var(--ink2); font-size: 0.82rem; }
+.cert em { font-style: normal; font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.feat { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 26px; align-items: center; border: 1px solid var(--line); border-top: 2px solid var(--accent); background: var(--surface); padding: 20px; text-decoration: none; color: var(--ink); margin-top: 14px; transition: border-color .3s, box-shadow .3s; }
+.feat img { width: 100%; height: auto; border: 1px solid var(--line); display: block; }
+.feat h4 { font-family: var(--f-display); font-weight: 500; font-size: 1.6rem; margin: 6px 0 10px; }
+.feat p { margin: 0 0 12px; color: var(--ink2); }
+.feat p.label { color: var(--accent); margin-bottom: 0; }
+.feat em { font-style: normal; font-family: var(--f-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.feat:hover, .feat:focus-visible { border-color: var(--accent); box-shadow: 0 10px 28px rgba(0,0,0,.22); outline: none; }
+@media (max-width: 720px) { .feat { grid-template-columns: minmax(0, 1fr); } }
+.lbx { border: 1px solid var(--accent); background: var(--surface); padding: 12px; max-width: min(960px, 94vw); width: 94vw; max-height: 94vh; overflow: auto; color: var(--ink); }
+.lbx::backdrop { background: rgba(0,0,0,.8); }
+.lbx img { display: block; width: 100%; height: auto; margin-top: 10px; }
+.lbx .lbc { display: block; margin-left: auto; padding: 8px 14px; }
+@media (max-width: 520px) { .contact { padding: 28px 16px; } .mout { padding: 14px; } .mout code { font-size: 0.78rem; } .mout .mact { display: grid; grid-template-columns: 1fr; } .mout .mact .btn { text-align: center; } .tile { width: calc(50% - 6px); } .sgroup { padding: 16px; } }
+</style>
+
+<div id="bgfx" aria-hidden="true"><div class="glow g1"></div><div class="glow g2"></div><div class="lat"></div><canvas id="sparks"></canvas></div>
+<div id="prog" aria-hidden="true"></div>
+<button id="tobot" type="button" aria-label="Jump to bottom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></button>
+<button id="totop" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<div class="wrap" id="top">
+  <a class="avail" href="#talk" aria-label="Available for Winter 2027 co-op, Toronto or remote. Go to contact."><span class="av-dot" aria-hidden="true"></span><span class="av-t">Available for Winter 2027 co-op</span><span class="av-s" aria-hidden="true"></span><span class="av-l">Toronto or remote</span><span class="av-go">Let's talk <b aria-hidden="true">&rarr;</b></span></a>
+  <nav>
+    <a class="brand" href="#top" aria-label="Mustafa Syed, back to top"><b>Mustafa Syed</b></a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#headed">Paths</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="games.html">Games</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li class="navcta"><button type="button" class="navres" id="openres3">Resume</button></li>
+      <li class="navcta"><a class="navc" href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div class="portrait" aria-hidden="true"><svg viewBox="0 0 240 300"><circle cx="120" cy="150" r="112" fill="none" stroke="var(--accent)" stroke-width="1" opacity=".35"/><circle cx="120" cy="150" r="104" fill="none" stroke="var(--accent)" stroke-width=".8" opacity=".25" stroke-dasharray="2 6"/><g transform="translate(82 158) rotate(-13)"><g class="cbob cb1">
+<rect x="-55" y="-80" width="110" height="160" rx="9" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.8"/>
+<rect x="-48" y="-73" width="96" height="146" rx="5" fill="none" stroke="var(--accent)" stroke-width=".7" opacity=".5"/>
+<text x="-40" y="-50" font-family="Bodoni Moda,Georgia,serif" font-size="22" fill="var(--accent)">A</text>
+<path d="M0-14C-4-6-15-2-15 6a7.5 7.5 0 0 0 12.5 5L-3.5 18h7L2.5 11A7.5 7.5 0 0 0 15 6C15-2 4-6 0-14Z" fill="var(--accent)" transform="translate(-33 -32) scale(.42)"/>
+<g transform="rotate(180)"><text x="-40" y="-50" font-family="Bodoni Moda,Georgia,serif" font-size="22" fill="var(--accent)">A</text><path d="M0-14C-4-6-15-2-15 6a7.5 7.5 0 0 0 12.5 5L-3.5 18h7L2.5 11A7.5 7.5 0 0 0 15 6C15-2 4-6 0-14Z" fill="var(--accent)" transform="translate(-33 -32) scale(.42)"/></g>
+<path d="M0-14C-4-6-15-2-15 6a7.5 7.5 0 0 0 12.5 5L-3.5 18h7L2.5 11A7.5 7.5 0 0 0 15 6C15-2 4-6 0-14Z" fill="var(--accent)" transform="scale(2.3)"/><circle r="36" fill="none" stroke="var(--accent)" stroke-width=".8" opacity=".45"/></g></g><g transform="translate(158 150) rotate(11)"><g class="cbob cb2">
+<rect x="-55" y="-80" width="110" height="160" rx="9" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.8"/>
+<rect x="-48" y="-73" width="96" height="146" rx="5" fill="none" stroke="var(--accent)" stroke-width=".7" opacity=".5"/>
+<text x="-40" y="-50" font-family="Bodoni Moda,Georgia,serif" font-size="22" fill="var(--accent)">K</text>
+<path d="M0 12C-20-4-12-20 0-9C12-20 20-4 0 12Z" fill="var(--accent)" transform="translate(-33 -32) scale(.42)"/>
+<g transform="rotate(180)"><text x="-40" y="-50" font-family="Bodoni Moda,Georgia,serif" font-size="22" fill="var(--accent)">K</text><path d="M0 12C-20-4-12-20 0-9C12-20 20-4 0 12Z" fill="var(--accent)" transform="translate(-33 -32) scale(.42)"/></g>
+<path d="M-20-6L-20-30L-10-18L0-34L10-18L20-30L20-6Z" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linejoin="round"/><path d="M0 12C-20-4-12-20 0-9C12-20 20-4 0 12Z" fill="var(--accent)" transform="translate(0 22) scale(1.3)"/><circle cx="0" cy="-34" r="2" fill="var(--accent)"/></g></g>
+<path d="M60 268h120" stroke="var(--accent)" stroke-width="1.2"/><text x="120" y="288" text-anchor="middle" font-family="Jost,Helvetica,Arial,sans-serif" font-size="11" letter-spacing="6" fill="var(--accent)">PLAY YOUR CARDS RIGHT</text></svg></div>
+    <p class="label">Business Technology Management · Toronto Metropolitan University · Toronto</p>
+    <h1>Mustafa Syed</h1>
+    <p class="sub">I don't guess. I analyze, I prepare, and I deliver.</p>
+    <p class="roles" aria-label="Exploring data, IT, cybersecurity, AI, gaming and law"><span class="label">Exploring</span><span id="tw">Data · IT · Cybersecurity · AI · Gaming · Law</span><i class="caret" aria-hidden="true"></i></p>
+    <div class="cta">
+      <a class="btn solid" href="#projects">See my projects</a>
+      <button class="btn" type="button" id="openres2">View resume</button>
+      <a class="btn" href="https://www.linkedin.com/in/mustafa-syed-742a8432a/" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="strip"><div><b>12</b><span>projects built</span></div><div><b>4</b><span>roles held</span></div><div><b>5 yrs</b><span>leading teams</span></div></div>
+    <p class="now"><span class="label">Currently</span>Earning my Business Technology Management degree at TMU, building data, security, AI and game projects, and lining up a Winter 2027 co-op while I explore where I fit best. I prefer to win on preparation.</p>
+  </header>
+
+  <div class="ticker" aria-hidden="true"><div class="trk" id="trk"></div></div>
+
+  <div class="board" aria-label="Results at a glance">
+    <p class="label">Results so far</p>
+    <div class="board-grid">
+      <div class="cell"><b>88,997</b><span>TTC bus delay incidents analyzed</span></div>
+      <div class="cell"><b>404</b><span>subnet calculations checked against Python's own library</span></div>
+      <div class="cell"><b>4 of 4</b><span>simulated attack patterns caught in my log analysis, with no false alarms</span></div>
+      <div class="cell"><b>30+</b><span>young players in the daily program I led</span></div>
+      <div class="cell"><b>37,664+</b><span>lbs of food collected in food drives I led and supported</span></div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="head" data-n="00"><p class="label">About</p><h2>Data, systems, and people</h2></div>
+    <div class="about">
+      <div>
+        <p>I am a Business Technology Management (Co-op) student at Toronto Metropolitan University. I like finding the one number in a large dataset that changes what someone should do next, then explaining it clearly.</p>
+        <p>Outside class I lead and I build. I ran daily youth baseball programs as Head Coach with Jays Care Foundation through summer 2026, and in my own time I build data, security, AI and game projects. Leading a team taught me to plan and communicate, and building taught me to finish.</p>
+      </div>
+      <div class="facts">
+        <div><b>Studying</b><span>B.Com (Honours), Business Technology Management, co-op. Expected April 2029.</span></div>
+        <div><b>Looking for</b><span>Winter 2027 co-op roles in business or data analysis, IT, cybersecurity, AI, and legal-adjacent work. Open to where my skills fit best.</span></div>
+        <div><b>Where</b><span>Toronto, or remote.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="me">
+    <div class="head" data-n="01"><p class="label">Outside of work</p><h2>A bit about me</h2></div>
+    <p class="lede" style="max-width:62ch;margin:0 0 26px;color:var(--ink2)">I'm 20, and the thread through everything I do is that I like getting better at things. This is what fills the rest of my time, and each of these habits shows up in how I work.</p>
+    <div class="steps three">
+      <div class="step"><div class="pic"><svg viewBox="0 0 400 150" role="img" aria-label="Barbell illustration"><path class="soft" d="M20 128h360M40 140h40M120 140h40M240 140h40M320 140h40"/><g class="bob"><path d="M62 78h276"/><rect x="92" y="42" width="22" height="72" rx="3"/><rect x="118" y="54" width="14" height="48" rx="3"/><rect x="286" y="42" width="22" height="72" rx="3"/><rect x="268" y="54" width="14" height="48" rx="3"/><path d="M62 66v24M338 66v24"/></g></svg></div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg><b>Gym</b><h3>Training, consistently</h3><p>I love going to the gym and working out. Showing up consistently, even when I don't feel like it, is a habit I protect, and it builds the discipline and patience I bring to long projects and tight deadlines.</p></div>
+      <div class="step"><div class="pic"><svg viewBox="0 0 400 150" role="img" aria-label="Flight path illustration"><g class="soft"><ellipse cx="200" cy="120" rx="170" ry="18"/><path d="M60 120 Q200 -40 340 120"/></g><path class="flow" d="M60 120 Q200 -30 340 120" stroke-dasharray="6 8"/><circle cx="60" cy="120" r="5"/><circle cx="340" cy="120" r="5"/><g class="bob"><path d="M190 36l34 10-34 10 6-10z" fill="currentColor" stroke="none"/></g></svg></div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3L3 10.5l6.5 2.5L12 20zM9.5 13L21 3"/></svg><b>Travel</b><h3>Exploring new places</h3><p>I love travelling and exploring new places. New cities, new people and different ways of doing things keep me curious and adaptable, and every trip teaches me something I can't get from a screen.</p></div>
+      <div class="step"><div class="pic"><svg viewBox="0 0 400 150" role="img" aria-label="Controller and crosshair illustration"><g class="bob"><rect x="110" y="48" width="130" height="62" rx="28"/><path d="M140 68v22M129 79h22"/><circle cx="200" cy="74" r="4"/><circle cx="216" cy="86" r="4"/></g><g class="soft"><path d="M60 30h20M70 20v20"/><path d="M330 120h20M340 110v20"/></g><circle cx="312" cy="62" r="24"/><path d="M312 28v16M312 80v16M278 62h16M330 62h16"/><circle cx="312" cy="62" r="2" fill="currentColor"/></svg></div><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 10.5v4M5 12.5h4M16 11h.01M18.5 14h.01"/></svg><b>Gaming</b><h3>Shooters and stories</h3><p>I'm a gamer. I love FPS shooters like Call of Duty for the pace and split-second decisions, and story-driven games like Uncharted, The Last of Us and God of War for their characters and world-building. It's a big reason I build games of my own, from an emulator to a 3D zombie shooter.</p></div>
+    </div>
+  </section>
+
+  <section id="headed">
+    <div class="head" data-n="02"><p class="label">Where I'm headed</p><h2>Five paths I'm exploring</h2></div>
+    <p class="lede" style="max-width:62ch;margin:0 0 26px;color:var(--ink2)">I have not picked one yet, and I do not need to. Winter 2027 is about trying real work, so I am building evidence in each direction and letting the work tell me where I fit.</p>
+    <div class="steps three">
+      <div class="step"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/><path d="M10 12h4"/></svg><b>AI</b><h3>Using it well, and safely</h3><p>AI is only useful if it can be trusted. I look at how AI tools are chosen, governed and monitored, and where privacy, bias and accuracy risks show up before they become problems.</p><p class="eg">AI Use Policy and Risk Builder</p></div>
+      <div class="step"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 7h.01M7 17h.01"/></svg><b>IT</b><h3>Systems, networks, security</h3><p>I want to understand how technology runs, where it breaks, and how it gets defended. That means networking, operating systems, logs and security basics, backed by Cisco coursework and tools I've built myself.</p><p class="eg">Subnet tools, SSH log analysis</p></div>
+      <div class="step"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><b>Business</b><h3>Data that changes a decision</h3><p>The best analysis ends in a decision. I clean and question the data, find the number that changes what someone should do next, and explain it in plain language a manager can act on.</p><p class="eg">TTC delay analysis, SQL database</p></div>
+      <div class="step"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 10.5v4M5 12.5h4M16 11h.01M18.5 14h.01"/></svg><b>Game Development</b><h3>Building worlds people play</h3><p>Game logic, 3D graphics and emulation, written from scratch. Building a CHIP-8 emulator and two Undead Siege shooters taught me how real-time systems, rendering and player feedback fit together.</p><p class="eg">CHIP-8 emulator, Undead Siege 1 and 2</p></div>
+      <div class="step"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M6 21h12M4 7h16"/><path d="M4 7l-2 7a3 3 0 0 0 4 0zM20 7l-2 7a3 3 0 0 0 4 0z"/></svg><b>Law</b><h3>Corporate and criminal</h3><p>A long-time interest. I've played witness, prosecutor and judge in mock trials, taken part in domestic law contests and events, and taken law courses through high school and university. It shapes how I think about risk, evidence and compliance.</p><p class="eg">Privacy assessment, PIPEDA checker</p></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="head" data-n="03"><p class="label">Projects</p><h2>Projects, start to finish</h2></div>
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button class="chip" type="button" data-f="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-f="data" aria-pressed="false">Data</button>
+      <button class="chip" type="button" data-f="cyber" aria-pressed="false">Cybersecurity</button>
+      <button class="chip" type="button" data-f="it" aria-pressed="false">IT and AI</button>
+      <button class="chip" type="button" data-f="law" aria-pressed="false">Law and policy</button>
+      <span class="cnt" id="fcnt" role="status">Showing 10 of 10</span>
+    </div>
+
+    <div class="pgrid" id="pgrid"></div>
+    <div class="pmore" id="pmore"><button class="btn solid" type="button">Show all</button></div>
+    <div id="pholder" hidden>
+    <article class="project" data-img="img/ttc.jpg" data-cat="data">
+      <div>
+        <p class="fileno">Project 01 · Data analysis</p>
+        <h3>TTC Bus Delay Analysis</h3>
+        <p class="tags">Python · pandas · Data visualization · Public data</p>
+        <p class="lede">Diversions are 8% of TTC bus delay incidents but 40% of delay minutes. The typical diversion lasts 70 minutes, against 12 for everything else.</p>
+        <ul>
+          <li><strong>Cleaned</strong> 102,257 City of Toronto records, removing 298 duplicates and 12,962 zero-minute entries to isolate 88,997 delay incidents.</li>
+          <li><strong>Analyzed</strong> 46 delay codes grouped into 7 causes, then compared incidents, minutes, and medians by cause, hour, weekday, and route.</li>
+          <li><strong>Recommended</strong> reporting diversions separately, replacing the vague "Other" equipment code (20% of incidents), and adding spare-operator cover for the 2 to 7 pm rush.</li>
+        </ul>
+        <p class="plink"><a class="btn" href="ttc.html">Open the dashboard</a></p>
+        <p class="note">Built on the City of Toronto's open TTC Bus Delay Data. Not affiliated with the TTC.</p>
+      </div>
+      <div class="pstats">
+        <div><b>88,997</b><span>delay incidents analyzed, Jan 2025 to Aug 2026</span></div>
+        <div><b>40%</b><span>of delay minutes come from diversions</span></div>
+        <div><b>32%</b><span>of incidents fall between 2 pm and 7 pm</span></div>
+      </div>
+      <div class="chartband">
+        <h4 id="ch-title">Delay incidents by hour of day</h4>
+        <p class="cap" id="ch-cap">Afternoon rush, 2 pm to 7 pm, highlighted. Hover or tab to a bar for the count.</p>
+        <div class="ctl">
+          <div class="grp" role="group" aria-label="Group by"><button class="chip" type="button" data-v="hour" aria-pressed="true">Hour</button><button class="chip" type="button" data-v="day" aria-pressed="false">Weekday</button><button class="chip" type="button" data-v="month" aria-pressed="false">Month</button></div>
+          <div class="grp" role="group" aria-label="Measure"><button class="chip" type="button" data-m="i" aria-pressed="true">Incidents</button><button class="chip" type="button" data-m="m" aria-pressed="false">Delay minutes</button></div>
+        </div>
+        <svg class="plot" id="hours" role="img" aria-label="Column chart of TTC bus delays. Use the buttons above to change the grouping."></svg>
+        <p class="readout" id="readout" aria-live="polite"></p>
+      </div>
+      <details class="case"><summary>How I built it</summary><div class="casegrid">
+        <div><h5>The question</h5><p>Where do TTC bus delay minutes come from, and what could be done about them?</p></div>
+        <div><h5>The method</h5><p>Cleaned the raw City of Toronto file in Python and pandas, grouped 46 delay codes into 7 causes, and compared incidents, total minutes, and medians by cause, hour, weekday, and route.</p></div>
+        <div><h5>The hard part</h5><p>The raw file had duplicates and zero-minute rows that would have skewed every average. I removed them and kept a count of each removal so the final numbers can be checked.</p></div>
+        <div><h5>What I would do next</h5><p>Add route-level trip counts so delay can be measured per trip, and test whether the 2 to 7 pm pattern holds in every season.</p></div>
+      </div></details>
+    </article>
+
+    <article class="project" data-img="img/risk.svg" data-cat="cyber law">
+      <div>
+        <p class="fileno">Project 02 · Security and privacy</p>
+        <span class="tag-case">Case study · hypothetical organization</span>
+        <h3>Privacy and Security Risk Assessment</h3>
+        <p class="tags">Risk analysis · PIPEDA · Cybersecurity basics</p>
+        <p class="lede">For an invented volunteer-run charity, two risks rate High and eight Medium. Four fixes in the first week remove most of the exposure.</p>
+        <ul>
+          <li><strong>Mapped</strong> the personal data the charity holds and ranked it by sensitivity.</li>
+          <li><strong>Scored</strong> 10 risks on likelihood and impact, and reviewed its practices against the 10 principles of Canada's PIPEDA privacy law.</li>
+          <li><strong>Planned</strong> a 30-day fix list ordered by risk removed per hour, starting with two-step sign-in and access clean-up.</li>
+        </ul>
+        <p class="plink"><a class="btn" href="risk.html">Read the assessment</a></p>
+        <p class="note">The organization is fictional. Legal points are checked against the Office of the Privacy Commissioner of Canada.</p>
+      </div>
+      <div class="pstats">
+        <div><b>10</b><span>risks scored, 2 High and 8 Medium</span></div>
+        <div><b>6 of 10</b><span>privacy principles not yet met</span></div>
+        <div><b>30 days</b><span>to a fix plan, first week about 4 hours</span></div>
+      </div>
+      <details class="case"><summary>How I built it</summary><div class="casegrid">
+        <div><h5>The question</h5><p>How exposed is a small volunteer-run charity that holds personal information, and what should it fix first?</p></div>
+        <div><h5>The method</h5><p>Mapped the data it holds, scored 10 risks on likelihood and impact, and rated its practices against the 10 principles of PIPEDA, checking each legal point against the Privacy Commissioner of Canada.</p></div>
+        <div><h5>The hard part</h5><p>A risk score says how bad something is, not what to do first. I added a second ranking, risk removed per hour of effort, to separate quick wins from long projects.</p></div>
+        <div><h5>What I would do next</h5><p>Interview a real organization, with permission, to test the risk scores against how it actually operates.</p></div>
+      </div></details>
+    </article>
+
+    <article class="project" data-img="img/sql.svg" data-cat="data it">
+      <div>
+        <p class="fileno">Project 03 · Data and databases</p>
+        <span class="tag-case">Practice project · generated data</span>
+        <h3>Donation Drive Database and Analysis</h3>
+        <p class="tags">SQL · SQLite · Database design · Python</p>
+        <p class="lede">In this practice database, school drives collect 3.2 lbs of food per volunteer hour. Community centres collect 8.2.</p>
+        <ul>
+          <li><strong>Designed</strong> four linked tables (drives, donations, shifts, distributions) with primary keys, foreign keys, and a rule that rejects zero or negative weights.</li>
+          <li><strong>Queried</strong> it with joins, grouping, and subqueries to compare donation categories, sites, and months.</li>
+          <li><strong>Found</strong> that canned goods are 40% of all pounds, and that school drives are the outlier, at less than half the pounds per volunteer hour of any other site.</li>
+        </ul>
+        <p class="note">All data is randomly generated to practice the method. It is not the records of any real organization.</p>
+      </div>
+      <div class="pstats">
+        <div><b>4</b><span>linked tables, 22 drives, 215 donation records</span></div>
+        <div><b>2.6x</b><span>volunteer efficiency, best site against schools</span></div>
+        <div><b>40%</b><span>of pounds are canned goods</span></div>
+      </div>
+      <div class="chartband">
+        <h4>Ask the database</h4>
+        <p class="cap">Pick a question to see what it returns, and the query I wrote to answer it.</p>
+        <label for="qsel" class="label" style="display:block;margin-bottom:6px">Question</label>
+        <select class="qsel" id="qsel"><option value="site">Which site uses volunteer time best?</option><option value="cat">What do people donate most?</option><option value="month">Which months collect the most?</option></select>
+        <div class="resbox" id="qres" style="margin-top:14px"></div>
+      </div>
+<pre class="sql" id="qsql"></pre>
+      <details class="case"><summary>How I built it</summary><div class="casegrid">
+        <div><h5>The question</h5><p>Can a few linked tables answer which drive sites use volunteer time best?</p></div>
+        <div><h5>The method</h5><p>Designed four tables with keys and a rule against invalid weights, loaded generated data in SQLite, and wrote joins and grouped queries to compare categories, sites, and months.</p></div>
+        <div><h5>A trap I avoided</h5><p>Joining donations straight to shifts would have counted each shift several times. I summed donations per drive first, then joined, so totals stayed correct.</p></div>
+        <div><h5>What I would do next</h5><p>Run it on a real, consented dataset, add indexes, and build a simple dashboard on top of the queries.</p></div>
+      </div></details>
+    </article>
+    <article class="project" data-img="img/pipeda.jpg" data-cat="law">
+      <div>
+        <p class="fileno">Project 04 · Privacy and law</p>
+        <h3>PIPEDA Policy Checker</h3>
+        <p class="tags">JavaScript · Privacy law · Compliance tooling</p>
+        <p class="lede">A working tool that screens any privacy policy against the 10 fair information principles of Canada's PIPEDA, quotes the wording it found, and says what to add.</p>
+        <ul>
+          <li><strong>Translated</strong> the 10 legal principles into checkable signals, using the Office of the Privacy Commissioner's summary of the law.</li>
+          <li><strong>Built</strong> it in JavaScript so it runs in the browser and nothing a user pastes is sent anywhere.</li>
+          <li><strong>Tested</strong> it on two invented policies: a weak one meets 0 of 10 principles and a stronger one meets all 10.</li>
+        </ul>
+        <p class="plink"><a class="btn" href="pipeda.html">Try the checker</a></p>
+        <p class="note">A screening aid, not legal advice. It looks for wording, so a found phrase does not prove compliance.</p>
+      </div>
+      <div class="pstats">
+        <div><b>10</b><span>PIPEDA principles checked</span></div>
+        <div><b>30</b><span>wording signals across them</span></div>
+        <div><b>0 of 10 to 10 of 10</b><span>weak sample against stronger sample</span></div>
+      </div>
+    </article>
+    <article class="project" data-img="img/seclog.jpg" data-cat="cyber">
+      <div>
+        <p class="fileno">Project 05 · Cybersecurity</p>
+        <h3>SSH Log Threat Hunt</h3>
+        <p class="tags">Python · Log analysis · MITRE ATT&amp;CK · Cybersecurity</p>
+        <p class="lede">A Python tool that reads a server's SSH login log, finds brute-force and password-guessing attacks, and maps each finding to a MITRE ATT&amp;CK technique.</p>
+        <ul>
+          <li><strong>Generated</strong> a week of synthetic logins with four attacks hidden inside, so the detector could be checked against known answers.</li>
+          <li><strong>Wrote</strong> four detection rules: brute force, username spraying, slow guessing, and a successful login after repeated failures.</li>
+          <li><strong>Improved</strong> it after the first version missed a slow attacker, then confirmed the new rule raised no false alarms.</li>
+        </ul>
+        <p class="plink"><a class="btn" href="seclog.html">Open the report</a></p>
+        <p class="note">The log is synthetic and every IP address comes from a documentation-only range. No real system was scanned.</p>
+      </div>
+      <div class="pstats">
+        <div><b>4 of 4</b><span>hidden attacks detected</span></div>
+        <div><b>0</b><span>false alarms on legitimate users</span></div>
+        <div><b>353</b><span>log events parsed</span></div>
+      </div>
+    </article>
+    <article class="project" data-img="img/subnet.jpg" data-cat="it">
+      <div>
+        <p class="fileno">Project 06 · IT and networking</p>
+        <h3>Subnet Calculator and Trainer</h3>
+        <p class="tags">JavaScript · IPv4 · Networking fundamentals</p>
+        <p class="lede">A calculator that breaks any IPv4 address and prefix into network, broadcast, host range, and binary, plus randomized practice questions with worked explanations.</p>
+        <ul>
+          <li><strong>Built</strong> the address maths from scratch, including the /31 and /32 edge cases that trip up most calculators.</li>
+          <li><strong>Verified</strong> it against Python's ipaddress library on 404 random and edge-case inputs, with no mismatches.</li>
+          <li><strong>Added</strong> a practice mode with five question types and step-by-step answers, to learn the method and not only get results.</li>
+        </ul>
+        <p class="plink"><a class="btn" href="subnet.html">Try the calculator</a></p>
+        <p class="note">Builds on my Cisco Networking Academy coursework.</p>
+      </div>
+      <div class="pstats">
+        <div><b>404</b><span>test cases checked, 0 mismatches</span></div>
+        <div><b>5</b><span>practice question types</span></div>
+        <div><b>32-bit</b><span>maths, shown in binary</span></div>
+      </div>
+    </article>
+    <article class="project" data-img="img/aipolicy.jpg" data-cat="it law">
+      <div>
+        <p class="fileno">Project 07 · AI governance</p>
+        <h3>AI Use Policy Builder</h3>
+        <p class="tags">JavaScript · AI governance · Privacy · Policy writing</p>
+        <p class="lede">Nine questions about how an organization uses AI tools produce a risk rating, the gaps behind it, and a draft AI use policy in plain language.</p>
+        <ul>
+          <li><strong>Mapped</strong> each question to the nine principles Canada's privacy regulators set out for generative AI.</li>
+          <li><strong>Scored</strong> risk by answer, and forces a High rating whenever sensitive personal information goes into an AI tool.</li>
+          <li><strong>Drafted</strong> a nine-section policy that changes with the answers and is ready to copy into a document.</li>
+        </ul>
+        <p class="plink"><a class="btn" href="aipolicy.html">Build a policy</a></p>
+        <p class="note">A starting point, not legal advice. The scoring rules are my own judgment.</p>
+      </div>
+      <div class="pstats">
+        <div><b>9</b><span>questions, one per risk area</span></div>
+        <div><b>9</b><span>regulator principles covered</span></div>
+        <div><b>1 page</b><span>draft policy produced</span></div>
+      </div>
+    </article>
+    <article class="project" data-img="img/bizcase.jpg" data-cat="data">
+      <div>
+        <p class="fileno">Project 08 · Business analysis</p>
+        <h3>Business Case Builder</h3>
+        <p class="tags">Financial modelling · Cost-benefit analysis · Sensitivity analysis · JavaScript</p>
+        <p class="lede">An interactive business case for a fictional shop weighing new inventory software. Change the assumptions and see the net present value, payback, return, and which assumption the decision depends on most.</p>
+        <ul>
+          <li><strong>Built</strong> the financial model: net present value, payback period, return on investment and internal rate of return, with a clear go, pilot or stop recommendation.</li>
+          <li><strong>Added</strong> a sensitivity analysis that moves each assumption 20% up and down, to show which one to check first.</li>
+          <li><strong>Verified</strong> the model against an independent Python calculation across 60 random scenarios, with no differences.</li>
+        </ul>
+        <p class="plink"><a class="btn" href="bizcase.html">Try the model</a></p>
+        <p class="note">Every number is an invented assumption, used to show the method. Not financial advice.</p>
+      </div>
+      <div class="pstats">
+        <div><b>4</b><span>decision measures: NPV, payback, ROI and IRR</span></div>
+        <div><b>8</b><span>assumptions stress-tested in the sensitivity chart</span></div>
+        <div><b>60</b><span>random scenarios matched to an independent calculation</span></div>
+      </div>
+    </article>
+    <article class="project" data-img="img/cvss.jpg" data-cat="cyber">
+      <div>
+        <p class="fileno">Project 09 · Cybersecurity</p>
+        <h3>CVSS Triage Board</h3>
+        <p class="tags">Vulnerability management · CVSS v3.1 · Risk prioritization · JavaScript</p>
+        <p class="lede">A CVSS v3.1 calculator, plus a board that ranks six well-known vulnerabilities by score, internet exposure and how important each system is.</p>
+        <ul>
+          <li><strong>Implemented</strong> the published FIRST CVSS v3.1 base score formula, and checked it against an independent open-source library for all 2,592 possible vectors, with zero differences.</li>
+          <li><strong>Designed</strong> a priority rule that combines score, exposure and system importance into four action tiers, from "Fix now" to "Schedule".</li>
+          <li><strong>Explained</strong> its limits: a score is not a priority, so real triage also needs exploit activity, patch status and compensating controls.</li>
+        </ul>
+        <p class="plink"><a class="btn" href="cvss.html">Open the board</a></p>
+        <p class="note">The company and systems are fictional, and the priority rule is my own judgment, not a standard.</p>
+      </div>
+      <div class="pstats">
+        <div><b>2,592</b><span>possible vectors checked against an independent library</span></div>
+        <div><b>6</b><span>well-known vulnerabilities ranked, from Log4Shell to PrintNightmare</span></div>
+        <div><b>4</b><span>action tiers, from "Fix now" to "Schedule"</span></div>
+      </div>
+    </article>
+    <article class="project" data-img="img/siege2.jpg" data-cat="it">
+      <div>
+        <p class="fileno">Projects 10 to 12 · Game development</p>
+        <h3>Game Development</h3>
+        <p class="tags">JavaScript · three.js · Canvas 2D · Emulation · Game logic</p>
+        <p class="lede">Three playable projects built from scratch: a working CHIP-8 emulator, a top-down zombie survival game, and a first-person 3D sequel.</p>
+        <ul>
+          <li><strong>Emulated</strong> a real virtual computer, instruction by instruction, running programs I hand-assembled.</li>
+          <li><strong>Built</strong> game loops, collision detection, enemy behaviour, wave scaling and a points economy, in 2D and in 3D.</li>
+          <li><strong>Generated</strong> all graphics and sound in code, so nothing depends on copyrighted assets.</li>
+        </ul>
+        <p class="plink"><a class="btn" href="games.html">Open Game Development</a></p>
+      </div>
+      <div class="pstats">
+        <div><b>3</b><span>playable projects, all original code</span></div>
+        <div><b>35</b><span>CPU instructions implemented in the emulator</span></div>
+        <div><b>3D</b><span>first-person shooter with ray-cast hit detection</span></div>
+      </div>
+    </article>
+    </div>
+  </section>
+
+  <section id="how">
+
+    <div class="head" data-n="04"><p class="label">How I work</p><h2>Four habits I use on every project</h2></div>
+    <div class="steps">
+      <div class="step"><b>1</b><h3>Start with the question</h3><p>I ask what decision the work is for before I open any data, so the analysis answers something real.</p><p class="eg">TTC: where do delay minutes come from?</p></div>
+      <div class="step"><b>2</b><h3>Clean, and show my cleaning</h3><p>I count what I removed and why, so anyone can check the numbers I end up with.</p><p class="eg">TTC: 298 duplicates, 12,962 zero-minute rows</p></div>
+      <div class="step"><b>3</b><h3>Find the number that changes the answer</h3><p>I look for the comparison that makes the point, and use medians when a few extremes distort the average.</p><p class="eg">8% of incidents, 40% of minutes</p></div>
+      <div class="step"><b>4</b><h3>Explain it, and say what it can't show</h3><p>I write for the person who has to act, and I state the limits of the data up front.</p><p class="eg">Incidents only, so no delay per trip</p></div>
+    </div>
+  </section>
+
+  <section id="notes">
+    <div class="head" data-n="05"><p class="label">Field notes</p><h2>Things my projects taught me</h2></div>
+    <div class="notes">
+      <div class="note-card"><h3>Use the median when a few extremes shout</h3><p>The typical TTC diversion lasted 70 minutes, against 12 for everything else. A plain average would have blurred that gap and hidden where the delay really sits.</p></div>
+      <div class="note-card"><h3>Count what you throw away</h3><p>Removing 298 duplicates and 12,962 zero-minute rows was the right call, but only because I wrote the numbers down. Cleaning you cannot explain is cleaning nobody can trust.</p></div>
+      <div class="note-card"><h3>Vague categories hide problems</h3><p>One catch-all equipment code made up 20% of TTC incidents. When a fifth of your data says "other," the first fix is better labels, not more analysis.</p></div>
+    </div>
+  </section>
+  <section id="proof">
+    <div class="head" data-n="06"><p class="label">Beyond the classroom</p><h2>Proof, not just interest</h2></div>
+    <div class="skills">
+      <div class="skill"><h3>Mock trials and law events</h3><p>Played witness, prosecutor, and judge across criminal cases and tenant board disputes, and took part in various domestic law contests and events. Built arguments, tested evidence, and ruled on them.</p></div>
+      <div class="skill"><h3>Law organizations and courses</h3><p>Active in a range of law organizations, where I took many law courses through high school and university and kept building on them. That background in legal reasoning, argument and procedure feeds my interest in corporate and criminal law.</p></div>
+      <div class="skill"><h3>Strategy under pressure</h3><p>GLO-BUS Industry Champion, 2024. Senior executive of the top company in a global business strategy simulation.</p></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="head" data-n="07"><p class="label">Experience</p><h2>Where I have led and built</h2></div>
+
+    <div class="role">
+      <div><h3>Head Coach</h3><p class="org">Jays Care Foundation</p><p class="when">Jun 2025 to Aug 2026 · Toronto</p></div>
+      <ul>
+        <li>Led daily operations of youth baseball programs serving 30+ participants ages 6 to 14, and mentored the coaching staff.</li>
+        <li>Planned schedules and logistics for safe sessions, and worked with coaches, parents, and staff to resolve operational issues.</li>
+      </ul>
+    </div>
+    <div class="role">
+      <div><h3>Program Coach</h3><p class="org">Jays Care Foundation</p><p class="when">Jun 2024 to Aug 2024 · Toronto</p></div>
+      <ul>
+        <li>Trained and mentored 10+ youth athletes, contributing to a 20% improvement in overall team performance.</li>
+        <li>Adapted coaching to each player's skill level and emotional needs.</li>
+      </ul>
+    </div>
+    <div class="role">
+      <div><h3>Junior Game Developer</h3><p class="org">No Fuss Tutors (internship)</p><p class="when">Jul 2023 to Sep 2023 · Toronto</p></div>
+      <ul>
+        <li>Designed and tested interactive game features in Unity and C# to improve gameplay and user experience.</li>
+        <li>Evaluated mechanics with teammates, recommended feature and bug-fix improvements, and used player feedback to improve usability.</li>
+      </ul>
+    </div>
+    <div class="role">
+      <div><h3>Senior Volunteer</h3><p class="org">Rising Sun Food Drive Foundation</p><p class="when">Since Aug 2021 · Toronto</p></div>
+      <ul>
+        <li>Led food drives that collected 37,664+ lbs of non-perishable food and helped coordinate 32,912+ meals for 2,887+ households.</li>
+      </ul>
+    </div>
+    <div class="role">
+      <div><h3>Volunteer</h3><p class="org">Thorncliffe Neighbourhood Organization (TNO)</p><p class="when">Food drive · Toronto</p></div>
+      <ul>
+        <li>Volunteer with TNO's food drive, helping support families in the Thorncliffe community.</li>
+        <li>Bring the planning and teamwork habits from leading youth programs and other food drives.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="head" data-n="08"><p class="label">Skills</p><h2>What I work with</h2></div>
+    <div class="sgroups">
+      <div class="sgroup"><h3>Programming</h3><div class="tiles"><div class="tile"><div class="brands"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg></div><span>Python</span></div><div class="tile"><div class="brands"><svg viewBox="0 0 128 128" aria-hidden="true"><path d="M47.617 98.12c-19.192 5.362 11.677 16.439 36.115 5.969-4.003-1.556-6.874-3.351-6.874-3.351-10.897 2.06-15.952 2.222-25.844 1.092-8.164-.935-3.397-3.71-3.397-3.71zm33.189-10.46c-14.444 2.779-22.787 2.69-33.354 1.6-8.171-.845-2.822-4.805-2.822-4.805-21.137 7.016 11.767 14.977 41.309 6.336-3.14-1.106-5.133-3.131-5.133-3.131zm11.319-60.575c.001 0-42.731 10.669-22.323 34.187 6.024 6.935-1.58 13.17-1.58 13.17s15.289-7.891 8.269-17.777c-6.559-9.215-11.587-13.793 15.634-29.58zm9.998 81.144s3.529 2.91-3.888 5.159c-14.102 4.272-58.706 5.56-71.095.171-4.45-1.938 3.899-4.625 6.526-5.192 2.739-.593 4.303-.485 4.303-.485-4.952-3.487-32.013 6.85-13.742 9.815 49.821 8.076 90.817-3.637 77.896-9.468zM85 77.896c2.395-1.634 5.703-3.053 5.703-3.053s-9.424 1.685-18.813 2.474c-11.494.964-23.823 1.154-30.012.326-14.652-1.959 8.033-7.348 8.033-7.348s-8.812-.596-19.644 4.644C17.455 81.134 61.958 83.958 85 77.896zm5.609 15.145c-.108.29-.468.616-.468.616 31.273-8.221 19.775-28.979 4.822-23.725-1.312.464-2 1.543-2 1.543s.829-.334 2.678-.72c7.559-1.575 18.389 10.119-5.032 22.286zM64.181 70.069c-4.614-10.429-20.26-19.553.007-35.559C89.459 14.563 76.492 1.587 76.492 1.587c5.23 20.608-18.451 26.833-26.999 39.667-5.821 8.745 2.857 18.142 14.688 28.815zm27.274 51.748c-19.187 3.612-42.854 3.191-56.887.874 0 0 2.874 2.38 17.646 3.331 22.476 1.437 57-.8 57.816-11.436.001 0-1.57 4.032-18.575 7.231z"/></svg></div><span>Java</span></div><div class="tile"><div class="brands"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg></div><span>JavaScript</span></div><div class="tile"><div class="brands two"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/></svg></div><span>HTML and CSS</span></div><div class="tile"><div class="brands"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.394 6c-.167-.29-.398-.543-.652-.69L12.926.22c-.509-.294-1.34-.294-1.848 0L2.26 5.31c-.508.293-.923 1.013-.923 1.6v10.18c0 .294.104.62.271.91.167.29.398.543.652.69l8.816 5.09c.508.293 1.34.293 1.848 0l8.816-5.09c.254-.147.485-.4.652-.69.167-.29.27-.616.27-.91V6.91c.003-.294-.1-.62-.268-.91zM12 19.11c-3.92 0-7.109-3.19-7.109-7.11 0-3.92 3.19-7.11 7.11-7.11a7.133 7.133 0 016.156 3.553l-3.076 1.78a3.567 3.567 0 00-3.08-1.78A3.56 3.56 0 008.444 12 3.56 3.56 0 0012 15.555a3.57 3.57 0 003.08-1.778l3.078 1.78A7.135 7.135 0 0112 19.11zm7.11-6.715h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79zm2.962 0h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79z"/></svg></div><span>C++</span></div><div class="tile"><div class="brands"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0zM9.426 7.12a5.55 5.55 0 011.985.38v1.181a4.5 4.5 0 00-2.25-.566 3.439 3.439 0 00-2.625 1.087 4.099 4.099 0 00-1.012 2.906 3.9 3.9 0 00.945 2.754 3.217 3.217 0 002.482 1.023 4.657 4.657 0 002.464-.634l-.004 1.08a5.543 5.543 0 01-2.625.555 4.211 4.211 0 01-3.228-1.297 4.793 4.793 0 01-1.212-3.409 5.021 5.021 0 011.365-3.663 4.631 4.631 0 013.473-1.392 5.55 5.55 0 01.12-.004 5.55 5.55 0 01.122 0zm5.863.155h.836l-.555 2.652h1.661l.567-2.652h.81l-.555 2.652 1.732-.004-.15.697H17.91l-.412 1.98h1.852l-.176.698h-1.816l-.58 2.625h-.83l.567-2.625h-1.65l-.555 2.625h-.81l.555-2.625h-1.74l.131-.698h1.748l.401-1.976h-1.826l.138-.697h1.826zm.142 3.345L15 12.6h1.673l.423-1.98z"/></svg></div><span>C#</span></div><div class="tile"><div class="brands"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C7.6 2 4 3.3 4 5s3.6 3 8 3 8-1.3 8-3-3.6-3-8-3z"/><path d="M4 7.3V11c0 1.7 3.6 3 8 3s8-1.3 8-3V7.3C18.4 8.5 15.4 9.2 12 9.2S5.6 8.5 4 7.3z"/><path d="M4 13.3V17c0 1.7 3.6 3 8 3s8-1.3 8-3v-3.7C18.4 14.5 15.4 15.2 12 15.2S5.6 14.5 4 13.3z"/></svg></div><span>SQL</span></div><div class="tile"><div class="brands"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.746c-6.627 0-12 3.599-12 8.037 0 3.897 4.144 7.144 9.64 7.88V16.26c-2.924-.915-4.925-2.755-4.925-4.877 0-3.035 4.084-5.494 9.12-5.494 5.038 0 8.757 1.683 8.757 5.494 0 1.976-.999 3.379-2.662 4.272.09.066.174.128.258.216.169.149.25.363.372.544 2.128-1.45 3.44-3.437 3.44-5.631 0-4.44-5.373-8.038-12-8.038zm-2.111 4.99v13.516l4.093-.002-.002-5.291h1.1c.225 0 .321.066.549.25.272.22.715.982.715.982l2.164 4.063 4.627-.002-2.864-4.826s-.086-.193-.265-.383a2.22 2.22 0 00-.582-.416c-.422-.214-1.149-.434-1.149-.434s3.578-.264 3.578-3.826c0-3.562-3.744-3.63-3.744-3.63zm4.127 2.93l2.478.002s1.149-.062 1.149 1.127c0 1.165-1.149 1.17-1.149 1.17h-2.478zm1.754 6.119c-.494.049-1.012.079-1.54.088v1.807a16.622 16.622 0 002.37-.473l-.471-.891s-.108-.183-.248-.394c-.039-.054-.08-.098-.111-.137z"/></svg></div><span>R</span></div></div></div>
+      <div class="sgroup"><h3>Data and analytics</h3><div class="tiles"><div class="tile"><div class="brands"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 1.5q.41 0 .7.3.3.29.3.7v19q0 .41-.3.7-.29.3-.7.3H7q-.41 0-.7-.3-.3-.29-.3-.7V18H1q-.41 0-.7-.3-.3-.29-.3-.7V7q0-.41.3-.7Q.58 6 1 6h5V2.5q0-.41.3-.7.29-.3.7-.3zM6 13.28l1.42 2.66h2.14l-2.38-3.87 2.34-3.8H7.46l-1.3 2.4-.05.08-.04.09-.64-1.28-.66-1.29H2.59l2.27 3.82-2.48 3.85h2.16zM14.25 21v-3H7.5v3zm0-4.5v-3.75H12v3.75zm0-5.25V7.5H12v3.75zm0-5.25V3H7.5v3zm8.25 15v-3h-6.75v3zm0-4.5v-3.75h-6.75v3.75zm0-5.25V7.5h-6.75v3.75zm0-5.25V3h-6.75v3Z"/></svg></div><span>Excel</span></div><div class="tile"><div class="brands"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.654.174V2.377H9.682v.58h1.972V5.16h.696V2.957h1.97v-.58h-1.97V.174h-.348zm6.03 2.262l-.002 1.623v1.623h-2.957v.927h2.957v3.188H18.725l.011-1.582.02-1.576 1.465-.02 1.46-.01v-.927H18.728V2.436h-.522zm-12.407.06V5.686H2.291v.925H5.277V9.801h.985V6.61h3.013v-.925H6.262V2.496H5.77zm6.086 5.27v3.593H8.06v1.188h3.304v3.596h1.28v-3.596H15.953v-1.188H12.643V7.766h-.637zm9.721 1.55v2.221h-2.012v.811h2.012v2.261h.887v-2.261H24v-.811h-2.029V9.317h-.422zm-19.111.131V11.621H0v.621H1.973v2.194H2.64v-2.194h2v-.62H2.609V9.446h-.318zm15.709 4.516v3.254h-3.016v.927h3.016v3.217h1.072v-3.216H21.74v-.928H18.754v-3.254h-.533zm-12.463.008v3.246H2.262v.928h2.957v3.189H6.32v-3.189h2.955v-.928H6.32V13.97h-.55zm6.316 4.578l.002 1.103v1.1H9.566v.812h1.971v2.262h.928l.012-1.119.017-1.143H14.463v-.812h-2V18.549h-.465z"/></svg></div><span>Tableau</span></div><div class="tile"><div class="brands"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 1v22a1 1 0 0 1-1 1h-3.5V7c0-.827-.673-1.5-1.5-1.5h-2V1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1zm-6 5H9a1 1 0 0 0-1 1v4.5h2c.827 0 1.5.673 1.5 1.5v11H16V7a1 1 0 0 0-1-1zm-5 6H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h7V13a1 1 0 0 0-1-1z"/></svg></div><span>Power BI</span></div><div class="tile"><div class="brands"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.922 0h2.623v18.104h-2.623zm-4.126 12.94h2.623v2.57h-2.623zm0-7.037h2.623v5.446h-2.623zm0 11.197h2.623v5.446h-2.623zM4.456 5.896h2.622V24H4.455zm4.213 2.559h2.623v2.57H8.67zm0 4.151h2.623v5.447H8.67zm0-11.187h2.623v5.446H8.67Z"/></svg></div><span>pandas</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M7.5 12.5l2-2.5 2 1.5 2.5-3.5"/></svg><span>Data analysis</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4l1.5 3.5L18 9l-3.5 1.5L13 14l-1.5-3.5L8 9l3.5-1.5zM6 15l.8 2.2L9 18l-2.2.8L6 21l-.8-2.2L3 18l2.2-.8z"/></svg><span>Data cleaning</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M4 16l5-5 4 3 7-8"/><circle cx="9" cy="11" r="1"/><circle cx="13" cy="14" r="1"/></svg><span>Data visualization</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="10" rx="1"/><rect x="13" y="3" width="8" height="6" rx="1"/><rect x="13" y="11" width="8" height="10" rx="1"/><rect x="3" y="15" width="8" height="6" rx="1"/></svg><span>Dashboards</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="9" cy="6" rx="6" ry="2.5"/><path d="M3 6v9c0 1.4 2.7 2.5 6 2.5M3 10.5c0 1.4 2.7 2.5 6 2.5"/><path d="M15 15h6M18 12v6"/></svg><span>Database design</span></div></div></div>
+      <div class="sgroup"><h3>Systems, IT and security</h3><div class="tiles"><div class="tile"><div class="brands two"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 00-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139zm.529 3.405h.013c.213 0 .396.062.584.198.19.135.33.332.438.533.105.259.158.459.166.724 0-.02.006-.04.006-.06v.105a.086.086 0 01-.004-.021l-.004-.024a1.807 1.807 0 01-.15.706.953.953 0 01-.213.335.71.71 0 00-.088-.042c-.104-.045-.198-.064-.284-.133a1.312 1.312 0 00-.22-.066c.05-.06.146-.133.183-.198.053-.128.082-.264.088-.402v-.02a1.21 1.21 0 00-.061-.4c-.045-.134-.101-.2-.183-.333-.084-.066-.167-.132-.267-.132h-.016c-.093 0-.176.03-.262.132a.8.8 0 00-.205.334 1.18 1.18 0 00-.09.4v.019c.002.089.008.179.02.267-.193-.067-.438-.135-.607-.202a1.635 1.635 0 01-.018-.2v-.02a1.772 1.772 0 01.15-.768c.082-.22.232-.406.43-.533a.985.985 0 01.594-.2zm-2.962.059h.036c.142 0 .27.048.399.135.146.129.264.288.344.465.09.199.14.4.153.667v.004c.007.134.006.2-.002.266v.08c-.03.007-.056.018-.083.024-.152.055-.274.135-.393.2.012-.09.013-.18.003-.267v-.015c-.012-.133-.04-.2-.082-.333a.613.613 0 00-.166-.267.248.248 0 00-.183-.064h-.021c-.071.006-.13.04-.186.132a.552.552 0 00-.12.27.944.944 0 00-.023.33v.015c.012.135.037.2.08.334.046.134.098.2.166.268.01.009.02.018.034.024-.07.057-.117.07-.176.136a.304.304 0 01-.131.068 2.62 2.62 0 01-.275-.402 1.772 1.772 0 01-.155-.667 1.759 1.759 0 01.08-.668 1.43 1.43 0 01.283-.535c.128-.133.26-.2.418-.2zm1.37 1.706c.332 0 .733.065 1.216.399.293.2.523.269 1.052.468h.003c.255.136.405.266.478.399v-.131a.571.571 0 01.016.47c-.123.31-.516.643-1.063.842v.002c-.268.135-.501.333-.775.465-.276.135-.588.292-1.012.267a1.139 1.139 0 01-.448-.067 3.566 3.566 0 01-.322-.198c-.195-.135-.363-.332-.612-.465v-.005h-.005c-.4-.246-.616-.512-.686-.71-.07-.268-.005-.47.193-.6.224-.135.38-.271.483-.336.104-.074.143-.102.176-.131h.002v-.003c.169-.202.436-.47.839-.601.139-.036.294-.065.466-.065zm2.8 2.142c.358 1.417 1.196 3.475 1.735 4.473.286.534.855 1.659 1.102 3.024.156-.005.33.018.513.064.646-1.671-.546-3.467-1.089-3.966-.22-.2-.232-.335-.123-.335.59.534 1.365 1.572 1.646 2.757.13.535.16 1.104.021 1.67.067.028.135.06.205.067 1.032.534 1.413.938 1.23 1.537v-.043c-.06-.003-.12 0-.18 0h-.016c.151-.467-.182-.825-1.065-1.224-.915-.4-1.646-.336-1.77.465-.008.043-.013.066-.018.135-.068.023-.139.053-.209.064-.43.268-.662.669-.793 1.187-.13.533-.17 1.156-.205 1.869v.003c-.02.334-.17.838-.319 1.35-1.5 1.072-3.58 1.538-5.348.334a2.645 2.645 0 00-.402-.533 1.45 1.45 0 00-.275-.333c.182 0 .338-.03.465-.067a.615.615 0 00.314-.334c.108-.267 0-.697-.345-1.163-.345-.467-.931-.995-1.788-1.521-.63-.4-.986-.87-1.15-1.396-.165-.534-.143-1.085-.015-1.645.245-1.07.873-2.11 1.274-2.763.107-.065.037.135-.408.974-.396.751-1.14 2.497-.122 3.854a8.123 8.123 0 01.647-2.876c.564-1.278 1.743-3.504 1.836-5.268.048.036.217.135.289.202.218.133.38.333.59.465.21.201.477.335.876.335.039.003.075.006.11.006.412 0 .73-.134.997-.268.29-.134.52-.334.74-.4h.005c.467-.135.835-.402 1.044-.7zm2.185 8.958c.037.6.343 1.245.882 1.377.588.134 1.434-.333 1.791-.765l.211-.01c.315-.007.577.01.847.268l.003.003c.208.199.305.53.391.876.085.4.154.78.409 1.066.486.527.645.906.636 1.14l.003-.007v.018l-.003-.012c-.015.262-.185.396-.498.595-.63.401-1.746.712-2.457 1.57-.618.737-1.37 1.14-2.036 1.191-.664.053-1.237-.2-1.574-.898l-.005-.003c-.21-.4-.12-1.025.056-1.69.176-.668.428-1.344.463-1.897.037-.714.076-1.335.195-1.814.12-.465.308-.797.641-.984l.045-.022zm-10.814.049h.01c.053 0 .105.005.157.014.376.055.706.333 1.023.752l.91 1.664.003.003c.243.533.754 1.064 1.189 1.637.434.598.77 1.131.729 1.57v.006c-.057.744-.48 1.148-1.125 1.294-.645.135-1.52.002-2.395-.464-.968-.536-2.118-.469-2.857-.602-.369-.066-.61-.2-.723-.4-.11-.2-.113-.602.123-1.23v-.004l.002-.003c.117-.334.03-.752-.027-1.118-.055-.401-.083-.71.043-.94.16-.334.396-.4.69-.533.294-.135.64-.202.915-.47h.002v-.002c.256-.268.445-.601.668-.838.19-.201.38-.336.663-.336zm7.159-9.074c-.435.201-.945.535-1.488.535-.542 0-.97-.267-1.28-.466-.154-.134-.28-.268-.373-.335-.164-.134-.144-.333-.074-.333.109.016.129.134.199.2.096.066.215.2.36.333.292.2.68.467 1.167.467.485 0 1.053-.267 1.398-.466.195-.135.445-.334.648-.467.156-.136.149-.267.279-.267.128.016.034.134-.147.332a8.097 8.097 0 01-.69.468zm-1.082-1.583V5.64c-.006-.02.013-.042.029-.05.074-.043.18-.027.26.004.063 0 .16.067.15.135-.006.049-.085.066-.135.066-.055 0-.092-.043-.141-.068-.052-.018-.146-.008-.163-.065zm-.551 0c-.02.058-.113.049-.166.066-.047.025-.086.068-.14.068-.05 0-.13-.02-.136-.068-.01-.066.088-.133.15-.133.08-.031.184-.047.259-.005.019.009.036.03.03.05v.02h.003z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg></div><span>Operating systems</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="6" rx="1"/><rect x="14" y="15" width="7" height="6" rx="1"/><path d="M6.5 9v4h11v2"/></svg><span>Systems analysis</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 9h16M4 15h16"/></svg><span>UML modeling</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 6.5a4.5 4.5 0 0 1-6 4.2L6.5 19.2a2 2 0 0 1-2.8-2.8l8.5-8.5A4.5 4.5 0 0 1 17.5 2l-3 3 2.5 2.5z"/></svg><span>Troubleshooting</span></div><div class="tile"><div class="brands"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.331 18.171V17.06l-.022.01c-.25.121-.522.19-.801.203a1.186 1.186 0 01-.806-.237 1.038 1.038 0 01-.352-.498 1.21 1.21 0 01-.023-.667c.052-.225.178-.426.357-.569.16-.134.355-.218.562-.242a1.85 1.85 0 011.061.198l.024.013v-1.117l-.051-.014a2.862 2.862 0 00-1.011-.132 2.34 2.34 0 00-.903.206c-.287.132-.54.327-.739.571a2.221 2.221 0 00-.04 2.705c.295.378.709.645 1.175.756.491.12 1.006.102 1.487-.052l.082-.023M5.336 18.171V17.06l-.022.01c-.25.121-.522.19-.801.203a1.183 1.183 0 01-.806-.237 1.03 1.03 0 01-.351-.498 1.202 1.202 0 01-.024-.667c.052-.225.177-.426.357-.569.16-.134.355-.218.562-.242a1.85 1.85 0 011.061.198l.024.013v-1.117l-.051-.014a2.862 2.862 0 00-1.011-.132 2.344 2.344 0 00-.903.206 2.08 2.08 0 00-.74.571 2.224 2.224 0 00-.041 2.705 2.11 2.11 0 001.176.756c.491.12 1.005.102 1.487-.052l.083-.023M9.26 17.249l-.004.957.07.012c.22.041.441.069.664.085.195.019.391.022.587.012.187-.014.372-.049.551-.104.21-.06.405-.163.571-.305a1.16 1.16 0 00.333-.478 1.31 1.31 0 00-.007-.96 1.068 1.068 0 00-.298-.414 1.261 1.261 0 00-.438-.255l-.722-.268a.388.388 0 01-.197-.188.245.245 0 01.008-.219.382.382 0 01.154-.142.798.798 0 01.257-.074c.153-.022.308-.021.46.005.18.02.358.051.533.096l.038.008v-.883l-.069-.015a4.749 4.749 0 00-.543-.097 2.844 2.844 0 00-.714-.003c-.3.027-.585.143-.821.33-.16.126-.281.293-.351.484-.104.29-.105.608 0 .899.054.145.14.274.252.381.097.093.207.173.327.236.157.084.324.149.497.195.057.017.114.035.17.054l.085.031.024.01c.084.03.162.078.226.14.045.042.08.094.101.151a.325.325 0 01.001.161.339.339 0 01-.166.198.856.856 0 01-.275.086 2.032 2.032 0 01-.427.021 5.208 5.208 0 01-.557-.074 9.195 9.195 0 01-.287-.067l-.033-.006zm-2.475.995h1.05v-4.167h-1.05v4.167zm12.162-2.936a1.095 1.095 0 011.541.158 1.094 1.094 0 01-.157 1.541l-.017.014a1.096 1.096 0 01-1.367-1.713m-1.525.854a2.193 2.193 0 002.666 2.107 2.139 2.139 0 00.701-3.937 2.207 2.207 0 00-3.367 1.83M22.961 10.728a.52.52 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155M20.117 10.728a.522.522 0 001.041 0V8.139a.521.521 0 00-1.04 0v2.589M17.231 11.771a.521.521 0 001.039 0V6.17a.52.52 0 00-1.039 0v5.601M14.393 10.728a.521.521 0 001.04 0V8.139a.52.52 0 00-1.039 0v2.589M11.494 10.728a.522.522 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155M8.624 10.728a.52.52 0 001.039 0V8.139a.52.52 0 00-1.039 0v2.589M5.737 11.771a.52.52 0 001.039 0V6.17a.52.52 0 00-1.039 0v5.601M2.876 10.728a.522.522 0 001.04 0V8.139a.52.52 0 00-1.039 0v2.589M0 10.728a.521.521 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155"/></svg></div><span>Cisco networking</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-4h12v4"/></svg><span>Subnetting</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><span>Cybersecurity basics</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7M9 15h7M9 18h4"/></svg><span>Log analysis</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 20h20z"/><path d="M12 10v5M12 17.5v.5"/></svg><span>Risk assessment</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Privacy compliance</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5M8 7h7"/></svg><span>Technical documentation</span></div></div></div>
+      <div class="sgroup"><h3>AI, business and games</h3><div class="tiles"><div class="tile"><div class="brands"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg></div><span>Generative AI tools</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M6 21h12M4 7h16"/><path d="M4 7l-2 7a3 3 0 0 0 4 0zM20 7l-2 7a3 3 0 0 0 4 0z"/></svg><span>AI governance</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h1M12 11h1M16 11h0M8 15h1M12 15h1M8 18h8"/></svg><span>Business case modeling</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 10.5v4M5 12.5h4M16 11h.01M18.5 14h.01"/></svg><span>Game development</span></div><div class="tile"><div class="brands"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12.9288 4.2939 3.7997 2.1929c.1366.077.1415.2905 0 .3675l-4.515 2.6076a.4192.4192 0 0 1-.4246 0L7.274 6.8543c-.139-.0745-.1415-.293 0-.3675l3.7972-2.193V0L1.3758 5.5977V16.793l3.7177-2.1456v-4.3858c-.0025-.1565.1813-.2682.318-.1838l4.5148 2.6076a.4252.4252 0 0 1 .2136.3676v5.2127c.0025.1565-.1813.2682-.3179.1838l-3.7996-2.1929-3.7178 2.1457L12 24l9.6954-5.5977-3.7178-2.1457-3.7996 2.1929c-.1341.082-.3229-.0248-.3179-.1838V13.053c0-.1565.087-.2956.2136-.3676l4.5149-2.6076c.134-.082.3228.0224.3179.1838v4.3858l3.7177 2.1456V5.5977L12.9288 0Z"/></svg></div><span>Unity</span></div><div class="tile"><div class="brands"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.38 0a.268.268 0 0 0-.256.332l2.894 11.716a.268.268 0 0 0 .01.04l2.89 11.708a.268.268 0 0 0 .447.128L23.802 7.15a.268.268 0 0 0-.112-.45l-5.784-1.667a.268.268 0 0 0-.123-.035L6.38 1.715a.268.268 0 0 0-.144-.04L.456.01A.268.268 0 0 0 .38 0zm.374.654L5.71 2.08 1.99 5.664zM6.61 2.34l4.864 1.4-3.65 3.515zm-.522.12l1.217 4.926-4.877-1.4zm6.28 1.538l4.878 1.404-3.662 3.53zm-.52.13l1.208 4.9-4.853-1.392zm6.3 1.534l4.947 1.424-3.715 3.574zm-.524.12l1.215 4.926-4.876-1.398zm-15.432.696l4.964 1.424-3.726 3.586zM8.047 8.15l4.877 1.4-3.66 3.527zm-.518.137l1.236 5.017-4.963-1.432zm6.274 1.535l4.965 1.425-3.73 3.586zm-.52.127l1.235 5.012-4.958-1.43zm-9.63 2.438l4.873 1.406-3.656 3.523zm5.854 1.687l4.863 1.403-3.648 3.51zm-.54.04l1.214 4.927-4.875-1.4zm-3.896 4.02l5.037 1.442-3.782 3.638z"/></svg></div><span>3D graphics</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4M10 12h4"/></svg><span>Emulation</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/><path d="m9 14-2 2 2 2M15 14l2 2-2 2"/></svg><span>Web apps</span></div></div></div>
+      <div class="sgroup"><h3>People and leadership</h3><div class="tiles"><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4M6 4h11l-2 4 2 4H6"/></svg><span>Leadership</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M18 14c2.5.3 4 2 4 5"/></svg><span>Mentoring and coaching</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h6M9 16h6"/></svg><span>Program management</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Operations coordination</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Event and logistics planning</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><span>Stakeholder communication</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6-3 3-6-6zM10 8 3 15l3 3 7-7M4 21h10"/></svg><span>Mock trial advocacy</span></div><div class="tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1-4L16 5l3 3L8 19zM14 7l3 3"/></svg><span>Written communication</span></div></div></div>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <div class="head" data-n="09"><p class="label">Credentials</p><h2>Recognition and learning</h2></div>
+    <div class="two">
+      <div class="list">
+        <div><b><svg class="ic ib" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H4v1a4 4 0 0 0 4 4M16 6h4v1a4 4 0 0 1-4 4M12 13v4M8 21h8M10 17h4"/></svg>GLO-BUS Industry Champion, 2024</b><span>Senior executive of the top company in a global business strategy simulation, Ryerson University (now TMU)</span></div>
+        <div><b><svg class="ic ib" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 10h18M3 15h18M9 4v16"/></svg>Power of Excel</b><span>Business Fundamentals Badge 2.0 and Financial Management, Ted Rogers School of Management</span></div>
+        <div><b><svg class="ic ib" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Data and analytics bootcamps</b><span>Tableau, Power BI, Python, R, SQL, Generative AI, Ted Rogers School of Management</span></div>
+      </div>
+      <div class="list">
+        <div><b><svg class="ic ib" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M11 7.3L6 16.7M13 7.3l5 9.4M7.5 19h9"/></svg>Cisco Networking Academy, Sep 2022</b><span>Cybersecurity Essentials, Introduction to Cybersecurity, Networking Devices and Initial Configuration, Packet Tracer</span></div>
+        <div><b><svg class="ic ib" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8M8 12h8"/></svg>Standard First Aid and CPR-C with AED</b><span>Certified for youth program leadership</span></div>
+        <div><b><svg class="ic ib" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg>Education</b><span>B.Com (Honours), Business Technology Management (Co-op), Toronto Metropolitan University, expected April 2029. Ontario Secondary School Diploma, Marc Garneau Collegiate Institute, 2024.</span></div>
+      </div>
+    </div>
+
+    <h3 class="bh">Featured recognition</h3>
+    <a class="feat" href="#lb-cert" role="button" data-lb="img/glo-bus-certificate.jpg" aria-haspopup="dialog" aria-label="GLO-BUS Industry Champion 2024 certificate, view the full certificate">
+      <img src="img/glo-bus-certificate.jpg" alt="GLO-BUS Industry Champion 2024 certificate awarded to Mustafa Syed" loading="lazy">
+      <div><p class="label">Ryerson University (now TMU) &middot; 2024</p><h4>GLO-BUS Industry Champion</h4><p>Awarded for serving as a senior executive of the best-performing company in a global business strategy simulation, where student teams ran competing companies and crafted strategies for financial performance and market leadership.</p><em>View certificate</em></div>
+    </a>
+    <h3 class="bh">Verified digital badges</h3>
+    <p class="bn">Issued through the Ted Rogers School of Management bootcamps. Select a badge to verify it.</p>
+    <div class="badges">
+      <a class="badge" href="https://trsmcredentials.torontomu.ca/36d93b74-98a4-439f-abad-31dc1ae81a78#acc.hT2wZUKR" target="_blank" rel="noopener noreferrer" aria-label="Power of Excel: Business Fundamentals Badge 2.0, issued July 2025, credential ID 155515250, opens the verification page"><img src="img/badges/power-of-excel.png" alt="Power of Excel: Business Fundamentals Badge 2.0" loading="lazy"><span>Power of Excel: Business Fundamentals Badge 2.0<br><small>Issued Jul 2025 &middot; ID 155515250</small></span><em>Verify &#8599;</em></a>
+      <a class="badge" href="https://bip.brightspace.com/4487ce66-f9f5-49da-b94c-19f2a21e5cf1/d2l/awards/assertions/229994/view" target="_blank" rel="noopener noreferrer" aria-label="Business Intelligence Foundations Badge 1.0, opens the verification page"><img src="img/badges/bi-foundations.png" alt="Business Intelligence Foundations Badge 1.0" loading="lazy"><span>Business Intelligence Foundations Badge 1.0</span><em>Verify &#8599;</em></a>
+      <a class="badge" href="https://bip.brightspace.com/4487ce66-f9f5-49da-b94c-19f2a21e5cf1/d2l/awards/assertions/230002/view" target="_blank" rel="noopener noreferrer" aria-label="Data Analyst Foundations Badge 1.0, opens the verification page"><img src="img/badges/data-analyst.png" alt="Data Analyst Foundations Badge 1.0" loading="lazy"><span>Data Analyst Foundations Badge 1.0</span><em>Verify &#8599;</em></a>
+      <a class="badge" href="https://bip.brightspace.com/4487ce66-f9f5-49da-b94c-19f2a21e5cf1/d2l/awards/assertions/230003/view" target="_blank" rel="noopener noreferrer" aria-label="Data Programming Foundations Badge 1.0, opens the verification page"><img src="img/badges/data-programming.png" alt="Data Programming Foundations Badge 1.0" loading="lazy"><span>Data Programming Foundations Badge 1.0</span><em>Verify &#8599;</em></a>
+      <a class="badge" href="https://bip.brightspace.com/4487ce66-f9f5-49da-b94c-19f2a21e5cf1/d2l/awards/assertions/230012/view" target="_blank" rel="noopener noreferrer" aria-label="Generative AI and Prompt Engineering Foundations Badge 1.0, opens the verification page"><img src="img/badges/genai-prompt.png" alt="Generative AI and Prompt Engineering Foundations Badge 1.0" loading="lazy"><span>Generative AI and Prompt Engineering Foundations Badge 1.0</span><em>Verify &#8599;</em></a>
+      <a class="badge" href="https://bip.brightspace.com/4487ce66-f9f5-49da-b94c-19f2a21e5cf1/d2l/awards/assertions/230090/view" target="_blank" rel="noopener noreferrer" aria-label="Retail Innovation for a Sustainable Future Badge, opens the verification page"><img src="img/badges/retail-sustainable.png" alt="Retail Innovation for a Sustainable Future Badge" loading="lazy"><span>Retail Innovation for a Sustainable Future Badge</span><em>Verify &#8599;</em></a>
+    </div>
+
+    <h3 class="bh">Certificates</h3>
+    <div class="certs">
+      <div class="cert"><div class="ci"><svg class="aw" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="5.5"/><path d="M8.5 13.5L7 21l5-2.5 5 2.5-1.5-7.5"/></svg></div><div><b>ICE: Innovation, Creativity and Entrepreneurship Certification</b><span>Flashpoint, Lauras Leadership Page</span><em>Issued Dec 2022</em></div></div>
+      <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.331 18.171V17.06l-.022.01c-.25.121-.522.19-.801.203a1.186 1.186 0 01-.806-.237 1.038 1.038 0 01-.352-.498 1.21 1.21 0 01-.023-.667c.052-.225.178-.426.357-.569.16-.134.355-.218.562-.242a1.85 1.85 0 011.061.198l.024.013v-1.117l-.051-.014a2.862 2.862 0 00-1.011-.132 2.34 2.34 0 00-.903.206c-.287.132-.54.327-.739.571a2.221 2.221 0 00-.04 2.705c.295.378.709.645 1.175.756.491.12 1.006.102 1.487-.052l.082-.023M5.336 18.171V17.06l-.022.01c-.25.121-.522.19-.801.203a1.183 1.183 0 01-.806-.237 1.03 1.03 0 01-.351-.498 1.202 1.202 0 01-.024-.667c.052-.225.177-.426.357-.569.16-.134.355-.218.562-.242a1.85 1.85 0 011.061.198l.024.013v-1.117l-.051-.014a2.862 2.862 0 00-1.011-.132 2.344 2.344 0 00-.903.206 2.08 2.08 0 00-.74.571 2.224 2.224 0 00-.041 2.705 2.11 2.11 0 001.176.756c.491.12 1.005.102 1.487-.052l.083-.023M9.26 17.249l-.004.957.07.012c.22.041.441.069.664.085.195.019.391.022.587.012.187-.014.372-.049.551-.104.21-.06.405-.163.571-.305a1.16 1.16 0 00.333-.478 1.31 1.31 0 00-.007-.96 1.068 1.068 0 00-.298-.414 1.261 1.261 0 00-.438-.255l-.722-.268a.388.388 0 01-.197-.188.245.245 0 01.008-.219.382.382 0 01.154-.142.798.798 0 01.257-.074c.153-.022.308-.021.46.005.18.02.358.051.533.096l.038.008v-.883l-.069-.015a4.749 4.749 0 00-.543-.097 2.844 2.844 0 00-.714-.003c-.3.027-.585.143-.821.33-.16.126-.281.293-.351.484-.104.29-.105.608 0 .899.054.145.14.274.252.381.097.093.207.173.327.236.157.084.324.149.497.195.057.017.114.035.17.054l.085.031.024.01c.084.03.162.078.226.14.045.042.08.094.101.151a.325.325 0 01.001.161.339.339 0 01-.166.198.856.856 0 01-.275.086 2.032 2.032 0 01-.427.021 5.208 5.208 0 01-.557-.074 9.195 9.195 0 01-.287-.067l-.033-.006zm-2.475.995h1.05v-4.167h-1.05v4.167zm12.162-2.936a1.095 1.095 0 011.541.158 1.094 1.094 0 01-.157 1.541l-.017.014a1.096 1.096 0 01-1.367-1.713m-1.525.854a2.193 2.193 0 002.666 2.107 2.139 2.139 0 00.701-3.937 2.207 2.207 0 00-3.367 1.83M22.961 10.728a.52.52 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155M20.117 10.728a.522.522 0 001.041 0V8.139a.521.521 0 00-1.04 0v2.589M17.231 11.771a.521.521 0 001.039 0V6.17a.52.52 0 00-1.039 0v5.601M14.393 10.728a.521.521 0 001.04 0V8.139a.52.52 0 00-1.039 0v2.589M11.494 10.728a.522.522 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155M8.624 10.728a.52.52 0 001.039 0V8.139a.52.52 0 00-1.039 0v2.589M5.737 11.771a.52.52 0 001.039 0V6.17a.52.52 0 00-1.039 0v5.601M2.876 10.728a.522.522 0 001.04 0V8.139a.52.52 0 00-1.039 0v2.589M0 10.728a.521.521 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155"/></svg></div><div><b>Networking Devices and Initial Configuration</b><span>Cisco Networking Academy</span><em>Issued Sep 2022</em></div></div>
+      <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.331 18.171V17.06l-.022.01c-.25.121-.522.19-.801.203a1.186 1.186 0 01-.806-.237 1.038 1.038 0 01-.352-.498 1.21 1.21 0 01-.023-.667c.052-.225.178-.426.357-.569.16-.134.355-.218.562-.242a1.85 1.85 0 011.061.198l.024.013v-1.117l-.051-.014a2.862 2.862 0 00-1.011-.132 2.34 2.34 0 00-.903.206c-.287.132-.54.327-.739.571a2.221 2.221 0 00-.04 2.705c.295.378.709.645 1.175.756.491.12 1.006.102 1.487-.052l.082-.023M5.336 18.171V17.06l-.022.01c-.25.121-.522.19-.801.203a1.183 1.183 0 01-.806-.237 1.03 1.03 0 01-.351-.498 1.202 1.202 0 01-.024-.667c.052-.225.177-.426.357-.569.16-.134.355-.218.562-.242a1.85 1.85 0 011.061.198l.024.013v-1.117l-.051-.014a2.862 2.862 0 00-1.011-.132 2.344 2.344 0 00-.903.206 2.08 2.08 0 00-.74.571 2.224 2.224 0 00-.041 2.705 2.11 2.11 0 001.176.756c.491.12 1.005.102 1.487-.052l.083-.023M9.26 17.249l-.004.957.07.012c.22.041.441.069.664.085.195.019.391.022.587.012.187-.014.372-.049.551-.104.21-.06.405-.163.571-.305a1.16 1.16 0 00.333-.478 1.31 1.31 0 00-.007-.96 1.068 1.068 0 00-.298-.414 1.261 1.261 0 00-.438-.255l-.722-.268a.388.388 0 01-.197-.188.245.245 0 01.008-.219.382.382 0 01.154-.142.798.798 0 01.257-.074c.153-.022.308-.021.46.005.18.02.358.051.533.096l.038.008v-.883l-.069-.015a4.749 4.749 0 00-.543-.097 2.844 2.844 0 00-.714-.003c-.3.027-.585.143-.821.33-.16.126-.281.293-.351.484-.104.29-.105.608 0 .899.054.145.14.274.252.381.097.093.207.173.327.236.157.084.324.149.497.195.057.017.114.035.17.054l.085.031.024.01c.084.03.162.078.226.14.045.042.08.094.101.151a.325.325 0 01.001.161.339.339 0 01-.166.198.856.856 0 01-.275.086 2.032 2.032 0 01-.427.021 5.208 5.208 0 01-.557-.074 9.195 9.195 0 01-.287-.067l-.033-.006zm-2.475.995h1.05v-4.167h-1.05v4.167zm12.162-2.936a1.095 1.095 0 011.541.158 1.094 1.094 0 01-.157 1.541l-.017.014a1.096 1.096 0 01-1.367-1.713m-1.525.854a2.193 2.193 0 002.666 2.107 2.139 2.139 0 00.701-3.937 2.207 2.207 0 00-3.367 1.83M22.961 10.728a.52.52 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155M20.117 10.728a.522.522 0 001.041 0V8.139a.521.521 0 00-1.04 0v2.589M17.231 11.771a.521.521 0 001.039 0V6.17a.52.52 0 00-1.039 0v5.601M14.393 10.728a.521.521 0 001.04 0V8.139a.52.52 0 00-1.039 0v2.589M11.494 10.728a.522.522 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155M8.624 10.728a.52.52 0 001.039 0V8.139a.52.52 0 00-1.039 0v2.589M5.737 11.771a.52.52 0 001.039 0V6.17a.52.52 0 00-1.039 0v5.601M2.876 10.728a.522.522 0 001.04 0V8.139a.52.52 0 00-1.039 0v2.589M0 10.728a.521.521 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155"/></svg></div><div><b>Cybersecurity Essentials</b><span>Cisco Networking Academy</span><em>Issued Sep 2022</em></div></div>
+      <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.331 18.171V17.06l-.022.01c-.25.121-.522.19-.801.203a1.186 1.186 0 01-.806-.237 1.038 1.038 0 01-.352-.498 1.21 1.21 0 01-.023-.667c.052-.225.178-.426.357-.569.16-.134.355-.218.562-.242a1.85 1.85 0 011.061.198l.024.013v-1.117l-.051-.014a2.862 2.862 0 00-1.011-.132 2.34 2.34 0 00-.903.206c-.287.132-.54.327-.739.571a2.221 2.221 0 00-.04 2.705c.295.378.709.645 1.175.756.491.12 1.006.102 1.487-.052l.082-.023M5.336 18.171V17.06l-.022.01c-.25.121-.522.19-.801.203a1.183 1.183 0 01-.806-.237 1.03 1.03 0 01-.351-.498 1.202 1.202 0 01-.024-.667c.052-.225.177-.426.357-.569.16-.134.355-.218.562-.242a1.85 1.85 0 011.061.198l.024.013v-1.117l-.051-.014a2.862 2.862 0 00-1.011-.132 2.344 2.344 0 00-.903.206 2.08 2.08 0 00-.74.571 2.224 2.224 0 00-.041 2.705 2.11 2.11 0 001.176.756c.491.12 1.005.102 1.487-.052l.083-.023M9.26 17.249l-.004.957.07.012c.22.041.441.069.664.085.195.019.391.022.587.012.187-.014.372-.049.551-.104.21-.06.405-.163.571-.305a1.16 1.16 0 00.333-.478 1.31 1.31 0 00-.007-.96 1.068 1.068 0 00-.298-.414 1.261 1.261 0 00-.438-.255l-.722-.268a.388.388 0 01-.197-.188.245.245 0 01.008-.219.382.382 0 01.154-.142.798.798 0 01.257-.074c.153-.022.308-.021.46.005.18.02.358.051.533.096l.038.008v-.883l-.069-.015a4.749 4.749 0 00-.543-.097 2.844 2.844 0 00-.714-.003c-.3.027-.585.143-.821.33-.16.126-.281.293-.351.484-.104.29-.105.608 0 .899.054.145.14.274.252.381.097.093.207.173.327.236.157.084.324.149.497.195.057.017.114.035.17.054l.085.031.024.01c.084.03.162.078.226.14.045.042.08.094.101.151a.325.325 0 01.001.161.339.339 0 01-.166.198.856.856 0 01-.275.086 2.032 2.032 0 01-.427.021 5.208 5.208 0 01-.557-.074 9.195 9.195 0 01-.287-.067l-.033-.006zm-2.475.995h1.05v-4.167h-1.05v4.167zm12.162-2.936a1.095 1.095 0 011.541.158 1.094 1.094 0 01-.157 1.541l-.017.014a1.096 1.096 0 01-1.367-1.713m-1.525.854a2.193 2.193 0 002.666 2.107 2.139 2.139 0 00.701-3.937 2.207 2.207 0 00-3.367 1.83M22.961 10.728a.52.52 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155M20.117 10.728a.522.522 0 001.041 0V8.139a.521.521 0 00-1.04 0v2.589M17.231 11.771a.521.521 0 001.039 0V6.17a.52.52 0 00-1.039 0v5.601M14.393 10.728a.521.521 0 001.04 0V8.139a.52.52 0 00-1.039 0v2.589M11.494 10.728a.522.522 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155M8.624 10.728a.52.52 0 001.039 0V8.139a.52.52 0 00-1.039 0v2.589M5.737 11.771a.52.52 0 001.039 0V6.17a.52.52 0 00-1.039 0v5.601M2.876 10.728a.522.522 0 001.04 0V8.139a.52.52 0 00-1.039 0v2.589M0 10.728a.521.521 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155"/></svg></div><div><b>Introduction to Cybersecurity</b><span>Cisco Networking Academy</span><em>Issued Sep 2022</em></div></div>
+      <div class="cert"><div class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.331 18.171V17.06l-.022.01c-.25.121-.522.19-.801.203a1.186 1.186 0 01-.806-.237 1.038 1.038 0 01-.352-.498 1.21 1.21 0 01-.023-.667c.052-.225.178-.426.357-.569.16-.134.355-.218.562-.242a1.85 1.85 0 011.061.198l.024.013v-1.117l-.051-.014a2.862 2.862 0 00-1.011-.132 2.34 2.34 0 00-.903.206c-.287.132-.54.327-.739.571a2.221 2.221 0 00-.04 2.705c.295.378.709.645 1.175.756.491.12 1.006.102 1.487-.052l.082-.023M5.336 18.171V17.06l-.022.01c-.25.121-.522.19-.801.203a1.183 1.183 0 01-.806-.237 1.03 1.03 0 01-.351-.498 1.202 1.202 0 01-.024-.667c.052-.225.177-.426.357-.569.16-.134.355-.218.562-.242a1.85 1.85 0 011.061.198l.024.013v-1.117l-.051-.014a2.862 2.862 0 00-1.011-.132 2.344 2.344 0 00-.903.206 2.08 2.08 0 00-.74.571 2.224 2.224 0 00-.041 2.705 2.11 2.11 0 001.176.756c.491.12 1.005.102 1.487-.052l.083-.023M9.26 17.249l-.004.957.07.012c.22.041.441.069.664.085.195.019.391.022.587.012.187-.014.372-.049.551-.104.21-.06.405-.163.571-.305a1.16 1.16 0 00.333-.478 1.31 1.31 0 00-.007-.96 1.068 1.068 0 00-.298-.414 1.261 1.261 0 00-.438-.255l-.722-.268a.388.388 0 01-.197-.188.245.245 0 01.008-.219.382.382 0 01.154-.142.798.798 0 01.257-.074c.153-.022.308-.021.46.005.18.02.358.051.533.096l.038.008v-.883l-.069-.015a4.749 4.749 0 00-.543-.097 2.844 2.844 0 00-.714-.003c-.3.027-.585.143-.821.33-.16.126-.281.293-.351.484-.104.29-.105.608 0 .899.054.145.14.274.252.381.097.093.207.173.327.236.157.084.324.149.497.195.057.017.114.035.17.054l.085.031.024.01c.084.03.162.078.226.14.045.042.08.094.101.151a.325.325 0 01.001.161.339.339 0 01-.166.198.856.856 0 01-.275.086 2.032 2.032 0 01-.427.021 5.208 5.208 0 01-.557-.074 9.195 9.195 0 01-.287-.067l-.033-.006zm-2.475.995h1.05v-4.167h-1.05v4.167zm12.162-2.936a1.095 1.095 0 011.541.158 1.094 1.094 0 01-.157 1.541l-.017.014a1.096 1.096 0 01-1.367-1.713m-1.525.854a2.193 2.193 0 002.666 2.107 2.139 2.139 0 00.701-3.937 2.207 2.207 0 00-3.367 1.83M22.961 10.728a.52.52 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155M20.117 10.728a.522.522 0 001.041 0V8.139a.521.521 0 00-1.04 0v2.589M17.231 11.771a.521.521 0 001.039 0V6.17a.52.52 0 00-1.039 0v5.601M14.393 10.728a.521.521 0 001.04 0V8.139a.52.52 0 00-1.039 0v2.589M11.494 10.728a.522.522 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155M8.624 10.728a.52.52 0 001.039 0V8.139a.52.52 0 00-1.039 0v2.589M5.737 11.771a.52.52 0 001.039 0V6.17a.52.52 0 00-1.039 0v5.601M2.876 10.728a.522.522 0 001.04 0V8.139a.52.52 0 00-1.039 0v2.589M0 10.728a.521.521 0 001.039 0V9.573a.52.52 0 00-1.039 0v1.155"/></svg></div><div><b>Cisco Packet Tracer Certificate</b><span>Cisco Networking Academy</span><em>Issued Sep 2022</em></div></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="quick">
+      <span class="label">Quick actions</span>
+      <div class="row">
+        <button class="btn solid" id="openres" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg>View resume</button>
+        <a class="btn" href="https://www.linkedin.com/in/mustafa-syed-742a8432a/" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4v11H4zM6 4.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM11 9h4v2c.6-1.2 2-2.2 4-2.2 3 0 4 2 4 5V20h-4v-5c0-1.5-.5-2.5-2-2.5S15 13.5 15 15v5h-4z"/></svg>LinkedIn profile</a>
+        <button class="btn" id="qcopy" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Copy email</button>
+        <a class="btn" href="#projects"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>See projects</a>
+        <span id="qcopied" role="status"></span>
+      </div>
+    </div>
+    <div class="contact" id="talk">
+      <h2>Let's talk</h2>
+      <p>I am open to Winter 2027 co-op roles in business or data analysis, IT, cybersecurity, AI, and legal-adjacent work. Email is the fastest way to reach me.</p>
+      <div class="row">
+        <code id="addr">mustafasyed50057@gmail.com</code>
+        <button class="btn" id="copy" type="button">Copy email</button>
+        <a class="btn" href="https://www.linkedin.com/in/mustafa-syed-742a8432a/" rel="noopener">LinkedIn</a>
+        <span id="copied" role="status"></span>
+      </div>
+      <form class="mform" id="mform" novalidate aria-labelledby="mf-t">
+        <h3 id="mf-t">Send me a message</h3>
+        <div class="mrow">
+          <div class="mf"><label for="mf-n">Your name</label><input id="mf-n" name="name" autocomplete="name" placeholder="Your name" required></div>
+          <div class="mf"><label for="mf-e">Your email</label><input id="mf-e" name="email" type="email" autocomplete="email" placeholder="you@company.com" required></div>
+        </div>
+        <div class="mf"><label for="mf-s">Subject</label><input id="mf-s" name="subject" placeholder="Ask me anything"></div>
+        <div class="mf"><label for="mf-m">Message</label><textarea id="mf-m" name="message" rows="5" placeholder="Write your message..." required></textarea></div>
+        <div class="mact">
+          <button class="btn solid" type="submit" id="mf-go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10.5l6.5 2.5L12 20zM9.5 13 21 3"/></svg>Send message</button>
+          <button class="btn" type="button" id="mf-cp">Copy message</button>
+        </div>
+        <p class="mst" id="mf-st" role="status" aria-live="polite"></p>
+        <div class="mout" id="mf-out" hidden></div>
+        <p class="mnote">Write your message, then choose Gmail, Outlook, Yahoo, or copy it to send from any email app.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer><span class="ver">Portfolio v3.0 &middot; Last updated September 30, 2026 &middot; Built by Mustafa Syed</span><br>Projects use public data or a fictional organization, and are not affiliated with the TTC or the City of Toronto.</footer>
+</div>
+
+<dialog class="pd" id="pd" aria-labelledby="pd-t">
+  <div class="pd-head"><span class="label" id="pd-t">Project</span><div class="nv"><button class="btn" id="pd-p" type="button" aria-label="Previous project">&larr; Prev</button><button class="btn" id="pd-n" type="button" aria-label="Next project">Next &rarr;</button><button class="btn" id="pd-x" type="button">Close</button></div></div>
+  <div class="pd-body" id="pd-b"></div>
+</dialog>
+
+<dialog class="rs" id="rs" aria-labelledby="rs-t">
+  <div class="rs-head"><span class="label" id="rs-t">Resume · Mustafa Syed</span><button class="btn" id="rs-x" type="button">Close</button></div>
+  <div class="rs-body">
+    <h3>Summary</h3>
+    <p>Business Technology Management (Co-op) student at Toronto Metropolitan University who has led youth programs, coordinates community initiatives, and builds software in Unity and C#. Strong in SQL, data analysis, UML, and technical documentation.</p>
+    <h3>Education</h3>
+    <div class="t">Bachelor of Commerce (Honours), Business Technology Management (Co-op)<span>Expected 04/2029</span></div>
+    <p>Toronto Metropolitan University, Toronto, ON</p>
+    <div class="t">Ontario Secondary School Diploma, Marc Garneau Collegiate Institute<span>06/2024</span></div>
+    <h3>Skills</h3>
+    <p><strong style="color:var(--ink);font-weight:500">Programming:</strong> Python, Java, JavaScript, HTML and CSS, C++, C#. <strong style="color:var(--ink);font-weight:500">Data:</strong> SQL, Python, R, Tableau, Power BI, Excel. <strong style="color:var(--ink);font-weight:500">Systems and IT:</strong> operating systems, systems analysis, UML, troubleshooting, Unity and C#, Cisco networking and cybersecurity. <strong style="color:var(--ink);font-weight:500">Professional:</strong> leadership, operations coordination, communication, technical documentation.</p>
+    <h3>Experience</h3>
+    <div class="t">Head Coach, Jays Care Foundation<span>06/2025 to 08/2026</span></div>
+    <ul><li>Led daily operations of youth baseball programs for 30+ participants ages 6 to 14, and mentored the coaching staff.</li><li>Planned schedules and logistics for safe sessions, and resolved operational issues with coaches, parents, and staff.</li></ul>
+    <div class="t">Program Coach, Jays Care Foundation<span>06/2024 to 08/2024</span></div>
+    <ul><li>Trained and mentored 10+ youth athletes, contributing to a 20% improvement in overall team performance.</li></ul>
+    <div class="t">Junior Game Developer (Internship), No Fuss Tutors<span>07/2023 to 09/2023</span></div>
+    <ul><li>Designed and tested interactive game features in Unity and C#, and used player feedback to improve usability.</li></ul>
+    <div class="t">Senior Volunteer, Rising Sun Food Drive Foundation<span>Since 08/2021</span></div>
+    <ul><li>Led food drives that collected 37,664+ lbs of non-perishable food and helped coordinate 32,912+ meals for 2,887+ households.</li></ul>
+    <h3>Selected projects</h3>
+    <ul><li><strong style="color:var(--ink);font-weight:500">TTC Bus Delay Analysis:</strong> cleaned 102,257 records to 88,997 incidents; diversions are 8% of incidents but 40% of delay minutes.</li><li><strong style="color:var(--ink);font-weight:500">SSH Log Threat Hunt:</strong> Python detector mapped to MITRE ATT&amp;CK, 4 of 4 hidden attacks found, 0 false alarms.</li><li><strong style="color:var(--ink);font-weight:500">PIPEDA Policy Checker:</strong> browser tool screening privacy policies against Canada's 10 privacy principles.</li></ul>
+    <h3>Certifications</h3>
+    <ul><li>GLO-BUS Industry Champion (2024)</li><li>Power of Excel and data bootcamps, Ted Rogers School of Management</li><li>Cisco Networking Academy (09/2022): Cybersecurity Essentials, Introduction to Cybersecurity, Networking Devices and Initial Configuration, Packet Tracer</li><li>Standard First Aid and CPR-C with AED</li></ul>
+    <div class="rs-note"><p>If you need the actual PDF copy of my resume, please reach out by email and I will send you one.</p><p class="rs-addr"><code>mustafasyed50057@gmail.com</code></p><a class="btn" href="#contact" id="rs-go">Go to contact</a></div>
+  </div>
+</dialog>
+<script>
+(function(){
+  var d=document.getElementById("rs");
+  function open(){ if(d.showModal){ try{d.showModal();}catch(e){d.setAttribute("open","");} } else d.setAttribute("open",""); }
+  function close(){ if(d.close) d.close(); else d.removeAttribute("open"); }
+  ["openres","openres2","openres3"].forEach(function(i){var b=document.getElementById(i);if(b)b.addEventListener("click",open);});
+  document.getElementById("rs-x").addEventListener("click",close);
+  d.addEventListener("click",function(e){ if(e.target===d) close(); });
+  document.getElementById("qcopy").addEventListener("click",function(){
+    var addr=document.getElementById("addr"),msg=document.getElementById("qcopied");
+    function fb(){var r=document.createRange();r.selectNodeContents(addr);var s=window.getSelection();s.removeAllRanges();s.addRange(r);msg.textContent="Selected below. Press copy.";}
+    try{navigator.clipboard.writeText(addr.textContent).then(function(){msg.textContent="Copied.";},fb);}catch(e){fb();}
+  });
+})();
+</script>
+<script>
+(function(){var b=document.querySelector("nav a.brand");if(b)b.addEventListener("click",function(e){e.preventDefault();try{window.scrollTo({top:0,behavior:"smooth"});}catch(x){window.scrollTo(0,0);}});})();
+(function(){
+  if(!("IntersectionObserver" in window)) return;
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var sel=".head,.step,.skill,.note-card,.role,.list div,.why,.about,.facts,.board,.contact,.quick",els=[].slice.call(document.querySelectorAll(sel));
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:0.08,rootMargin:"0px 0px -4% 0px"});
+  els.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<window.innerHeight*0.98)return;el.classList.add("rv");io.observe(el);});
+  window.addEventListener("beforeprint",function(){els.forEach(function(el){el.classList.add("in");});});
+})();
+</script>
+<script>
+var DATA={"H": [{"i": 1920, "m": 44291}, {"i": 1087, "m": 25838}, {"i": 917, "m": 39898}, {"i": 726, "m": 20420}, {"i": 955, "m": 25358}, {"i": 3586, "m": 92780}, {"i": 4793, "m": 118287}, {"i": 4469, "m": 118471}, {"i": 4358, "m": 129804}, {"i": 4387, "m": 111147}, {"i": 4332, "m": 108112}, {"i": 4103, "m": 101219}, {"i": 4176, "m": 89582}, {"i": 5010, "m": 115790}, {"i": 5654, "m": 124236}, {"i": 5861, "m": 122790}, {"i": 5670, "m": 124227}, {"i": 5981, "m": 120829}, {"i": 5489, "m": 122032}, {"i": 3871, "m": 97793}, {"i": 3563, "m": 85538}, {"i": 3213, "m": 91400}, {"i": 2594, "m": 70509}, {"i": 2282, "m": 58568}], "W": [{"l": "Monday", "i": 12283, "m": 295651}, {"l": "Tuesday", "i": 13515, "m": 313971}, {"l": "Wednesday", "i": 13927, "m": 333834}, {"l": "Thursday", "i": 14044, "m": 335906}, {"l": "Friday", "i": 14196, "m": 344203}, {"l": "Saturday", "i": 11887, "m": 300090}, {"l": "Sunday", "i": 9145, "m": 235264}], "M": [{"l": "2025-01", "i": 3491, "m": 72618}, {"l": "2025-02", "i": 4811, "m": 113845}, {"l": "2025-03", "i": 4191, "m": 98455}, {"l": "2025-04", "i": 4069, "m": 104941}, {"l": "2025-05", "i": 4536, "m": 108403}, {"l": "2025-06", "i": 5013, "m": 116825}, {"l": "2025-07", "i": 4669, "m": 113823}, {"l": "2025-08", "i": 4879, "m": 117286}, {"l": "2025-09", "i": 4694, "m": 105432}, {"l": "2025-10", "i": 4596, "m": 106292}, {"l": "2025-11", "i": 4822, "m": 106163}, {"l": "2025-12", "i": 5096, "m": 120539}, {"l": "2026-01", "i": 5259, "m": 142698}, {"l": "2026-02", "i": 4234, "m": 111710}, {"l": "2026-03", "i": 4648, "m": 98098}, {"l": "2026-04", "i": 4295, "m": 94369}, {"l": "2026-05", "i": 4216, "m": 104905}, {"l": "2026-06", "i": 3895, "m": 102068}, {"l": "2026-07", "i": 3790, "m": 110163}, {"l": "2026-08", "i": 3793, "m": 110286}], "SQL": {"site": {"q": "SELECT d.site, COUNT(DISTINCT d.drive_id) AS drives, ROUND(SUM(x.lbs)/SUM(s.volunteers*s.hours),1) AS lbs_per_vol_hour\nFROM drives d JOIN (SELECT drive_id, SUM(lbs) lbs FROM donations GROUP BY drive_id) x USING(drive_id)\nJOIN shifts s USING(drive_id) GROUP BY d.site ORDER BY lbs_per_vol_hour DESC", "cols": ["site", "drives", "lbs_per_vol_hour"], "rows": [["Community centre", 7, 8.2], ["Grocery store", 6, 7.8], ["Place of worship", 3, 7.3], ["School", 6, 3.2]]}, "cat": {"q": "SELECT category, ROUND(SUM(lbs)) AS lbs, ROUND(100.0*SUM(lbs)/(SELECT SUM(lbs) FROM donations),1) AS pct FROM donations GROUP BY category ORDER BY lbs DESC", "cols": ["category", "lbs", "pct"], "rows": [["Canned goods", 1789.0, 39.7], ["Grains and pasta", 1286.0, 28.5], ["Protein", 681.0, 15.1], ["Snacks", 424.0, 9.4], ["Baby and infant", 325.0, 7.2]]}, "month": {"q": "SELECT SUBSTR(d.drive_date,6,2) AS month, ROUND(SUM(x.lbs)) AS lbs FROM drives d JOIN (SELECT drive_id, SUM(lbs) lbs FROM donations GROUP BY drive_id) x USING(drive_id) GROUP BY month ORDER BY month", "cols": ["month", "lbs"], "rows": [["01", 342.0], ["02", 149.0], ["03", 600.0], ["04", 435.0], ["05", 237.0], ["06", 561.0], ["07", 320.0], ["08", 477.0], ["09", 356.0], ["10", 228.0], ["11", 618.0], ["12", 181.0]]}}};
+(function(){
+  function fmt(x){return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,",");}
+  function esc(x){return String(x).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+  function h12(h){return (h%12===0?12:h%12)+(h<12?" am":" pm");}
+  var MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var view="hour",met="i",svg=document.getElementById("hours");
+  function series(){
+    if(view==="hour") return DATA.H.map(function(d,k){return {l:h12(k),s:(k%12===0?12:k%12)+(k<12?"a":"p"),v:d[met],hi:k>=14&&k<=18,show:k%3===0};});
+    if(view==="day") return DATA.W.map(function(d){return {l:d.l,s:d.l.slice(0,3),v:d[met],hi:false,show:true};});
+    return DATA.M.map(function(d,k){var p=d.l.split("-");return {l:MN[+p[1]-1]+" "+p[0],s:MN[+p[1]-1]+" "+p[0].slice(2),v:d[met],hi:false,show:k%3===0};});
+  }
+  function nice(m){var e=Math.pow(10,Math.floor(Math.log10(m))),c=[1,1.5,2,2.5,3,4,5,6,8,10];for(var k=0;k<c.length;k++)if(c[k]*e>=m)return c[k]*e;return 10*e;}
+  var unit={i:"incidents",m:"delay minutes"};
+  function draw(){
+    var d=series(),W=640,H=230,l=50,r=6,t=22,b=26,n=d.length,mx=nice(Math.max.apply(null,d.map(function(x){return x.v;}))),pw=W-l-r,ph=H-t-b,bw=pw/n,s="";
+    if(view!=="hour"){var top=0;d.forEach(function(x,k){if(x.v>d[top].v)top=k;});d[top].hi=true;}
+    var total=d.reduce(function(a,x){return a+x.v;},0),hiSum=d.filter(function(x){return x.hi;}).reduce(function(a,x){return a+x.v;},0);
+    for(var g=0;g<=4;g++){var y=t+ph-ph*g/4;s+='<line class="grid" x1="'+l+'" x2="'+(W-r)+'" y1="'+y+'" y2="'+y+'"/><text class="ax" x="'+(l-6)+'" y="'+(y+4)+'" text-anchor="end">'+fmt(Math.round(mx*g/4))+"</text>";}
+    d.forEach(function(x,i){var hgt=x.v/mx*ph,bx=l+i*bw+bw*.14,w=bw*.72,y=t+ph-hgt,txt=x.l+": "+fmt(x.v)+" "+unit[met];
+      s+='<rect class="col'+(x.hi?" hi":"")+'" tabindex="0" data-t="'+esc(txt)+'" x="'+bx+'" y="'+y+'" width="'+w+'" height="'+hgt+'" rx="2"><title>'+esc(txt)+'</title></rect>';
+      if(x.show) s+='<text class="ax" x="'+(bx+w/2)+'" y="'+(H-8)+'" text-anchor="middle">'+esc(x.s)+"</text>";});
+    var share=Math.round(hiSum/total*100),call;
+    if(view==="hour") call="2 pm to 7 pm: "+share+"% of "+unit[met]; else { var hb=d.filter(function(x){return x.hi;})[0]; call="Highest: "+hb.l; }
+    s+='<text class="callout" x="'+(view==="hour"?l+14*bw:l)+'" y="12">'+esc(call)+'</text>';
+    svg.setAttribute("viewBox","0 0 "+W+" "+H);svg.innerHTML=s;
+    var ttl={hour:"by hour of day",day:"by day of the week",month:"by month"};
+    document.getElementById("ch-title").textContent=(met==="i"?"Delay incidents ":"Delay minutes ")+ttl[view];
+    document.getElementById("ch-cap").textContent=(view==="hour"?"Afternoon rush, 2 pm to 7 pm, highlighted. ":"Highest bar highlighted. ")+"Hover or tab to a bar for the number.";
+    document.getElementById("readout").textContent=call+".";
+  }
+  document.querySelectorAll("[data-v]").forEach(function(b){b.addEventListener("click",function(){view=b.getAttribute("data-v");document.querySelectorAll("[data-v]").forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});draw();});});
+  document.querySelectorAll("[data-m]").forEach(function(b){b.addEventListener("click",function(){met=b.getAttribute("data-m");document.querySelectorAll("[data-m]").forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});draw();});});
+  function rd(e){var r=e.target.closest&&e.target.closest("rect.col");if(r)document.getElementById("readout").textContent=r.getAttribute("data-t")+".";}
+  svg.addEventListener("mouseover",rd);svg.addEventListener("focusin",rd);
+  draw();
+  function qdraw(k){
+    var o=DATA.SQL[k],h='<table class="res"><tr>'+o.cols.map(function(c){return "<th>"+esc(c.replace(/_/g," "))+"</th>";}).join("")+"</tr>";
+    o.rows.forEach(function(r){h+="<tr>"+r.map(function(v,i){var x=(k==="month"&&i===0)?MN[+v-1]:(typeof v==="number"?fmt(v):v);return "<td>"+esc(x)+"</td>";}).join("")+"</tr>";});
+    document.getElementById("qres").innerHTML=h+"</table>";
+    document.getElementById("qsql").textContent=o.q.trim()+";";
+  }
+  var sel=document.getElementById("qsel");sel.addEventListener("change",function(){qdraw(sel.value);});qdraw("site");
+  var chips=document.querySelectorAll(".filters [data-f]"),arts=document.querySelectorAll("article.project");
+  chips.forEach(function(c){c.addEventListener("click",function(){var f=c.getAttribute("data-f"),n=0;
+    chips.forEach(function(x){x.setAttribute("aria-pressed",String(x===c));});
+    arts.forEach(function(a){var on=f==="all"||(" "+a.getAttribute("data-cat")+" ").indexOf(" "+f+" ")>-1;a.hidden=!on;if(on)n++;});
+    document.getElementById("fcnt").textContent="Showing "+n+" of "+arts.length;});});
+  var links={};document.querySelectorAll("nav a[href^='#']").forEach(function(a){links[a.getAttribute("href").slice(1)]=a;});
+  if("IntersectionObserver" in window){
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){Object.keys(links).forEach(function(k){links[k].removeAttribute("aria-current");});if(links[e.target.id])links[e.target.id].setAttribute("aria-current","true");}});},{rootMargin:"-35% 0px -60% 0px"});
+    Object.keys(links).forEach(function(k){var el=document.getElementById(k);if(el)so.observe(el);});
+    window.addEventListener("scroll",function(){if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-6&&links.contact){Object.keys(links).forEach(function(k){links[k].removeAttribute("aria-current");});links.contact.setAttribute("aria-current","true");}},{passive:true});
+    if(!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){
+      var co=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;co.unobserve(e.target);var el=e.target,m=/^(\d[\d,]*)(\+|%)?$/.exec(el.textContent.trim());if(!m)return;var end=+m[1].replace(/,/g,""),suf=m[2]||"",t0=null;
+        function step(t){if(t0===null)t0=t;var p=Math.min((t-t0)/900,1),v=Math.round(end*(1-Math.pow(1-p,3)));el.textContent=fmt(v)+suf;if(p<1)requestAnimationFrame(step);else el.textContent=fmt(end)+suf;}
+        requestAnimationFrame(step);});},{threshold:.6});
+      document.querySelectorAll(".cell b,.pstats b,.strip b").forEach(function(el){co.observe(el);});
+    }
+  }
+})();
+
+</script>
+<script>
+document.getElementById("copy").addEventListener("click", function () {
+  var addr = document.getElementById("addr"), msg = document.getElementById("copied");
+  function fallback() {
+    var r = document.createRange(); r.selectNodeContents(addr);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    msg.textContent = "Selected. Press copy.";
+  }
+  try {
+    navigator.clipboard.writeText(addr.textContent).then(function () { msg.textContent = "Copied."; }, fallback);
+  } catch (e) { fallback(); }
+});
+</script>
+
+<script>
+(function(){
+  var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches,$=function(i){return document.getElementById(i);};
+  /* progress bar + back to top */
+  var prog=$("prog"),tt=$("totop"),tb=$("tobot"),tk=false;
+  function onScroll(){var h=document.documentElement,max=h.scrollHeight-innerHeight,y=window.scrollY||h.scrollTop;prog.style.transform="scaleX("+(max>0?Math.min(1,y/max):0)+")";tt.classList.toggle("on",y>700);tb.classList.toggle("on",y>160&&max-y>700);tk=false;}
+  window.addEventListener("scroll",function(){if(!tk){tk=true;requestAnimationFrame(onScroll);}},{passive:true});onScroll();
+  tt.addEventListener("click",function(){try{window.scrollTo({top:0,behavior:RM?"auto":"smooth"});}catch(e){window.scrollTo(0,0);}});
+  tb.addEventListener("click",function(){var n=0;function go(first){var m=document.documentElement.scrollHeight;try{window.scrollTo({top:m,behavior:(first&&!RM)?"smooth":"auto"});}catch(e){window.scrollTo(0,m);}}go(true);var t=setInterval(function(){n++;var h=document.documentElement;if(n>8||h.scrollHeight-innerHeight-(window.scrollY||h.scrollTop)<2){clearInterval(t);return}go(false);},500);});
+  /* ticker */
+  var words=["Python","Java","JavaScript","HTML and CSS","SQL","Data analysis","Business analysis","Cybersecurity","Networking","Operating systems","AI governance","Game development","Privacy law","Leadership"],tr=$("trk"),h="";
+  for(var r=0;r<2;r++)words.forEach(function(w){h+="<span>"+w+"</span>";});tr.innerHTML=h;
+  if(RM){tr.style.flexWrap="wrap";tr.style.width="auto";tr.parentNode.style.webkitMaskImage="none";tr.parentNode.style.maskImage="none";}
+  /* typewriter */
+  var tw=$("tw"),items=["Data and business analysis","IT and cybersecurity","AI, used safely","Games and emulation","Law, corporate and criminal"];
+  if(!RM&&tw){var i=0,c=0,del=false;(function tick(){var w=items[i];c+=del?-1:1;tw.textContent=w.slice(0,c);var d=del?28:55;if(!del&&c===w.length){d=1700;del=true;}else if(del&&c===0){del=false;i=(i+1)%items.length;d=350;}setTimeout(tick,d);})();}
+  /* sparks */
+  var cv=$("sparks");
+  if(cv&&!RM){var x=cv.getContext("2d"),P=[],col="201,165,92",dpr=Math.min(window.devicePixelRatio||1,2);
+    function size(){cv.width=innerWidth*dpr;cv.height=innerHeight*dpr;x.setTransform(dpr,0,0,dpr,0,0);}
+    size();window.addEventListener("resize",size);
+    for(var n=0;n<80;n++)P.push({x:Math.random(),y:Math.random(),r:Math.random()*1.7+.4,v:Math.random()*.00005+.00002,a:Math.random()*6.28,s:Math.random()*.02+.005});
+    (function frame(){requestAnimationFrame(frame);if(document.hidden)return;x.clearRect(0,0,innerWidth,innerHeight);
+      P.forEach(function(p){p.y-=p.v*16;p.a+=p.s;if(p.y<-.02){p.y=1.02;p.x=Math.random();}
+        x.beginPath();x.fillStyle="rgba("+col+","+(.2+.4*Math.sin(p.a)).toFixed(3)+")";x.arc(p.x*innerWidth+Math.sin(p.a)*8,p.y*innerHeight,p.r,0,6.283);x.fill();});})();}
+  /* project cards */
+  var grid=$("pgrid"),hold=$("pholder");
+  if(!grid||!hold)return;
+  var arts=[].slice.call(hold.querySelectorAll("article.project")),dlg=$("pd"),body=$("pd-b"),more=$("pmore"),LIM=6,limit=LIM,cards=[],openI=-1,lastFocus=null;
+  function esc(t){return String(t).replace(/[&<>"]/g,function(m){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m];});}
+  arts.forEach(function(a,i){
+    var img=a.getAttribute("data-img"),t=a.querySelector("h3").textContent,no=(a.querySelector(".fileno")||{}).textContent||"",tags=((a.querySelector(".tags")||{}).textContent||"").split(" · ").slice(0,3).join(" · "),lede=(a.querySelector(".lede")||{}).textContent||"",ln=a.querySelector(".plink a");
+    var c=document.createElement("article");c.className="pcard";c.style.setProperty("--d",(i%3)*0.07+"s");
+    c.innerHTML='<div class="pimg">'+(img?'<img src="'+esc(img)+'" alt="Preview of '+esc(t)+'" loading="lazy" decoding="async">':"")+'<i>'+esc(no.split(" · ")[0])+'</i></div><div class="pbody"><p class="fileno">'+esc(no.split(" · ").slice(1).join(" · "))+'</p><h3>'+esc(t)+'</h3><p class="tags">'+esc(tags)+'</p><p class="plede">'+esc(lede)+'</p><div class="pact"><button class="btn solid" type="button" data-d>Details</button>'+(ln?'<a class="btn" href="'+esc(ln.getAttribute("href"))+'"'+(/^https?:/.test(ln.getAttribute("href"))?' rel="noopener"':"")+'>'+esc(ln.textContent)+'</a>':"")+'</div></div>';
+    c.addEventListener("click",function(e){if(e.target.closest("a"))return;openD(i);});
+    c.addEventListener("pointermove",function(e){var r=c.getBoundingClientRect();c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px");});
+    var im=c.querySelector("img");if(im)im.addEventListener("error",function(){im.style.display="none";});
+    grid.appendChild(c);cards.push(c);
+  });
+  function vis(){var v=[];arts.forEach(function(a,i){if(!a.hidden&&a.parentNode===hold||a.parentNode===body)v.push(i);});return v;}
+  function sync(){
+    var v=arts.map(function(a,i){return i;}).filter(function(i){return !arts[i].hidden;}),shown=0;
+    cards.forEach(function(c,i){var on=v.indexOf(i)>-1&&v.indexOf(i)<limit;c.hidden=!on;if(on)shown++;});
+    more.hidden=v.length<=limit;if(!more.hidden)more.querySelector("button").textContent="Show all "+v.length+" projects";
+    var f=$("fcnt");if(f)f.textContent="Showing "+shown+" of "+v.length;
+  }
+  new MutationObserver(function(){sync();}).observe(hold,{attributes:true,attributeFilter:["hidden"],subtree:true});
+  document.querySelectorAll(".filters [data-f]").forEach(function(b){b.addEventListener("click",function(){limit=LIM;});});
+  more.querySelector("button").addEventListener("click",function(){limit=999;sync();});
+  sync();
+  /* dialog */
+  function giveBack(){if(openI>-1){var a=arts[openI];if(a.parentNode!==hold)hold.insertBefore(a,hold.children[openI]||null);}}
+  function openD(i){giveBack();openI=i;var a=arts[i];body.innerHTML="";body.appendChild(a);a.classList.add("in");$("pd-t").textContent=(a.querySelector(".fileno")||{}).textContent||"Project";body.scrollTop=0;
+    if(!dlg.open){lastFocus=document.activeElement;try{dlg.showModal();}catch(e){dlg.setAttribute("open","");}}}
+  function step(d){var v=arts.map(function(a,i){return i;}).filter(function(i){return !arts[i].hidden||i===openI;}),p=v.indexOf(openI);if(p<0)return;openD(v[(p+d+v.length)%v.length]);}
+  $("pd-p").addEventListener("click",function(){step(-1);});$("pd-n").addEventListener("click",function(){step(1);});
+  $("pd-x").addEventListener("click",function(){dlg.close();});
+  dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close();});
+  dlg.addEventListener("close",function(){giveBack();openI=-1;if(lastFocus&&lastFocus.focus)try{lastFocus.focus();}catch(e){}});
+  dlg.addEventListener("keydown",function(e){if(e.key==="ArrowRight"&&e.target.tagName!=="SELECT"&&e.target.tagName!=="INPUT"){step(1);}else if(e.key==="ArrowLeft"&&e.target.tagName!=="SELECT"&&e.target.tagName!=="INPUT"){step(-1);}});
+})();
+</script>
+<script>
+(function(){var a=document.querySelector("a.avail"),t=document.getElementById("talk");if(!a||!t)return;
+  a.addEventListener("click",function(e){e.preventDefault();var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+    try{t.scrollIntoView({behavior:rm?"auto":"smooth",block:"center"});}catch(x){t.scrollIntoView();}
+    setTimeout(function(){t.classList.remove("flash");void t.offsetWidth;t.classList.add("flash");},rm?0:600);});})();
+</script>
+<script>
+(function(){
+  var f=document.getElementById("mform");if(!f)return;
+  var ADDR="mustafasyed50057@gmail.com",ENDPOINT="",st=document.getElementById("mf-st");
+  function v(id){return document.getElementById(id).value.trim();}
+  function say(t,err){st.textContent=t;st.className="mst"+(err?" err":"");}
+  function check(){var ok=true;[["mf-n",function(x){return x.length>0;}],["mf-e",function(x){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x);}],["mf-m",function(x){return x.length>0;}]].forEach(function(p){var g=p[1](v(p[0]));document.getElementById(p[0]).parentNode.classList.toggle("bad",!g);if(!g)ok=false;});if(!ok)say("Please fill in your name, a valid email and a message.",true);return ok;}
+  function compose(){var sub=v("mf-s")||"Hello from your portfolio",body="Hi Mustafa,\n\n"+v("mf-m")+"\n\n"+v("mf-n")+"\n"+v("mf-e");return {sub:sub,body:body};}
+  f.addEventListener("input",function(e){if(e.target.parentNode.classList.contains("bad"))e.target.parentNode.classList.remove("bad");});
+  f.addEventListener("submit",function(e){e.preventDefault();if(!check())return;var m=compose();
+    if(ENDPOINT){say("Sending...");fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({name:v("mf-n"),email:v("mf-e"),subject:m.sub,message:v("mf-m")})}).then(function(r){if(!r.ok)throw 0;say("Message sent. Thank you, I will reply soon.");f.reset();}).catch(function(){say("Could not send. Please email "+ADDR+" instead.",true);});return;}
+    var q=function(x){return encodeURIComponent(x);},out=document.getElementById("mf-out");
+    var gm="https://mail.google.com/mail/?view=cm&fs=1&to="+q(ADDR)+"&su="+q(m.sub)+"&body="+q(m.body);
+    var yh="https://compose.mail.yahoo.com/?to="+q(ADDR)+"&subject="+q(m.sub)+"&body="+q(m.body);
+    var ol="https://outlook.live.com/mail/0/deeplink/compose?to="+q(ADDR)+"&subject="+q(m.sub)+"&body="+q(m.body);
+    out.innerHTML='<p><strong>Your message is ready.</strong> This page cannot send email by itself, so choose where to send it from:</p><div class="mact"><a class="btn solid" href="'+gm+'" target="_blank" rel="noopener noreferrer">Open in Gmail</a><a class="btn" href="'+ol+'" target="_blank" rel="noopener noreferrer">Open in Outlook</a><a class="btn" href="'+yh+'" target="_blank" rel="noopener noreferrer">Open in Yahoo</a><button class="btn" type="button" id="mf-cp2">Copy message</button></div><p class="mnote">Or email <code>'+ADDR+'</code> from any app and paste the message.</p>';
+    out.hidden=false;document.getElementById("mf-cp2").addEventListener("click",function(){document.getElementById("mf-cp").click();});
+    say("");});
+  document.getElementById("mf-cp").addEventListener("click",function(){if(!check())return;var m=compose(),t="To: "+ADDR+"\nSubject: "+m.sub+"\n\n"+m.body;
+    function fb(){var ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();var ok=false;try{ok=document.execCommand("copy");}catch(x){}ta.remove();say(ok?"Message copied. Paste it into an email to "+ADDR+".":"Copy did not work. Please select the text in the box and email "+ADDR+".",!ok);}
+    try{navigator.clipboard.writeText(t).then(function(){say("Message copied. Paste it into an email to "+ADDR+".");},fb);}catch(e){fb();}});
+})();
+</script><script>(function(){var g=document.getElementById('rs-go'),d=document.getElementById('rs');if(g&&d)g.addEventListener('click',function(e){e.preventDefault();d.close();var t=document.getElementById('talk')||document.getElementById('contact');if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});})();</script><script>(function(){var n=document.querySelector('nav');if(!n)return;function f(){n.classList.toggle('stuck',window.scrollY>40)}addEventListener('scroll',f,{passive:true});f();})();</script>
+<dialog class="lbx" id="lbx" aria-label="Certificate"><button class="btn lbc" type="button" id="lbc" aria-label="Close">Close &times;</button><img id="lbi" alt="GLO-BUS Industry Champion 2024 certificate awarded to Mustafa Syed"></dialog>
+<script>(function(){var f=document.querySelector('.feat'),d=document.getElementById('lbx'),i=document.getElementById('lbi');if(!f||!d)return;
+function open(e){e.preventDefault();i.src=f.getAttribute('data-lb');if(d.showModal){d.showModal()}else{d.setAttribute('open','')}}
+f.addEventListener('click',open);f.addEventListener('keydown',function(e){if(e.key===' '){open(e)}});
+document.getElementById('lbc').addEventListener('click',function(){d.close()});
+d.addEventListener('click',function(e){if(e.target===d)d.close()});})();</script>
+
+</body></html>

@@ -1,0 +1,165 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Business Case Builder</title><style id="sbcss">
+html body{margin:0;padding-top:56px!important}
+[hidden]{display:none!important}
+#sb{position:fixed;top:0;left:0;right:0;z-index:2147483000;height:48px;box-sizing:border-box;display:flex;align-items:center;gap:6px;padding:0 12px;background:#0B0C0E;border-bottom:1px solid #C9A55C;font:500 13px/1 "Jost","Helvetica Neue",Arial,sans-serif;color:#ECE8DF}
+#sb a{color:#ECE8DF;text-decoration:none;white-space:nowrap;padding:8px 10px;border:1px solid transparent;border-radius:2px;letter-spacing:.04em}
+#sb a:hover,#sb a:focus-visible{border-color:#C9A55C;color:#C9A55C;outline:none}
+#sb a.back{background:#C9A55C;color:#0B0C0E;font-weight:700;flex:none}
+#sb a.back:hover{background:#ECE8DF;color:#0B0C0E;border-color:#ECE8DF}
+#sb .sbt{display:flex;gap:2px;overflow-x:auto;min-width:0;scrollbar-width:none;flex:1}
+#sb .sbt::-webkit-scrollbar{display:none}
+#sb .sbt a[aria-current=page]{color:#C9A55C;border-bottom-color:#C9A55C;border-radius:0}
+</style></head><body><div id="sb"><a class="back" href="index.html#projects">&larr; Portfolio</a><div class="sbt" role="navigation" aria-label="Projects"><a href="ttc.html">TTC Delays</a><a href="pipeda.html">PIPEDA</a><a href="risk.html">Risk Assessment</a><a href="seclog.html">Log Hunt</a><a href="subnet.html">Subnets</a><a href="aipolicy.html">AI Policy</a><a href="bizcase.html" aria-current="page">Business Case</a><a href="cvss.html">CVSS Triage</a><a href="games.html">Game Dev</a></div></div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,500&family=Jost:wght@400;500&family=Courier+Prime:wght@400;700&display=swap">
+<style>
+:root{--bg:#0B0C0E;--surface:#14161A;--ink:#ECE8DF;--ink2:#A4A29B;--line:#2A2D33;--accent:#C9A55C;--f-display:"Bodoni Moda","Didot",Georgia,serif;--f-body:"Jost","Helvetica Neue",Arial,sans-serif;--f-mono:"Courier Prime","Courier New",monospace;color-scheme:dark}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#F3EFE6;--surface:#FBF9F3;--ink:#14161A;--ink2:#55524B;--line:#D6D0C1;--accent:#8A6A24;color-scheme:light}}
+:root[data-theme="light"]{--bg:#F3EFE6;--surface:#FBF9F3;--ink:#14161A;--ink2:#55524B;--line:#D6D0C1;--accent:#8A6A24;color-scheme:light}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;padding-inline:20px;padding-block:0 56px}
+.wrap{max-width:1040px;margin-inline:auto}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;margin:0;line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);margin-top:10px}h2{font-size:1.5rem}h3{font-size:1.1rem}
+.label{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+header{padding-block:38px 18px;border-bottom:1px solid var(--line);display:grid;gap:10px}header p.sub{color:var(--ink2);max-width:68ch;margin:0}
+.scn{margin-top:20px;border-left:2px solid var(--accent);padding:4px 0 4px 16px;color:var(--ink2);max-width:72ch}
+.app{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:30px;margin-top:26px;align-items:start}
+.panel{border:1px solid var(--line);border-top:2px solid var(--accent);background:var(--surface);padding:18px 18px 8px}
+.panel h2{font-size:1.15rem;margin-bottom:10px}
+.f{display:grid;gap:4px;padding-block:9px;border-top:1px solid var(--line)}.f:first-of-type{border-top:0}
+.f label{display:flex;justify-content:space-between;gap:10px;font-size:.92rem}
+.f output{font-family:var(--f-mono);color:var(--accent);font-size:.88rem;white-space:nowrap}
+input[type=range]{width:100%;accent-color:var(--accent);min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.kpi{border-top:1px solid var(--accent);padding-top:10px}.kpi b{display:block;font-family:var(--f-display);font-weight:500;font-size:clamp(1.4rem,3.2vw,2rem);line-height:1.1}
+.kpi span{display:block;font-size:.8rem;color:var(--ink2);margin-top:4px;line-height:1.35}
+.neg{color:#b5443a}.pos{color:var(--accent)}
+.verdict{margin:20px 0 6px;padding:14px 16px;border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--surface)}
+.verdict b{font-family:var(--f-display);font-weight:500;font-size:1.15rem;display:block;margin-bottom:2px}
+.verdict p{margin:0;color:var(--ink2);font-size:.95rem}
+.card{margin-top:22px}.card h2{margin-bottom:4px}.card p.cap{margin:0 0 10px;color:var(--ink2);font-size:.9rem;max-width:66ch}
+svg.plot{width:100%;height:auto;display:block;overflow:visible}
+svg text{font-family:var(--f-mono);font-size:11px;fill:var(--ink2)}
+.tbl{overflow-x:auto;margin-top:8px}table{border-collapse:collapse;width:100%;font-family:var(--f-mono);font-size:.82rem;min-width:420px}
+th,td{text-align:right;padding:7px 10px;border-bottom:1px solid var(--line)}th:first-child,td:first-child{text-align:left}th{color:var(--accent);font-weight:400;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+button{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer}
+button:hover{background:var(--accent);color:var(--bg)}button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:34px}.notes div{border-top:1px solid var(--accent);padding-top:12px}.notes p{color:var(--ink2);font-size:.94rem;margin:6px 0 0}
+footer{margin-top:28px;font-family:var(--f-mono);font-size:.76rem;color:var(--ink2)}
+@media(max-width:860px){.app{grid-template-columns:minmax(0,1fr)}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.notes{grid-template-columns:minmax(0,1fr)}}
+</style>
+<div class="wrap">
+<header>
+  <p class="label">Business analysis · Financial modelling · JavaScript</p>
+  <h1>Business Case Builder</h1>
+  <p class="sub">Should a small business spend money on a new system? Change the assumptions and watch the net present value, payback, return and risk update. The last chart shows which assumption the decision depends on most.</p>
+</header>
+<p class="scn"><b>Scenario (fictional):</b> a 12-person retail shop is deciding whether to replace paper stock counts with inventory-tracking software. Every number here is an invented assumption, meant to show the method.</p>
+<div class="app">
+  <aside class="panel" aria-label="Assumptions">
+    <h2>Assumptions</h2>
+    <div id="fields"></div>
+    <div style="padding-block:12px"><button type="button" id="reset">Reset to base case</button></div>
+  </aside>
+  <main>
+    <div class="kpis" id="kpis" role="status" aria-live="polite"></div>
+    <div class="verdict" id="verdict"></div>
+    <section class="card"><h2>Five-year cash flow</h2><p class="cap">Bars show net cash in each year (year 0 is the upfront spend). The line is the running total: where it crosses zero is the payback point.</p><div id="cf"></div>
+      <div class="tbl"><table id="tbl"></table></div></section>
+    <section class="card"><h2>What the decision depends on</h2><p class="cap">Each assumption is moved 20% up and down on its own. Gold bars raise the value, red bars lower it. The longest bar is the assumption to check first.</p><div id="tor"></div></section>
+  </main>
+</div>
+<section class="notes">
+  <div><h3>The method</h3><p>Net present value discounts each year's cash flow back to today. Payback interpolates where the running total turns positive. ROI is total net benefit over total cost, undiscounted. IRR is the discount rate at which NPV is zero.</p></div>
+  <div><h3>What I would add</h3><p>Benefits that are hard to price, such as fewer stock-outs or happier staff, and a range from each owner instead of one guess per input. The numbers decide less than people think.</p></div>
+  <div><h3>What it cannot show</h3><p>The inputs are made up, so the outputs are an illustration. A real case needs quotes, time studies and sign-off from the people who would use the system.</p></div>
+</section>
+<footer>A practice model with invented numbers. Not financial advice.</footer>
+</div>
+<script>
+var DEF=[
+ {k:"setup",n:"Setup and hardware",v:12000,min:0,max:40000,st:500,f:"$"},
+ {k:"train",n:"Staff training",v:3000,min:0,max:15000,st:250,f:"$"},
+ {k:"lic",n:"Licence and support per year",v:4800,min:0,max:15000,st:100,f:"$"},
+ {k:"hrs",n:"Staff hours saved per week",v:6,min:0,max:30,st:.5,f:"h"},
+ {k:"rate",n:"Loaded cost per staff hour",v:28,min:15,max:60,st:1,f:"$"},
+ {k:"waste",n:"Stock waste avoided per year",v:6500,min:0,max:25000,st:250,f:"$"},
+ {k:"ramp",n:"Benefit reached in year 1",v:50,min:10,max:100,st:5,f:"%"},
+ {k:"disc",n:"Discount rate",v:10,min:2,max:25,st:.5,f:"%"}];
+var YEARS=5,S={};
+function fmt(x,f){if(f==="$")return (x<0?"-":"")+"$"+Math.abs(Math.round(x)).toLocaleString("en-CA");if(f==="%")return x+"%";return x+" h";}
+function money(x){return (x<0?"-":"")+"$"+Math.abs(Math.round(x)).toLocaleString("en-CA");}
+function model(p){
+  var full=p.hrs*52*p.rate+p.waste,cf=[-(p.setup+p.train)],ben=[0],cost=[p.setup+p.train];
+  for(var t=1;t<=YEARS;t++){var b=full*(t===1?p.ramp/100:1);ben.push(b);cost.push(p.lic);cf.push(b-p.lic);}
+  var r=p.disc/100,npv=0,pvB=0,pvC=0;
+  for(var i=0;i<=YEARS;i++){var d=Math.pow(1+r,i);npv+=cf[i]/d;pvB+=ben[i]/d;pvC+=cost[i]/d;}
+  var tb=ben.reduce(function(a,b){return a+b;},0),tc=cost.reduce(function(a,b){return a+b;},0);
+  var cum=[],run=0;cf.forEach(function(c){run+=c;cum.push(run);});
+  var pay=null;for(var j=1;j<=YEARS;j++){if(cum[j]>=0&&cum[j-1]<0){pay=(j-1)+(-cum[j-1])/(cf[j]);break;}}
+  if(cum[0]>=0)pay=0;
+  return {cf:cf,cum:cum,npv:npv,roi:tc>0?(tb-tc)/tc:null,pay:pay,irr:irr(cf),pvB:pvB,pvC:pvC,fall:pvB>0?1-pvC/pvB:null,full:full};
+}
+function npvAt(cf,r){var s=0;for(var i=0;i<cf.length;i++)s+=cf[i]/Math.pow(1+r,i);return s;}
+function irr(cf){var lo=-0.99,hi=10,flo=npvAt(cf,lo),fhi=npvAt(cf,hi);if(flo*fhi>0)return null;for(var i=0;i<200;i++){var m=(lo+hi)/2,fm=npvAt(cf,m);if(flo*fm<=0){hi=m;fhi=fm;}else{lo=m;flo=fm;}}return (lo+hi)/2;}
+function vals(){var o={};DEF.forEach(function(d){o[d.k]=S[d.k];});return o;}
+function build(){
+  var h="";DEF.forEach(function(d){h+='<div class="f"><label for="i_'+d.k+'">'+d.n+'<output id="o_'+d.k+'"></output></label><input type="range" id="i_'+d.k+'" min="'+d.min+'" max="'+d.max+'" step="'+d.st+'"></div>';});
+  document.getElementById("fields").innerHTML=h;
+  DEF.forEach(function(d){var el=document.getElementById("i_"+d.k);el.addEventListener("input",function(){S[d.k]=+el.value;draw();});});
+}
+function setAll(){DEF.forEach(function(d){S[d.k]=d.v;document.getElementById("i_"+d.k).value=d.v;});}
+function draw(){
+  DEF.forEach(function(d){document.getElementById("o_"+d.k).textContent=fmt(S[d.k],d.f);});
+  var m=model(vals());window.__M=m;
+  var irrTxt=m.irr==null?"n/a":(m.irr*100).toFixed(1)+"%",payTxt=m.pay==null?"Over 5 yrs":m.pay.toFixed(1)+" yrs";
+  document.getElementById("kpis").innerHTML=
+   '<div class="kpi"><b class="'+(m.npv<0?"neg":"pos")+'">'+money(m.npv)+'</b><span>Net present value, 5 years</span></div>'+
+   '<div class="kpi"><b>'+payTxt+'</b><span>Payback period</span></div>'+
+   '<div class="kpi"><b class="'+(m.roi<0?"neg":"")+'">'+(m.roi==null?"n/a":(m.roi*100).toFixed(0)+"%")+'</b><span>Return on investment, 5 years</span></div>'+
+   '<div class="kpi"><b>'+irrTxt+'</b><span>Internal rate of return</span></div>';
+  var v=document.getElementById("verdict"),t,d;
+  if(m.npv<=0){t="Do not proceed on these numbers";d="The project does not earn back its cost at a "+S.disc+"% discount rate. Either the costs must fall or the benefits must be shown to be higher.";}
+  else if(m.pay!=null&&m.pay<=3){t="Worth proceeding, after checking the top assumption";d="Positive value, paid back in "+m.pay.toFixed(1)+" years. Benefits could fall about "+Math.round(m.fall*100)+"% before the value disappears, so test the assumption in the chart below first.";}
+  else{t="Marginal: proceed only with a smaller first step";d="Value is positive but payback is slow"+(m.pay==null?" (beyond five years)":" ("+m.pay.toFixed(1)+" years)")+". A pilot in one area would limit the risk.";}
+  v.innerHTML="<b>"+t+"</b><p>"+d+" This is my own rule of thumb, and a real decision also weighs things the model cannot price.</p>";
+  cfChart(m);torChart();
+}
+function cfChart(m){
+  var W=640,H=250,l=58,r=10,t=16,b=34,pw=W-l-r,ph=H-t-b,n=m.cf.length;
+  var all=m.cf.concat(m.cum),mx=Math.max(0,Math.max.apply(null,all)),mn=Math.min(0,Math.min.apply(null,all));
+  function nice(x){if(x===0)return 0;var e=Math.pow(10,Math.floor(Math.log10(Math.abs(x)))),c=Math.abs(x)/e,nn=c<=1?1:c<=2?2:c<=5?5:10;return Math.sign(x)*nn*e;}
+  var step=nice((mx-mn)/4)||1000,top=Math.ceil(mx/step)*step,bot=Math.floor(mn/step)*step;if(top===bot)top=bot+step;
+  function y(v){return t+ph*(1-(v-bot)/(top-bot));}
+  var s='<svg class="plot" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Annual net cash flow bars and cumulative line">';
+  for(var g=bot;g<=top+1e-9;g+=step){s+='<line x1="'+l+'" x2="'+(W-r)+'" y1="'+y(g)+'" y2="'+y(g)+'" stroke="var(--line)" stroke-width="'+(g===0?1.5:1)+'"/><text x="'+(l-8)+'" y="'+(y(g)+4)+'" text-anchor="end">'+(g<0?"-":"")+"$"+(Math.abs(g)>=1000?(Math.abs(g)/1000)+"k":Math.abs(g))+'</text>';}
+  var bw=pw/n*.5,pts=[];
+  m.cf.forEach(function(c,i){var cx=l+pw/n*(i+.5),y0=y(0),y1=y(c);
+    s+='<rect x="'+(cx-bw/2)+'" y="'+Math.min(y0,y1)+'" width="'+bw+'" height="'+Math.max(1,Math.abs(y1-y0))+'" rx="2" fill="'+(c<0?"#b5443a":"var(--accent)")+'" opacity=".85"><title>Year '+i+': '+money(c)+'</title></rect>';
+    s+='<text x="'+cx+'" y="'+(H-12)+'" text-anchor="middle">Yr '+i+'</text>';pts.push((cx)+","+y(m.cum[i]));});
+  s+='<polyline points="'+pts.join(" ")+'" fill="none" stroke="var(--ink)" stroke-width="2"/>';
+  m.cum.forEach(function(c,i){var cx=l+pw/n*(i+.5);s+='<circle cx="'+cx+'" cy="'+y(c)+'" r="3.5" fill="var(--bg)" stroke="var(--ink)" stroke-width="2"><title>Running total, year '+i+': '+money(c)+'</title></circle>';});
+  s+='</svg>';document.getElementById("cf").innerHTML=s;
+  var tb='<thead><tr><th>Year</th><th>Net cash</th><th>Running total</th></tr></thead><tbody>';
+  m.cf.forEach(function(c,i){tb+='<tr><td>'+i+'</td><td class="'+(c<0?"neg":"")+'">'+money(c)+'</td><td class="'+(m.cum[i]<0?"neg":"")+'">'+money(m.cum[i])+'</td></tr>';});
+  document.getElementById("tbl").innerHTML=tb+'</tbody>';
+}
+function torChart(){
+  var base=model(vals()).npv,rows=[];
+  DEF.forEach(function(d){var lo=vals(),hi=vals();lo[d.k]=S[d.k]*.8;hi[d.k]=S[d.k]*1.2;if(d.k==="ramp"){lo.ramp=Math.min(100,lo.ramp);hi.ramp=Math.min(100,hi.ramp);}
+    var a=model(lo).npv-base,b=model(hi).npv-base;rows.push({n:d.n,a:a,b:b,sw:Math.abs(a-b)});});
+  rows.sort(function(x,y){return y.sw-x.sw;});
+  var mx=Math.max.apply(null,rows.map(function(r){return Math.max(Math.abs(r.a),Math.abs(r.b));}))||1,W=640,lw=190,rh=28,H=rows.length*rh+30,cx=lw+(W-lw-10)/2,sc=(W-lw-20)/2/mx;
+  var s='<svg class="plot" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Sensitivity of net present value to each assumption">';
+  s+='<line x1="'+cx+'" x2="'+cx+'" y1="6" y2="'+(H-22)+'" stroke="var(--ink)" stroke-width="1.5"/>';
+  rows.forEach(function(r,i){var y=10+i*rh;
+    function bar(v,lab){var w=Math.abs(v)*sc,x=v>=0?cx:cx-w;return '<rect x="'+x+'" y="'+y+'" width="'+Math.max(1,w)+'" height="16" rx="2" fill="'+(v>=0?"var(--accent)":"#b5443a")+'" opacity=".85"><title>'+r.n+', '+lab+': NPV changes by '+money(v)+'</title></rect>';}
+    s+=bar(r.a,"20% lower")+bar(r.b,"20% higher")+'<text x="'+(lw-10)+'" y="'+(y+12)+'" text-anchor="end">'+r.n+'</text>';});
+  s+='<text x="'+cx+'" y="'+(H-6)+'" text-anchor="middle">Change in NPV, base case at centre ('+money(base)+')</text></svg>';
+  document.getElementById("tor").innerHTML=s;
+}
+build();setAll();draw();
+document.getElementById("reset").addEventListener("click",function(){setAll();draw();});
+</script>
+</body></html>

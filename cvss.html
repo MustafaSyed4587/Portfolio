@@ -1,0 +1,158 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>CVSS Triage Board</title><style id="sbcss">
+html body{margin:0;padding-top:56px!important}
+[hidden]{display:none!important}
+#sb{position:fixed;top:0;left:0;right:0;z-index:2147483000;height:48px;box-sizing:border-box;display:flex;align-items:center;gap:6px;padding:0 12px;background:#0B0C0E;border-bottom:1px solid #C9A55C;font:500 13px/1 "Jost","Helvetica Neue",Arial,sans-serif;color:#ECE8DF}
+#sb a{color:#ECE8DF;text-decoration:none;white-space:nowrap;padding:8px 10px;border:1px solid transparent;border-radius:2px;letter-spacing:.04em}
+#sb a:hover,#sb a:focus-visible{border-color:#C9A55C;color:#C9A55C;outline:none}
+#sb a.back{background:#C9A55C;color:#0B0C0E;font-weight:700;flex:none}
+#sb a.back:hover{background:#ECE8DF;color:#0B0C0E;border-color:#ECE8DF}
+#sb .sbt{display:flex;gap:2px;overflow-x:auto;min-width:0;scrollbar-width:none;flex:1}
+#sb .sbt::-webkit-scrollbar{display:none}
+#sb .sbt a[aria-current=page]{color:#C9A55C;border-bottom-color:#C9A55C;border-radius:0}
+</style></head><body><div id="sb"><a class="back" href="index.html#projects">&larr; Portfolio</a><div class="sbt" role="navigation" aria-label="Projects"><a href="ttc.html">TTC Delays</a><a href="pipeda.html">PIPEDA</a><a href="risk.html">Risk Assessment</a><a href="seclog.html">Log Hunt</a><a href="subnet.html">Subnets</a><a href="aipolicy.html">AI Policy</a><a href="bizcase.html">Business Case</a><a href="cvss.html" aria-current="page">CVSS Triage</a><a href="games.html">Game Dev</a></div></div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,500&family=Jost:wght@400;500&family=Courier+Prime:wght@400;700&display=swap">
+<style>
+:root{--bg:#0B0C0E;--surface:#14161A;--ink:#ECE8DF;--ink2:#A4A29B;--line:#2A2D33;--accent:#C9A55C;--f-display:"Bodoni Moda","Didot",Georgia,serif;--f-body:"Jost","Helvetica Neue",Arial,sans-serif;--f-mono:"Courier Prime","Courier New",monospace;color-scheme:dark}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#F3EFE6;--surface:#FBF9F3;--ink:#14161A;--ink2:#55524B;--line:#D6D0C1;--accent:#8A6A24;color-scheme:light}}
+:root[data-theme="light"]{--bg:#F3EFE6;--surface:#FBF9F3;--ink:#14161A;--ink2:#55524B;--line:#D6D0C1;--accent:#8A6A24;color-scheme:light}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;padding-inline:20px;padding-block:0 56px}
+.wrap{max-width:1040px;margin-inline:auto}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;margin:0;line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);margin-top:10px}h2{font-size:1.5rem}h3{font-size:1.1rem}
+.label{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+header{padding-block:38px 18px;border-bottom:1px solid var(--line);display:grid;gap:10px}header p.sub{color:var(--ink2);max-width:68ch;margin:0}
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:30px;margin-top:26px;align-items:start}
+.panel{border:1px solid var(--line);border-top:2px solid var(--accent);background:var(--surface);padding:18px}
+.grp{display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 14px;align-items:center;padding-block:8px;border-top:1px solid var(--line)}.grp:first-of-type{border-top:0}
+.grp>span{font-size:.92rem}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opts button{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.06em;padding:7px 12px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.opts button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:700}
+.opts button:hover{border-color:var(--accent)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.score{text-align:center}.score b{display:block;font-family:var(--f-display);font-weight:500;font-size:4.2rem;line-height:1}
+.sev{display:inline-block;margin-top:6px;padding:3px 12px;font-family:var(--f-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid currentColor}
+.s-None{color:var(--ink2)}.s-Low{color:#5b8a4a}.s-Medium{color:#b58a1e}.s-High{color:#c2601e}.s-Critical{color:#b5443a}
+.sub2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;font-family:var(--f-mono);font-size:.78rem;color:var(--ink2)}.sub2 b{display:block;color:var(--ink);font-size:1.1rem;font-weight:400}
+.vec{margin-top:16px;display:grid;gap:8px}.vec input{width:100%;box-sizing:border-box;font-family:var(--f-mono);font-size:.76rem;padding:9px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.vec .msg{font-size:.78rem;color:var(--ink2);min-height:1.2em;margin:0}.vec .msg.err{color:#b5443a}
+.btn{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer}
+.btn:hover{background:var(--accent);color:var(--bg)}
+h2.t{margin:40px 0 4px}p.cap{margin:0 0 12px;color:var(--ink2);font-size:.92rem;max-width:70ch}
+.tbl{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:760px;font-size:.9rem}
+th{font-family:var(--f-mono);font-weight:400;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-align:left;padding:8px 10px;border-bottom:1px solid var(--accent)}
+td{padding:10px;border-bottom:1px solid var(--line);vertical-align:middle}
+td.n{font-family:var(--f-mono)}td small{display:block;color:var(--ink2);font-size:.78rem}
+tr.pick td{background:var(--surface)}
+select{font-family:var(--f-mono);font-size:.78rem;padding:6px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.tier{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.06em;padding:4px 10px;display:inline-block;border:1px solid currentColor;white-space:nowrap}
+.t1{color:#b5443a}.t2{color:#c2601e}.t3{color:#b58a1e}.t4{color:#5b8a4a}
+.link{background:none;border:0;padding:0;color:var(--accent);font:inherit;text-align:left;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:34px}.notes div{border-top:1px solid var(--accent);padding-top:12px}.notes p{color:var(--ink2);font-size:.94rem;margin:6px 0 0}
+footer{margin-top:28px;font-family:var(--f-mono);font-size:.76rem;color:var(--ink2)}
+@media(max-width:860px){.calc{grid-template-columns:minmax(0,1fr)}.notes{grid-template-columns:minmax(0,1fr)}.grp{grid-template-columns:minmax(0,1fr)}}
+</style>
+<div class="wrap">
+<header>
+  <p class="label">Cybersecurity · Vulnerability management · JavaScript</p>
+  <h1>CVSS Triage Board</h1>
+  <p class="sub">Build a vulnerability's CVSS v3.1 base score one metric at a time, then see how a security team would rank real, well-known flaws once exposure and asset value are taken into account.</p>
+</header>
+<div class="calc">
+  <section class="panel" aria-label="CVSS v3.1 base metrics" id="metrics"></section>
+  <aside class="panel">
+    <div class="score" role="status" aria-live="polite"><b id="sc">0.0</b><span class="sev s-None" id="sv">None</span></div>
+    <div class="sub2"><div><b id="ex">0.0</b>Exploitability</div><div><b id="im">0.0</b>Impact</div></div>
+    <div class="vec">
+      <label class="label" for="vin">Vector string</label>
+      <input id="vin" spellcheck="false" autocomplete="off">
+      <p class="msg" id="vm">Edit or paste a vector to load it.</p>
+      <button class="btn" type="button" id="vcopy">Copy vector</button>
+    </div>
+  </aside>
+</div>
+<h2 class="t">Triage board</h2>
+<p class="cap">Six famous vulnerabilities, each placed on an invented system in a fictional company. Change a system's exposure or importance and the ranking updates. Select a finding's name to load its vector into the calculator above.</p>
+<div class="tbl"><table id="tb"><thead><tr><th>Rank</th><th>Finding</th><th>CVSS</th><th>Exposure</th><th>System importance</th><th>Priority</th></tr></thead><tbody></tbody></table></div>
+<section class="notes">
+  <div><h3>How the score works</h3><p>The base score follows the published FIRST CVSS v3.1 formula: attack vector, complexity, privileges, user interaction and scope set how easy the flaw is to exploit, and confidentiality, integrity and availability set the damage.</p></div>
+  <div><h3>My priority rule</h3><p>CVSS alone does not say what to fix first. I add 2 points for an internet-facing system, and adjust by the system's importance (+1.5 high, +0.5 medium, -0.5 low). This rule is my own judgment, not a standard.</p></div>
+  <div><h3>What it cannot show</h3><p>Real triage also uses whether a flaw is being exploited now, whether a patch exists and what compensating controls are in place. The vectors are as I recorded them from public NVD entries; check the current entry before relying on one.</p></div>
+</section>
+<footer>A learning tool. The company and systems are fictional.</footer>
+</div>
+<script>
+var M=[
+ {k:"AV",n:"Attack vector",o:[["N","Network",.85],["A","Adjacent",.62],["L","Local",.55],["P","Physical",.2]]},
+ {k:"AC",n:"Attack complexity",o:[["L","Low",.77],["H","High",.44]]},
+ {k:"PR",n:"Privileges required",o:[["N","None",.85],["L","Low",.62],["H","High",.27]]},
+ {k:"UI",n:"User interaction",o:[["N","None",.85],["R","Required",.62]]},
+ {k:"S",n:"Scope",o:[["U","Unchanged",0],["C","Changed",0]]},
+ {k:"C",n:"Confidentiality",o:[["H","High",.56],["L","Low",.22],["N","None",0]]},
+ {k:"I",n:"Integrity",o:[["H","High",.56],["L","Low",.22],["N","None",0]]},
+ {k:"A",n:"Availability",o:[["H","High",.56],["L","Low",.22],["N","None",0]]}];
+function roundUp(x){var i=Math.round(x*100000);return (i%10000===0)?i/100000:(Math.floor(i/10000)+1)/10;}
+function w(k,v,s){var m=M.filter(function(x){return x.k===k;})[0],o=m.o.filter(function(x){return x[0]===v;})[0];
+  if(k==="PR"&&s==="C"){return v==="L"?.68:v==="H"?.5:.85;}return o[2];}
+function parse(vec){
+  var parts=vec.trim().split("/");if(parts[0]!=="CVSS:3.1"&&parts[0]!=="CVSS:3.0")return null;
+  var o={};for(var i=1;i<parts.length;i++){var kv=parts[i].split(":");if(kv.length!==2)return null;o[kv[0]]=kv[1];}
+  for(var j=0;j<M.length;j++){var m=M[j];if(!o[m.k]||!m.o.some(function(x){return x[0]===o[m.k];}))return null;}
+  if(Object.keys(o).length!==8)return null;return o;
+}
+function calc(o){
+  var iss=1-(1-w("C",o.C))*(1-w("I",o.I))*(1-w("A",o.A)),imp=o.S==="U"?6.42*iss:7.52*(iss-.029)-3.25*Math.pow(iss-.02,15),
+   ex=8.22*w("AV",o.AV)*w("AC",o.AC)*w("PR",o.PR,o.S)*w("UI",o.UI),base=0;
+  if(imp>0)base=o.S==="U"?roundUp(Math.min(imp+ex,10)):roundUp(Math.min(1.08*(imp+ex),10));
+  return {base:base,imp:Math.max(0,imp),ex:ex};
+}
+function sevOf(x){return x===0?"None":x<4?"Low":x<7?"Medium":x<9?"High":"Critical";}
+function vstr(o){return "CVSS:3.1/"+M.map(function(m){return m.k+":"+o[m.k];}).join("/");}
+var cur={AV:"N",AC:"L",PR:"N",UI:"N",S:"U",C:"H",I:"H",A:"H"};
+function renderMetrics(){
+  var h="";M.forEach(function(m){h+='<div class="grp" role="group" aria-label="'+m.n+'"><span>'+m.n+'</span><div class="opts">';
+    m.o.forEach(function(x){h+='<button type="button" data-k="'+m.k+'" data-v="'+x[0]+'" aria-pressed="'+(cur[m.k]===x[0])+'">'+x[1]+'</button>';});h+='</div></div>';});
+  document.getElementById("metrics").innerHTML=h;
+  document.querySelectorAll("#metrics button").forEach(function(b){b.addEventListener("click",function(){cur[b.dataset.k]=b.dataset.v;update();});});
+}
+function update(){
+  renderMetrics();var r=calc(cur),s=sevOf(r.base);
+  document.getElementById("sc").textContent=r.base.toFixed(1);var sv=document.getElementById("sv");sv.textContent=s;sv.className="sev s-"+s;
+  document.getElementById("ex").textContent=r.ex.toFixed(1);document.getElementById("im").textContent=r.imp.toFixed(1);
+  document.getElementById("vin").value=vstr(cur);var m=document.getElementById("vm");m.textContent="Edit or paste a vector to load it.";m.className="msg";
+}
+document.getElementById("vin").addEventListener("input",function(e){var o=parse(e.target.value),m=document.getElementById("vm");
+  if(o){cur=o;renderMetrics();var r=calc(o),s=sevOf(r.base);document.getElementById("sc").textContent=r.base.toFixed(1);var sv=document.getElementById("sv");sv.textContent=s;sv.className="sev s-"+s;document.getElementById("ex").textContent=r.ex.toFixed(1);document.getElementById("im").textContent=r.imp.toFixed(1);m.textContent="Vector loaded.";m.className="msg";}
+  else{m.textContent="Not a valid CVSS v3.x base vector yet.";m.className="msg err";}});
+document.getElementById("vcopy").addEventListener("click",function(){var t=vstr(cur),m=document.getElementById("vm");
+  try{navigator.clipboard.writeText(t).then(function(){m.textContent="Copied.";m.className="msg";},function(){document.getElementById("vin").select();m.textContent="Press Ctrl+C to copy.";});}catch(e){document.getElementById("vin").select();m.textContent="Press Ctrl+C to copy.";}});
+/* triage */
+var F=[
+ {id:"CVE-2021-44228",name:"Log4Shell",sys:"Customer web shop (logging library)",vec:"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",net:true,imp:"High"},
+ {id:"CVE-2014-0160",name:"Heartbleed",sys:"Partner login gateway (OpenSSL)",vec:"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",net:true,imp:"Medium"},
+ {id:"CVE-2014-6271",name:"Shellshock",sys:"Office print server (Bash)",vec:"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",net:false,imp:"Low"},
+ {id:"CVE-2017-0144",name:"EternalBlue",sys:"Finance file server (SMBv1)",vec:"CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",net:false,imp:"High"},
+ {id:"CVE-2019-0708",name:"BlueKeep",sys:"Legacy remote-desktop jump host",vec:"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",net:true,imp:"Medium"},
+ {id:"CVE-2021-34527",name:"PrintNightmare",sys:"HR workstation pool (Print Spooler)",vec:"CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",net:false,imp:"Medium"}];
+F.forEach(function(f){f.score=calc(parse(f.vec)).base;});
+var IMPV={High:1.5,Medium:.5,Low:-.5};
+function prio(f){return f.score+(f.net?2:0)+IMPV[f.imp];}
+function tier(p){return p>=10?["t1","Fix now"]:p>=9?["t2","This week"]:p>=7.5?["t3","This month"]:["t4","Schedule"];}
+function renderTriage(){
+  var rows=F.slice().sort(function(a,b){return prio(b)-prio(a)||b.score-a.score;}),h="";
+  rows.forEach(function(f,i){var t=tier(prio(f)),s=sevOf(f.score);
+    h+='<tr data-id="'+f.id+'"><td class="n">'+(i+1)+'</td><td><button class="link" type="button" data-load="'+f.id+'">'+f.name+'</button><small>'+f.id+' · '+f.sys+'</small></td>'+
+      '<td class="n"><span class="s-'+s+'">'+f.score.toFixed(1)+'</span></td>'+
+      '<td><select data-net="'+f.id+'" aria-label="Exposure for '+f.name+'"><option value="1"'+(f.net?" selected":"")+'>Internet-facing</option><option value="0"'+(f.net?"":" selected")+'>Internal only</option></select></td>'+
+      '<td><select data-imp="'+f.id+'" aria-label="Importance for '+f.name+'">'+["High","Medium","Low"].map(function(x){return '<option'+(x===f.imp?" selected":"")+'>'+x+'</option>';}).join("")+'</select></td>'+
+      '<td><span class="tier '+t[0]+'">'+t[1]+'</span></td></tr>';});
+  document.querySelector("#tb tbody").innerHTML=h;
+  document.querySelectorAll("[data-net]").forEach(function(s){s.addEventListener("change",function(){F.filter(function(x){return x.id===s.dataset.net;})[0].net=s.value==="1";renderTriage();});});
+  document.querySelectorAll("[data-imp]").forEach(function(s){s.addEventListener("change",function(){F.filter(function(x){return x.id===s.dataset.imp;})[0].imp=s.value;renderTriage();});});
+  document.querySelectorAll("[data-load]").forEach(function(b){b.addEventListener("click",function(){cur=parse(F.filter(function(x){return x.id===b.dataset.load;})[0].vec);update();window.scrollTo({top:0,behavior:"smooth"});});});
+}
+update();renderTriage();
+</script>
+</body></html>
