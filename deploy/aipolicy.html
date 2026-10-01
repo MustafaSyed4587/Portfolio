@@ -1,0 +1,127 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="theme-color" content="#0B0C0E"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>AI Use Policy Builder</title><style id="sbcss">
+html body{margin:0;padding-top:56px!important}
+[hidden]{display:none!important}
+#sb{position:fixed;top:0;left:0;right:0;z-index:2147483000;height:48px;box-sizing:border-box;display:flex;align-items:center;gap:6px;padding:0 12px;background:#0B0C0E;border-bottom:1px solid #C9A55C;font:500 13px/1 "Jost","Helvetica Neue",Arial,sans-serif;color:#ECE8DF}
+#sb a{color:#ECE8DF;text-decoration:none;white-space:nowrap;padding:8px 10px;border:1px solid transparent;border-radius:2px;letter-spacing:.04em}
+#sb a:hover,#sb a:focus-visible{border-color:#C9A55C;color:#C9A55C;outline:none}
+#sb a.back{background:#C9A55C;color:#0B0C0E;font-weight:700;flex:none}
+#sb a.back:hover{background:#ECE8DF;color:#0B0C0E;border-color:#ECE8DF}
+#sb .sbt{display:flex;gap:2px;overflow-x:auto;min-width:0;scrollbar-width:none;flex:1}
+#sb .sbt::-webkit-scrollbar{display:none}
+#sb .sbt a[aria-current=page]{color:#C9A55C;border-bottom-color:#C9A55C;border-radius:0}
+</style></head><body><div id="sb"><a class="back" href="index.html#projects">&larr; Portfolio</a><div class="sbt" role="navigation" aria-label="Projects"><a href="ttc.html">TTC Delays</a><a href="pipeda.html">PIPEDA</a><a href="risk.html">Risk Assessment</a><a href="seclog.html">Log Hunt</a><a href="subnet.html">Subnets</a><a href="aipolicy.html" aria-current="page">AI Policy</a><a href="bizcase.html">Business Case</a><a href="cvss.html">CVSS Triage</a><a href="games.html">Game Dev</a></div></div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,500&family=Jost:wght@400;500&family=Courier+Prime:wght@400;700&display=swap">
+<style>
+:root{--bg:#0B0C0E;--surface:#14161A;--ink:#ECE8DF;--ink2:#A4A29B;--line:#2A2D33;--accent:#C9A55C;--field:#0F1114;--low:#8FC9A0;--med:#E0B65A;--high:#E08A7A;--f-display:"Bodoni Moda","Didot",Georgia,serif;--f-body:"Jost","Helvetica Neue",Arial,sans-serif;--f-mono:"Courier Prime","Courier New",monospace;color-scheme:dark}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#F3EFE6;--surface:#FBF9F3;--ink:#14161A;--ink2:#55524B;--line:#D6D0C1;--accent:#8A6A24;--field:#FFFFFF;--low:#2E6B45;--med:#8A6A24;--high:#A63F2E;color-scheme:light}}
+:root[data-theme="light"]{--bg:#F3EFE6;--surface:#FBF9F3;--ink:#14161A;--ink2:#55524B;--line:#D6D0C1;--accent:#8A6A24;--field:#FFFFFF;--low:#2E6B45;--med:#8A6A24;--high:#A63F2E;color-scheme:light}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;padding-inline:20px;padding-block:0 56px}
+.wrap{max-width:900px;margin-inline:auto}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;margin:0;line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);margin-top:10px}h2{font-size:1.7rem}h3{font-size:1.15rem}
+.label{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+header{padding-block:44px 22px;border-bottom:1px solid var(--line);display:grid;gap:12px}header p.sub{color:var(--ink2);max-width:66ch}
+.note{border-left:2px solid var(--accent);padding:4px 0 4px 14px;font-size:.92rem;color:var(--ink2);margin-block:20px;max-width:72ch}
+fieldset{border:0;border-top:1px solid var(--line);margin:0;padding:18px 0 6px;min-width:0}
+legend{padding:0;font-family:var(--f-display);font-size:1.15rem;float:left;width:100%;margin-bottom:8px}
+legend+*{clear:both}
+legend small{display:block;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:5px 0;cursor:pointer}
+.opt input{margin-top:6px;accent-color:var(--accent);flex:none}
+button{font-family:var(--f-mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;padding:13px 18px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer}
+button.solid{background:var(--accent);color:var(--bg);font-weight:700}button:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+#out{margin-top:30px}
+.score{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;border-top:2px solid var(--accent);border-bottom:1px solid var(--line);padding-block:16px}
+.score b{font-family:var(--f-display);font-weight:500;font-size:clamp(2.4rem,7vw,3.4rem);line-height:1}
+.score .Low{color:var(--low)}.score .Medium{color:var(--med)}.score .High{color:var(--high)}
+.score span{color:var(--ink2)}
+.tag{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;padding:2px 8px;white-space:nowrap}
+.tag.Low{color:var(--low)}.tag.Medium{color:var(--med)}.tag.High{color:var(--high)}
+.gaps{display:grid;gap:0;margin-top:8px}
+.gap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px;padding-block:14px;border-bottom:1px solid var(--line)}
+.gap p{grid-column:1 / -1;color:var(--ink2);font-size:.93rem}
+.gap .pr{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;color:var(--accent)}
+pre.policy{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--surface);border:1px solid var(--line);border-left:2px solid var(--accent);padding:18px;font-family:var(--f-body);font-size:.96rem;line-height:1.6;margin:10px 0 0}
+#cs{font-family:var(--f-mono);font-size:.8rem;color:var(--accent)}
+footer{margin-top:36px;font-family:var(--f-mono);font-size:.76rem;color:var(--ink2)}footer a{color:var(--accent)}
+</style>
+<div class="wrap">
+<header>
+  <p class="label">AI governance · Privacy · Canada</p>
+  <h1>AI Use Policy Builder</h1>
+  <p class="sub">Answer nine questions about how a small organization uses AI tools. You get a risk rating, the gaps behind it, and a draft AI use policy, organized around the nine principles Canada's privacy regulators set out for generative AI.</p>
+</header>
+<p class="note">A starting point for discussion, not legal advice. It flags common risks from your answers and drafts plain-language rules. Have someone responsible for privacy review it before adopting it. Nothing you select leaves this page.</p>
+<form id="f"></form>
+<div class="bar"><button class="solid" id="go" type="button">Build my policy</button><button id="reset" type="button">Reset</button></div>
+<div id="out" aria-live="polite"></div>
+<footer>Based on the <a href="https://www.priv.gc.ca/en/privacy-topics/technology/artificial-intelligence/gd_principles_ai/" rel="noopener">Principles for responsible, trustworthy and privacy-protective generative AI technologies</a> from the Office of the Privacy Commissioner of Canada and provincial counterparts. The scoring rules are my own judgment.</footer>
+</div>
+<script>
+/* risk: 0 low, 1 medium, 2 high. p = principle(s) concerned */
+var Q=[
+ {id:"tools",p:"Safeguards",t:"Which AI tools do people use for work?",multi:true,o:[["Free consumer chatbots on personal accounts",2],["Paid business accounts with admin controls",0],["AI features built into software we already license",1],["None yet, but people may be using some",1]],
+  gap:"Free or personal accounts usually sit outside the organization's control, with different data terms.",fix:"Approve a short list of tools and block personal accounts for work."},
+ {id:"data",p:"Limiting collection, use and disclosure",t:"What information goes into AI tools?",multi:true,o:[["Public information only",0],["Internal business information",1],["Names and contact details of clients or volunteers",2],["Sensitive personal information (health, financial, identity)",3],["Confidential legal or contract material",2]],
+  gap:"Personal information entered in an AI tool is a disclosure to the vendor and may be used beyond the original purpose.",fix:"Ban sensitive personal information in AI tools, and remove names before anything else goes in."},
+ {id:"list",p:"Accountability",t:"Is there an approved list of AI tools?",o:[["Yes, written and shared",0],["Informal, people just know",1],["No list",2]],
+  gap:"Without a list, nobody knows which vendors hold your data.",fix:"Keep a one-page approved tool list, reviewed every six months."},
+ {id:"review",p:"Accuracy",t:"Does a person check AI output before it is used?",o:[["Always",0],["Sometimes",1],["Rarely or never",2]],
+  gap:"AI can sound confident and be wrong, and errors about people cause real harm.",fix:"Require a named human to check AI output before it is sent, published, or filed."},
+ {id:"decide",p:"Appropriate purposes; Necessity and proportionality",t:"Does AI make or influence decisions about individuals (hiring, eligibility, discipline)?",o:[["No",0],["It informs, a person decides",1],["It decides, or its output is usually followed",2]],
+  gap:"Decisions about people need a fair, explainable process and a human accountable for the result.",fix:"Do not let AI decide anything about a person. Record who made each decision and why."},
+ {id:"tell",p:"Openness",t:"Do you tell people when AI is used in your work with them?",o:[["Yes, clearly",0],["Sometimes",1],["No",2]],
+  gap:"People expect to know when a tool processes their information.",fix:"Add a plain-language AI notice to your privacy policy and forms."},
+ {id:"vendor",p:"Legal authority and consent; Safeguards",t:"Do you know how your AI vendors handle your inputs?",o:[["Yes: no training on our inputs, storage location and retention known",0],["We have not checked",2],["Inputs are used to train the vendor's models",2]],
+  gap:"Vendor terms decide where your data goes and whether it feeds future models.",fix:"Read each vendor's data terms, opt out of training, and record where data is stored."},
+ {id:"owner",p:"Accountability; Individual access",t:"Who is accountable for AI use and for answering people's questions about it?",o:[["A named person",0],["Shared, nobody specific",1],["Nobody",2]],
+  gap:"When no one is accountable, access requests and complaints stall.",fix:"Name one person, and give them a way to find what AI touched about any individual."},
+ {id:"train",p:"Safeguards",t:"Have staff and volunteers had guidance on using AI safely?",o:[["Yes, written and recent",0],["Informal tips",1],["No",2]],
+  gap:"Most leaks are honest mistakes by untrained people.",fix:"Run a 30-minute briefing and share a one-page do and don't sheet."}
+];
+var f=document.getElementById("f");
+f.innerHTML=Q.map(function(q,i){return '<fieldset><legend><small>Question '+(i+1)+' of '+Q.length+'</small>'+q.t+'</legend>'+q.o.map(function(o,j){return '<label class="opt"><input type="'+(q.multi?"checkbox":"radio")+'" name="'+q.id+'" value="'+j+'"><span>'+o[0]+'</span></label>';}).join("")+'</fieldset>';}).join("");
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+function read(){return Q.map(function(q){var v=[].slice.call(f.querySelectorAll('input[name="'+q.id+'"]:checked')).map(function(x){return +x.value;});return v;});}
+function level(v,q){ if(!v.length) return null; var m=Math.max.apply(null,v.map(function(j){return q.o[j][1];})); return m>=2?"High":m===1?"Medium":"Low";}
+function evalAns(ans){
+  var pts=0,max=0,gaps=[],unanswered=0;
+  Q.forEach(function(q,i){var v=ans[i];if(!v.length){unanswered++;return;}var m=Math.max.apply(null,v.map(function(j){return q.o[j][1];}));m=Math.min(m,2);pts+=m;max+=2;var L=level(v,q);if(L!=="Low")gaps.push({q:q,L:L});});
+  var pct=max?pts/max:0,L=pct>=.5?"High":pct>=.2?"Medium":"Low";
+  if(Q[1] && ans[1].indexOf(3)>-1) L="High";
+  return {pts:pts,max:max,L:L,gaps:gaps,unanswered:unanswered};
+}
+function policy(ans){
+  var d=ans[1],sens=d.indexOf(3)>-1,pers=d.indexOf(2)>-1||sens,dec=ans[4][0]>0;
+  var t="AI USE POLICY (DRAFT)\n\n1. Purpose\nThis policy explains how our people may use AI tools, so we can benefit from them while protecting the personal information we hold.\n\n";
+  t+="2. Approved tools\nOnly tools on our approved list may be used for work. The list names each tool, what it may be used for, and who approved it. Personal or free accounts may not be used for work. The list is reviewed every six months.\n\n";
+  t+="3. What may go into AI tools\n- Public information and general, non-confidential material: allowed.\n"+(pers?"- Names, contact details, or other personal information of clients, volunteers, or staff: not allowed unless the privacy lead has approved the tool and the purpose. Remove names first whenever possible.\n":"- Personal information of clients, volunteers, or staff: not allowed unless the privacy lead has approved the tool and the purpose.\n")+"- Sensitive personal information (health, financial, identity documents) and confidential legal material: never allowed.\n- Collect and use only what is necessary for the task, and only for the purpose it was collected.\n\n";
+  t+="4. Human review\nA named person must check AI output for accuracy before it is sent, published, or filed. The person who uses the output is responsible for it.\n\n";
+  t+="5. Decisions about people\nAI must not make, or be the deciding input to, a decision about an individual, such as hiring, eligibility, or discipline. A person decides, and records the reasons"+(dec?" (this replaces our current practice)":"")+".\n\n";
+  t+="6. Openness\nWe will tell people in our privacy policy and relevant forms when AI tools are used in work that involves their information.\n\n";
+  t+="7. Vendor checks\nBefore approving a tool, we confirm where data is stored, how long it is kept, and that our inputs are not used to train the vendor's models. We record the answers.\n\n";
+  t+="8. Accountability and access\n[Name, role] is accountable for this policy and for answering questions and access requests about AI use. They keep a record of which approved tools handle personal information.\n\n";
+  t+="9. Incidents and training\nIf personal information is entered into an unapproved tool, or an AI tool exposes it, report it to the accountable person the same day so we can assess it as a possible privacy breach. All staff and volunteers receive a short briefing on this policy before using AI tools and once a year after.";
+  return t;
+}
+function render(){
+  var ans=read(),r=evalAns(ans),out=document.getElementById("out");
+  if(r.unanswered===Q.length){out.innerHTML='<p class="note">Answer at least one question first.</p>';return;}
+  var h='<div class="score"><b class="'+r.L+'">'+r.L+' risk</b><span>Based on '+(Q.length-r.unanswered)+' of '+Q.length+' answers'+(r.unanswered?" ("+r.unanswered+" unanswered)":"")+'.</span></div>';
+  h+='<h2 style="margin-top:28px">Gaps behind the rating</h2>';
+  if(r.gaps.length){h+='<div class="gaps">'+r.gaps.map(function(g){return '<div class="gap"><h3>'+esc(g.q.t)+'</h3><span class="tag '+g.L+'">'+g.L+'</span><p><span class="pr">'+esc(g.q.p)+'</span><br>'+esc(g.q.gap)+' <strong>Fix:</strong> '+esc(g.q.fix)+'</p></div>';}).join("")+'</div>';}
+  else h+='<p style="color:var(--ink2);margin-top:8px">No gaps flagged from these answers.</p>';
+  h+='<h2 style="margin-top:32px">Draft policy</h2><div class="bar" style="margin-top:8px"><button id="copy" type="button">Copy policy</button><span id="cs" role="status"></span></div><pre class="policy" id="pol">'+esc(policy(ans))+'</pre>';
+  out.innerHTML=h;
+  document.getElementById("copy").addEventListener("click",function(){var el=document.getElementById("pol"),m=document.getElementById("cs");
+    function fb(){var rg=document.createRange();rg.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(rg);m.textContent="Selected. Press copy.";}
+    try{navigator.clipboard.writeText(el.textContent).then(function(){m.textContent="Copied.";},fb);}catch(e){fb();}});
+}
+document.getElementById("go").addEventListener("click",render);
+document.getElementById("reset").addEventListener("click",function(){f.reset();document.getElementById("out").innerHTML="";});
+</script>
+</body></html>

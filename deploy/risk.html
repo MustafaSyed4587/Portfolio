@@ -1,0 +1,364 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="theme-color" content="#0B0C0E"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Privacy and Security Risk Assessment</title><style id="sbcss">
+html body{margin:0;padding-top:56px!important}
+[hidden]{display:none!important}
+#sb{position:fixed;top:0;left:0;right:0;z-index:2147483000;height:48px;box-sizing:border-box;display:flex;align-items:center;gap:6px;padding:0 12px;background:#0B0C0E;border-bottom:1px solid #C9A55C;font:500 13px/1 "Jost","Helvetica Neue",Arial,sans-serif;color:#ECE8DF}
+#sb a{color:#ECE8DF;text-decoration:none;white-space:nowrap;padding:8px 10px;border:1px solid transparent;border-radius:2px;letter-spacing:.04em}
+#sb a:hover,#sb a:focus-visible{border-color:#C9A55C;color:#C9A55C;outline:none}
+#sb a.back{background:#C9A55C;color:#0B0C0E;font-weight:700;flex:none}
+#sb a.back:hover{background:#ECE8DF;color:#0B0C0E;border-color:#ECE8DF}
+#sb .sbt{display:flex;gap:2px;overflow-x:auto;min-width:0;scrollbar-width:none;flex:1}
+#sb .sbt::-webkit-scrollbar{display:none}
+#sb .sbt a[aria-current=page]{color:#C9A55C;border-bottom-color:#C9A55C;border-radius:0}
+</style></head><body><div id="sb"><a class="back" href="index.html#projects">&larr; Portfolio</a><div class="sbt" role="navigation" aria-label="Projects"><a href="ttc.html">TTC Delays</a><a href="pipeda.html">PIPEDA</a><a href="risk.html" aria-current="page">Risk Assessment</a><a href="seclog.html">Log Hunt</a><a href="subnet.html">Subnets</a><a href="aipolicy.html">AI Policy</a><a href="bizcase.html">Business Case</a><a href="cvss.html">CVSS Triage</a><a href="games.html">Game Dev</a></div></div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,500&family=Jost:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
+<style>
+:root{--bg:#0B0C0E;--surface:#14161A;--ink:#ECE8DF;--ink2:#A4A29B;--line:#2A2D33;--accent:#C9A55C;--hi:#E08A7A;--me:#E0B65A;--lo:#8FC9A0;--f-display:"Bodoni Moda","Didot",Georgia,serif;--f-body:"Jost","Helvetica Neue",Arial,sans-serif;--f-mono:"Courier Prime","Courier New",monospace;color-scheme:dark}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#F3EFE6;--surface:#FBF9F3;--ink:#14161A;--ink2:#55524B;--line:#D6D0C1;--accent:#8A6A24;--hi:#A63F2E;--me:#8A6A24;--lo:#2E6B45;color-scheme:light}}
+:root[data-theme="light"]{--bg:#F3EFE6;--surface:#FBF9F3;--ink:#14161A;--ink2:#55524B;--line:#D6D0C1;--accent:#8A6A24;--hi:#A63F2E;--me:#8A6A24;--lo:#2E6B45;color-scheme:light}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.65;padding-inline:20px;padding-block:0 64px;margin:0}
+.wrap{max-width:940px;margin-inline:auto;padding-top:28px}
+.eyebrow{font-family:var(--f-mono);letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;color:var(--accent);margin:0 0 10px}
+h1{font-family:var(--f-display);font-weight:500;font-size:clamp(2rem,5.5vw,3.2rem);line-height:1.1;margin:0 0 14px;text-wrap:balance}
+h2{font-family:var(--f-display);font-weight:500;font-size:1.7rem;margin:48px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--line);text-wrap:balance}
+.by{color:var(--ink2);font-family:var(--f-mono);font-size:.85rem;margin:0 0 26px}
+p,li{max-width:70ch}
+ul,ol{padding-left:1.3em}
+li{margin:6px 0}
+a{color:var(--accent)}
+strong{font-weight:600}
+.tw{overflow-x:auto;margin:18px 0 22px;border:1px solid var(--line);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:.92rem;line-height:1.45}
+th{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--accent);padding:12px 14px;border-bottom:1px solid var(--accent);white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.rt{display:inline-block;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 9px;border:1px solid currentColor;white-space:nowrap}
+.rt.hi{color:var(--hi)}.rt.me,.rt.mh{color:var(--me)}.rt.lo{color:var(--lo)}
+.note{border-left:2px solid var(--accent);background:var(--surface);padding:14px 18px;margin:18px 0}
+@media (max-width:520px){body{font-size:16px}h2{font-size:1.45rem}}
+</style>
+<div class="wrap"><p class="eyebrow">Project 02 &middot; Security and privacy</p><h1>Privacy and Security Risk Assessment: Community Food Drive Charity</h1><p class="by">By Mustafa Syed &middot; Aug 28, 2026 &middot; Hypothetical charity, real method</p>
+<h2>Summary</h2>
+<p>Northside Community Food Drive keeps sensitive household data in shared spreadsheets guarded only by passwords, so two risks score High and eight score Medium. Four fixes in the first week remove most of the exposure.</p>
+<p><strong>About this case study.</strong> Northside is a hypothetical charity invented for this exercise. Its size, tools, and habits are assumptions, listed in the last section. The method is real and applies to any small organization.</p>
+<p><strong>The scenario:</strong> a volunteer-run food drive with three organizers and about 60 volunteers, some under 18. It collects donations online and in person, and it keeps lists of donors, volunteers, and the households it serves.</p>
+<p><strong>The two High risks:</strong></p>
+<ol>
+<li><strong>Account takeover.</strong> One shared email account and a shared Drive with no second sign-in step. One phished password exposes everything.</li>
+<li><strong>Over-shared household list.</strong> The list of households served, with addresses and dietary or health notes, is open to anyone with the link and to volunteers who have since left.</li>
+</ol>
+<p><strong>Fix first:</strong> turn on two-step sign-in everywhere, turn off link sharing, remove people who left, and limit the household list to three named people.</p>
+<h2>What the charity holds</h2>
+<p>The Privacy Commissioner of Canada rates a breach by two things: how sensitive the information is and how likely it is to be misused (<a target="_blank" rel="noopener noreferrer" href="https://www.priv.gc.ca/en/privacy-topics/privacy-for-businesses/privacy-breaches-at-your-business/gd_pb_201810/">source</a>). The table ranks Northside's data on that basis. The household list is the most sensitive because it reveals who needs food aid and where they live.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Data or asset</th>
+<th>Where it lives</th>
+<th>Who can reach it</th>
+<th>Sensitivity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Household list: names, addresses, household size, dietary or health notes</td>
+<td>Shared Google Sheet</td>
+<td>6 people, plus anyone with the link</td>
+<td><span class="rt hi">High</span></td>
+</tr>
+<tr>
+<td>Shared email account</td>
+<td>One Gmail account</td>
+<td>5 people know the password</td>
+<td>High, because it resets every other account</td>
+</tr>
+<tr>
+<td>Donor records: name, address, gift amount</td>
+<td>Spreadsheet and payment processor</td>
+<td>3 organizers</td>
+<td>Medium to High, because it is financial</td>
+</tr>
+<tr>
+<td>Volunteer roster: name, phone, email, availability, some minors</td>
+<td>Spreadsheet and group chat</td>
+<td>About 60 people</td>
+<td>Medium, raised by minors</td>
+</tr>
+<tr>
+<td>Paper sign-in sheets</td>
+<td>Box kept after events</td>
+<td>Anyone at the event</td>
+<td><span class="rt me">Medium</span></td>
+</tr>
+<tr>
+<td>Website and donation page</td>
+<td>Hosted site, card data held by the payment processor</td>
+<td>2 admins</td>
+<td><span class="rt me">Medium</span></td>
+</tr>
+</tbody>
+</table></div>
+<h2>Risk register</h2>
+<p>Ten risks, ranked by score. Score is likelihood times impact, each rated 1 to 5. A score of 15 or more is High, 8 to 14 is Medium, and below 8 is Low. The ratings are my judgment for this scenario.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Risk</th>
+<th>Likelihood</th>
+<th>Impact</th>
+<th>Score</th>
+<th>Rating</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R1</td>
+<td>One phished or reused password opens the shared email and Drive</td>
+<td>4</td>
+<td>5</td>
+<td>20</td>
+<td><span class="rt hi">High</span></td>
+<td>Two-step sign-in on every account, a password manager, and named accounts instead of one shared login</td>
+</tr>
+<tr>
+<td>R2</td>
+<td>Household list is open to anyone with the link</td>
+<td>4</td>
+<td>5</td>
+<td>20</td>
+<td><span class="rt hi">High</span></td>
+<td>Turn off link sharing, share with three named people only</td>
+</tr>
+<tr>
+<td>R3</td>
+<td>Lost or stolen personal laptop or phone with synced files</td>
+<td>3</td>
+<td>4</td>
+<td>12</td>
+<td><span class="rt me">Medium</span></td>
+<td>Screen lock, disk encryption, remote wipe enabled</td>
+</tr>
+<tr>
+<td>R4</td>
+<td>Fake email from an "organizer" asks to change payment details</td>
+<td>4</td>
+<td>3</td>
+<td>12</td>
+<td><span class="rt me">Medium</span></td>
+<td>Confirm any payment change by phone before acting, 30-minute phishing briefing</td>
+</tr>
+<tr>
+<td>R5</td>
+<td>Volunteers who left still have access</td>
+<td>4</td>
+<td>3</td>
+<td>12</td>
+<td><span class="rt me">Medium</span></td>
+<td>Exit checklist and a quarterly access review</td>
+</tr>
+<tr>
+<td>R6</td>
+<td>Minors' details sit in group chats and sign-in sheets with no guardian consent</td>
+<td>3</td>
+<td>4</td>
+<td>12</td>
+<td><span class="rt me">Medium</span></td>
+<td>Collect the minimum, add a guardian consent line, keep personal details out of chats</td>
+</tr>
+<tr>
+<td>R7</td>
+<td>Old volunteer and household lists are kept forever</td>
+<td>3</td>
+<td>3</td>
+<td>9</td>
+<td><span class="rt me">Medium</span></td>
+<td>Written retention schedule and an annual purge</td>
+</tr>
+<tr>
+<td>R8</td>
+<td>No plan or log for handling a breach</td>
+<td>3</td>
+<td>3</td>
+<td>9</td>
+<td><span class="rt me">Medium</span></td>
+<td>One-page response plan and a breach log template</td>
+</tr>
+<tr>
+<td>R9</td>
+<td>Records lost to ransomware or accidental deletion, with no backup</td>
+<td>2</td>
+<td>4</td>
+<td>8</td>
+<td><span class="rt me">Medium</span></td>
+<td>Weekly export to a second, access-controlled location</td>
+</tr>
+<tr>
+<td>R10</td>
+<td>Website or donation page compromised through outdated software</td>
+<td>2</td>
+<td>4</td>
+<td>8</td>
+<td><span class="rt me">Medium</span></td>
+<td>Update software, two-step sign-in for admins, let the payment processor hold card data</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Privacy law fit</h2>
+<p>Canada's federal privacy law, PIPEDA, applies to organizations that carry out commercial activity. The Privacy Commissioner says ordinary charity work such as fundraising, membership fees, and newsletters is not commercial, but selling, bartering, or leasing donor or membership lists is (<a target="_blank" rel="noopener noreferrer" href="https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/r_o_p/02_05_d_19/">source</a>). Non-profit status alone does not exempt an organization.</p>
+<p>Northside does not sell its lists, so PIPEDA likely does not bind it directly. I still use PIPEDA's ten principles (<a target="_blank" rel="noopener noreferrer" href="https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/pipeda_brief/">source</a>) as the benchmark, because donors, funders, and the households served expect that standard. Result: <strong>4 principles partly met, 6 not met.</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>What it asks</th>
+<th>Northside today</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Accountability</td>
+<td>Someone is responsible for personal information</td>
+<td>No named privacy lead</td>
+<td><span class="rt hi">Not met</span></td>
+</tr>
+<tr>
+<td>2. Identifying purposes</td>
+<td>State why each item is collected</td>
+<td>Volunteer form gives a reason, household intake does not</td>
+<td><span class="rt me">Partly met</span></td>
+</tr>
+<tr>
+<td>3. Consent</td>
+<td>Get permission to collect, use, and share</td>
+<td>Volunteers agree by signing up, households and guardians are not asked</td>
+<td><span class="rt me">Partly met</span></td>
+</tr>
+<tr>
+<td>4. Limiting collection</td>
+<td>Collect only what is needed</td>
+<td>Health notes are collected "just in case"</td>
+<td><span class="rt me">Partly met</span></td>
+</tr>
+<tr>
+<td>5. Limiting use, disclosure, retention</td>
+<td>Restrict use and keep data only as long as needed</td>
+<td>Lists kept forever and pasted into group chats</td>
+<td><span class="rt hi">Not met</span></td>
+</tr>
+<tr>
+<td>6. Accuracy</td>
+<td>Keep information correct and current</td>
+<td>Lists updated when someone remembers</td>
+<td><span class="rt me">Partly met</span></td>
+</tr>
+<tr>
+<td>7. Safeguards</td>
+<td>Protect against unauthorized access</td>
+<td>Passwords only, link sharing on</td>
+<td><span class="rt hi">Not met</span></td>
+</tr>
+<tr>
+<td>8. Openness</td>
+<td>Explain privacy practices</td>
+<td>No privacy notice on forms or website</td>
+<td><span class="rt hi">Not met</span></td>
+</tr>
+<tr>
+<td>9. Individual access</td>
+<td>People can see their own information</td>
+<td>No way to make a request</td>
+<td><span class="rt hi">Not met</span></td>
+</tr>
+<tr>
+<td>10. Challenging compliance</td>
+<td>People can raise a complaint</td>
+<td>No privacy contact listed</td>
+<td><span class="rt hi">Not met</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Breach rules.</strong> Under the Commissioner's guidance, an organization covered by PIPEDA must report to the Commissioner and notify the individuals when a breach creates a "real risk of significant harm." It must also keep a record of every breach, serious or not, for two years (<a target="_blank" rel="noopener noreferrer" href="https://www.priv.gc.ca/en/privacy-topics/privacy-for-businesses/privacy-breaches-at-your-business/gd_pb_201810/">source</a>). Northside may not be legally required to do this, but a household-list breach would clearly meet that harm threshold, which is why risk R8 matters.</p>
+<h2>30-day action plan</h2>
+<p>The plan puts the biggest risk reductions first. Week 1 takes about four hours and covers both High risks. Effort figures are my estimates for a three-person team.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Action</th>
+<th>Effort</th>
+<th>Risks addressed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Turn on two-step sign-in for email, Drive, website admin, and the payment processor</td>
+<td>1.5 hours</td>
+<td>R1, R10</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Turn off link sharing, share the household list with three named people, remove anyone who left</td>
+<td>2 hours</td>
+<td>R2, R5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Set up a password manager and replace the shared email login with named accounts</td>
+<td>3 hours</td>
+<td>R1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Enable screen lock, disk encryption, and remote wipe on every device that syncs files</td>
+<td>2 hours</td>
+<td>R3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Write a retention schedule, delete lists past it, and remove health notes that are not needed</td>
+<td>3 hours</td>
+<td>R7, R6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Add a guardian consent line to volunteer forms and a short privacy notice to forms and the website</td>
+<td>2 hours</td>
+<td>R6</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Set up a weekly export of key lists to a second location</td>
+<td>1 hour</td>
+<td>R9</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Write a one-page breach response plan and log template, and run a 30-minute phishing briefing with a call-back rule for payment changes</td>
+<td>3 hours</td>
+<td>R4, R8</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Success check at day 30:</strong> every account has two-step sign-in, the household list has three named viewers, and the breach log template exists. Re-score the register then. With the fixes in place, R1 and R2 should drop from 20 to about 6 (likelihood 2, impact 3, or lower).</p>
+<h2>Method, assumptions, and sources</h2>
+<p><strong>Method.</strong> I listed the data the charity holds, named the ways each item could be exposed, scored each risk on likelihood and impact, checked practices against PIPEDA's ten principles, and ordered fixes by risk removed per hour of effort.</p>
+<p><strong>Assumptions, all invented for this case study:</strong></p>
+<ul>
+<li>Three organizers, about 60 volunteers, some under 18.</li>
+<li>Household, donor, and volunteer lists are kept in shared spreadsheets.</li>
+<li>One shared email account, with the password known by five people.</li>
+<li>Donations go through a third-party payment processor, so the charity never holds card numbers.</li>
+</ul>
+<p><strong>Limits.</strong> This is a desk assessment of a fictional organization, not an audit, and not legal advice. A real assessment would interview people, inspect settings, and confirm which laws apply.</p>
+<p><strong>Sources, all Office of the Privacy Commissioner of Canada:</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener noreferrer" href="https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/pipeda_brief/">PIPEDA requirements in brief</a></li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://www.priv.gc.ca/en/privacy-topics/privacy-for-businesses/privacy-breaches-at-your-business/gd_pb_201810/">Breach of security safeguards: reporting and record-keeping</a></li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/r_o_p/02_05_d_19/">How PIPEDA applies to charitable and non-profit organizations</a></li>
+</ul></div></body></html>

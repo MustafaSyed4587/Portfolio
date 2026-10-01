@@ -1,0 +1,137 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="theme-color" content="#0B0C0E"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Subnet Calculator and Trainer</title><style id="sbcss">
+html body{margin:0;padding-top:56px!important}
+[hidden]{display:none!important}
+#sb{position:fixed;top:0;left:0;right:0;z-index:2147483000;height:48px;box-sizing:border-box;display:flex;align-items:center;gap:6px;padding:0 12px;background:#0B0C0E;border-bottom:1px solid #C9A55C;font:500 13px/1 "Jost","Helvetica Neue",Arial,sans-serif;color:#ECE8DF}
+#sb a{color:#ECE8DF;text-decoration:none;white-space:nowrap;padding:8px 10px;border:1px solid transparent;border-radius:2px;letter-spacing:.04em}
+#sb a:hover,#sb a:focus-visible{border-color:#C9A55C;color:#C9A55C;outline:none}
+#sb a.back{background:#C9A55C;color:#0B0C0E;font-weight:700;flex:none}
+#sb a.back:hover{background:#ECE8DF;color:#0B0C0E;border-color:#ECE8DF}
+#sb .sbt{display:flex;gap:2px;overflow-x:auto;min-width:0;scrollbar-width:none;flex:1}
+#sb .sbt::-webkit-scrollbar{display:none}
+#sb .sbt a[aria-current=page]{color:#C9A55C;border-bottom-color:#C9A55C;border-radius:0}
+</style></head><body><div id="sb"><a class="back" href="index.html#projects">&larr; Portfolio</a><div class="sbt" role="navigation" aria-label="Projects"><a href="ttc.html">TTC Delays</a><a href="pipeda.html">PIPEDA</a><a href="risk.html">Risk Assessment</a><a href="seclog.html">Log Hunt</a><a href="subnet.html" aria-current="page">Subnets</a><a href="aipolicy.html">AI Policy</a><a href="bizcase.html">Business Case</a><a href="cvss.html">CVSS Triage</a><a href="games.html">Game Dev</a></div></div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,500&family=Jost:wght@400;500&family=Courier+Prime:wght@400;700&display=swap">
+<style>
+:root{--bg:#0B0C0E;--surface:#14161A;--ink:#ECE8DF;--ink2:#A4A29B;--line:#2A2D33;--accent:#C9A55C;--field:#0F1114;--ok:#8FC9A0;--bad:#E08A7A;--f-display:"Bodoni Moda","Didot",Georgia,serif;--f-body:"Jost","Helvetica Neue",Arial,sans-serif;--f-mono:"Courier Prime","Courier New",monospace;color-scheme:dark}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#F3EFE6;--surface:#FBF9F3;--ink:#14161A;--ink2:#55524B;--line:#D6D0C1;--accent:#8A6A24;--field:#FFFFFF;--ok:#2E6B45;--bad:#A63F2E;color-scheme:light}}
+:root[data-theme="light"]{--bg:#F3EFE6;--surface:#FBF9F3;--ink:#14161A;--ink2:#55524B;--line:#D6D0C1;--accent:#8A6A24;--field:#FFFFFF;--ok:#2E6B45;--bad:#A63F2E;color-scheme:light}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;padding-inline:20px;padding-block:0 56px}
+.wrap{max-width:900px;margin-inline:auto}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;margin:0;line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);margin-top:10px}h2{font-size:1.7rem}
+.label{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+header{padding-block:44px 22px;border-bottom:1px solid var(--line);display:grid;gap:12px}header p.sub{color:var(--ink2);max-width:64ch}
+section{padding-block:34px 4px}
+label.lab{display:block;font-family:var(--f-mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+input[type=text]{background:var(--field);color:var(--ink);border:1px solid var(--line);padding:12px 14px;font-family:var(--f-mono);font-size:1.05rem;min-width:0;width:100%;box-sizing:border-box}
+input:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.inrow{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}.inrow>div{flex:1 1 260px}
+button{font-family:var(--f-mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;padding:13px 18px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer}
+button.solid{background:var(--accent);color:var(--bg);font-weight:700}button:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.err{color:var(--bad);font-family:var(--f-mono);font-size:.85rem;margin-top:8px;min-height:1.2em}
+dl.res{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;margin:18px 0 0;border-top:2px solid var(--accent)}
+dl.res div{display:flex;justify-content:space-between;gap:12px;padding-block:10px;border-bottom:1px solid var(--line)}
+dl.res dt{color:var(--ink2);font-size:.92rem}dl.res dd{margin:0;font-family:var(--f-mono);font-size:.98rem;text-align:right;overflow-wrap:anywhere}
+.bin{margin-top:22px}.bin h3{font-size:1.1rem;margin-bottom:8px}
+.bits{font-family:var(--f-mono);font-size:1.02rem;letter-spacing:.04em;overflow-x:auto;white-space:nowrap;padding:12px 14px;background:var(--surface);border:1px solid var(--line)}
+.bits .n{color:var(--accent);text-decoration:underline;text-underline-offset:4px}.bits .h{color:var(--ink2)}
+.bkey{font-family:var(--f-mono);font-size:.76rem;color:var(--ink2);margin-top:6px}
+.quiz{background:var(--surface);border:1px solid var(--line);padding:24px;margin-top:14px}
+.q{font-size:1.15rem;margin-bottom:14px}
+.fb{margin-top:12px;min-height:1.4em}.fb.ok{color:var(--ok)}.fb.bad{color:var(--bad)}
+.why{margin-top:10px;color:var(--ink2);font-size:.93rem;border-left:2px solid var(--accent);padding-left:12px}
+.tally{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--f-mono);font-size:.82rem;color:var(--ink2);margin-top:16px}
+footer{margin-top:36px;font-family:var(--f-mono);font-size:.76rem;color:var(--ink2)}
+@media(max-width:560px){dl.res{grid-template-columns:minmax(0,1fr)}}
+</style>
+<div class="wrap">
+<header>
+  <p class="label">IT fundamentals · Networking · IPv4</p>
+  <h1>Subnet Calculator and Trainer</h1>
+  <p class="sub">Type an IPv4 address with a prefix length to see its network, broadcast, host range, and binary breakdown. Then practice the same maths with randomized questions and step-by-step explanations.</p>
+</header>
+
+<section>
+  <h2>Calculator</h2>
+  <form id="f" class="inrow" style="margin-top:14px">
+    <div><label class="lab" for="cidr">Address and prefix</label><input type="text" id="cidr" value="192.168.10.77/26" autocomplete="off" spellcheck="false"></div>
+    <button class="solid" type="submit">Calculate</button>
+  </form>
+  <p class="err" id="err" role="alert"></p>
+  <dl class="res" id="res"></dl>
+  <div class="bin"><h3>Binary view</h3><div class="bits" id="bits"></div><p class="bkey"><span style="color:var(--accent);text-decoration:underline">Underlined</span> = network bits, plain grey = host bits.</p></div>
+</section>
+
+<section>
+  <h2>Practice</h2>
+  <div class="quiz">
+    <p class="q" id="q"></p>
+    <form id="qf" class="inrow"><div><label class="lab" for="ans">Your answer</label><input type="text" id="ans" autocomplete="off" spellcheck="false"></div><button class="solid" type="submit" id="chk">Check</button><button type="button" id="next">New question</button></form>
+    <p class="fb" id="fb" role="status"></p><p class="why" id="why" hidden></p>
+    <div class="tally"><span id="t1">Correct: 0</span><span id="t2">Attempted: 0</span><span id="t3">Streak: 0</span></div>
+  </div>
+</section>
+<footer>Runs entirely in your browser. Usable host counts follow the usual rule (2^host bits minus 2), with /31 and /32 handled as special cases.</footer>
+</div>
+<script>
+function toInt(a){return ((a[0]<<24)>>>0)+(a[1]<<16)+(a[2]<<8)+a[3];}
+function toIP(n){return [(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255].join(".");}
+function parse(s){
+  var m=/^\s*(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})\s*\/\s*(\d{1,2})\s*$/.exec(s);
+  if(!m) return {err:"Use the form 192.168.10.77/26."};
+  var o=m.slice(1,5).map(Number),p=Number(m[5]);
+  if(o.some(function(x){return x>255;})) return {err:"Each part of the address must be 0 to 255."};
+  if(p>32) return {err:"The prefix must be 0 to 32."};
+  return {ip:toInt(o),p:p};
+}
+function calc(ip,p){
+  var mask=p===0?0:(0xFFFFFFFF<<(32-p))>>>0, wild=(~mask)>>>0, net=(ip&mask)>>>0, bc=(net|wild)>>>0, size=Math.pow(2,32-p);
+  var usable=p===32?1:p===31?2:size-2, first=(p>=31)?net:net+1, last=(p===32)?net:(p===31)?bc:bc-1;
+  return {mask:mask,wild:wild,net:net,bc:bc,size:size,usable:usable,first:first,last:last};
+}
+function kind(ip){var a=ip>>>24;
+  var t=(a===10)||(a===172&&((ip>>>16)&255)>=16&&((ip>>>16)&255)<=31)||(a===192&&((ip>>>16)&255)===168)?"Private (RFC 1918)":a===127?"Loopback":(a===169&&((ip>>>16)&255)===254)?"Link-local":"Public";
+  var c=a<128?"A":a<192?"B":a<224?"C":a<240?"D (multicast)":"E (reserved)";return {t:t,c:c};}
+function bitsHtml(ip,p){var b=ip.toString(2).padStart(32,"0"),h="";
+  for(var i=0;i<32;i++){ if(i%8===0&&i) h+=".";h+='<span class="'+(i<p?"n":"h")+'">'+b[i]+"</span>";}return h;}
+function show(s){
+  var r=parse(s),err=document.getElementById("err");
+  if(r.err){err.textContent=r.err;return;} err.textContent="";
+  var c=calc(r.ip,r.p),k=kind(r.ip);
+  var rows=[["Network address",toIP(c.net)],["Broadcast address",toIP(c.bc)],["Subnet mask",toIP(c.mask)],["Wildcard mask",toIP(c.wild)],["First usable host",toIP(c.first)],["Last usable host",toIP(c.last)],["Usable hosts",c.usable.toLocaleString("en-US")],["Total addresses",c.size.toLocaleString("en-US")],["Address type",k.t],["Classful range","Class "+k.c]];
+  document.getElementById("res").innerHTML=rows.map(function(x){return "<div><dt>"+x[0]+"</dt><dd>"+x[1]+"</dd></div>";}).join("");
+  document.getElementById("bits").innerHTML=bitsHtml(r.ip,r.p);
+}
+document.getElementById("f").addEventListener("submit",function(e){e.preventDefault();show(document.getElementById("cidr").value);});
+show("192.168.10.77/26");
+/* trainer */
+var cur=null,ok=0,tot=0,streak=0,answered=false;
+function rnd(a,b){return a+Math.floor(Math.random()*(b-a+1));}
+function randIP(){var f=[10,172,192,198,100][rnd(0,4)];return toInt([f,rnd(0,255),rnd(0,255),rnd(1,254)]);}
+function mkQ(){
+  var t=rnd(0,4),p,ip,c;
+  if(t===0){p=rnd(16,30);c=calc(0,p);return {q:"How many usable hosts are in a /"+p+" subnet?",a:String(c.usable),why:"A /"+p+" leaves "+(32-p)+" host bits. 2^"+(32-p)+" = "+c.size.toLocaleString("en-US")+" addresses, minus 2 (network and broadcast) = "+c.usable.toLocaleString("en-US")+"."};}
+  if(t===1){p=rnd(20,29);ip=randIP();c=calc(ip,p);var bs=Math.pow(2,(32-p)%8===0?8:(32-p)%8), oct=Math.floor((p-1)/8)+1;
+    return {q:"What is the network address of "+toIP(ip)+"/"+p+"?",a:toIP(c.net),why:"The mask is "+toIP(c.mask)+". Mask bits and address bits are ANDed. Every address in this subnet shares the same network bits, so zeroing the host bits gives "+toIP(c.net)+"."};}
+  if(t===2){p=rnd(20,29);ip=randIP();c=calc(ip,p);
+    return {q:"What is the broadcast address of "+toIP(ip)+"/"+p+"?",a:toIP(c.bc),why:"Start from the network address "+toIP(c.net)+" and set every host bit to 1. That is the last address in the block: "+toIP(c.bc)+"."};}
+  if(t===3){p=rnd(25,30);return {q:"If you split a /24 network into /"+p+" subnets, how many subnets do you get?",a:String(Math.pow(2,p-24)),why:"You borrow "+(p-24)+" bits from the host portion. 2^"+(p-24)+" = "+Math.pow(2,p-24)+" subnets."};}
+  var need=[10,25,50,100,200,500][rnd(0,5)];p=32;while(p>0&&calc(0,p).usable<need)p--;
+  return {q:"What is the longest (smallest) prefix length, written as a number, that gives at least "+need+" usable hosts?",a:String(p),why:"You need at least "+need+" usable hosts. A /"+p+" gives "+calc(0,p).usable.toLocaleString("en-US")+"; a /"+(p+1)+" gives only "+calc(0,p+1).usable.toLocaleString("en-US")+", which is too few."};
+}
+function norm(s){return s.trim().replace(/^\//,"").replace(/,/g,"");}
+function newQ(){cur=mkQ();answered=false;document.getElementById("q").textContent=cur.q;document.getElementById("ans").value="";document.getElementById("fb").textContent="";document.getElementById("fb").className="fb";var w=document.getElementById("why");w.hidden=true;document.getElementById("ans").focus();}
+function tally(){document.getElementById("t1").textContent="Correct: "+ok;document.getElementById("t2").textContent="Attempted: "+tot;document.getElementById("t3").textContent="Streak: "+streak;}
+document.getElementById("qf").addEventListener("submit",function(e){e.preventDefault();
+  if(answered){newQ();return;}
+  var v=norm(document.getElementById("ans").value);if(!v)return;answered=true;tot++;
+  var fb=document.getElementById("fb"),w=document.getElementById("why");
+  if(v===cur.a){ok++;streak++;fb.textContent="Correct. ✓";fb.className="fb ok";}
+  else{streak=0;fb.textContent="Not quite. The answer is "+cur.a+".";fb.className="fb bad";}
+  w.textContent=cur.why;w.hidden=false;tally();});
+document.getElementById("next").addEventListener("click",newQ);
+newQ();
+</script>
+</body></html>

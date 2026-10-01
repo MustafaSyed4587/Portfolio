@@ -1,0 +1,240 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="theme-color" content="#0B0C0E"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>CHIP-8 Emulator</title><style id="sbcss">
+html body{margin:0;padding-top:56px!important}
+[hidden]{display:none!important}
+#sb{position:fixed;top:0;left:0;right:0;z-index:2147483000;height:48px;box-sizing:border-box;display:flex;align-items:center;gap:6px;padding:0 12px;background:#0B0C0E;border-bottom:1px solid #C9A55C;font:500 13px/1 "Jost","Helvetica Neue",Arial,sans-serif;color:#ECE8DF}
+#sb a{color:#ECE8DF;text-decoration:none;white-space:nowrap;padding:8px 10px;border:1px solid transparent;border-radius:2px;letter-spacing:.04em}
+#sb a:hover,#sb a:focus-visible{border-color:#C9A55C;color:#C9A55C;outline:none}
+#sb a.back{background:#C9A55C;color:#0B0C0E;font-weight:700;flex:none}
+#sb a.back:hover{background:#ECE8DF;color:#0B0C0E;border-color:#ECE8DF}
+#sb .sbt{display:flex;gap:2px;overflow-x:auto;min-width:0;scrollbar-width:none;flex:1}
+#sb .sbt::-webkit-scrollbar{display:none}
+#sb .sbt a[aria-current=page]{color:#C9A55C;border-bottom-color:#C9A55C;border-radius:0}
+</style></head><body><div id="sb"><a class="back" href="index.html#projects">&larr; Portfolio</a><div class="sbt" role="navigation" aria-label="Projects"><a href="games.html">Game Dev</a><a href="chip8.html" aria-current="page">CHIP-8</a><a href="siege.html">Undead Siege</a><a href="siege2.html">Undead Siege 2</a></div></div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,500&family=Jost:wght@400;500&family=Courier+Prime:wght@400;700&display=swap">
+<style>
+:root{--bg:#0B0C0E;--surface:#14161A;--ink:#ECE8DF;--ink2:#A4A29B;--line:#2A2D33;--accent:#C9A55C;--field:#0F1114;--screen:#07080A;--pix:#E2C27A;--f-display:"Bodoni Moda","Didot",Georgia,serif;--f-body:"Jost","Helvetica Neue",Arial,sans-serif;--f-mono:"Courier Prime","Courier New",monospace;color-scheme:dark}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#F3EFE6;--surface:#FBF9F3;--ink:#14161A;--ink2:#55524B;--line:#D6D0C1;--accent:#8A6A24;--field:#FFFFFF;--screen:#14161A;--pix:#E2C27A;color-scheme:light}}
+:root[data-theme="light"]{--bg:#F3EFE6;--surface:#FBF9F3;--ink:#14161A;--ink2:#55524B;--line:#D6D0C1;--accent:#8A6A24;--field:#FFFFFF;--screen:#14161A;--pix:#E2C27A;color-scheme:light}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;padding-inline:20px;padding-block:0 56px}
+.wrap{max-width:1040px;margin-inline:auto}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;margin:0;line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);margin-top:10px}h2{font-size:1.5rem}h3{font-size:1.1rem}
+.label{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+header{padding-block:40px 20px;border-bottom:1px solid var(--line);display:grid;gap:12px}header p.sub{color:var(--ink2);max-width:68ch}
+.note{border-left:2px solid var(--accent);padding:4px 0 4px 14px;font-size:.92rem;color:var(--ink2);margin-block:18px;max-width:76ch}
+.grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:28px;align-items:start}
+.screen{background:var(--screen);border:1px solid var(--line);border-top:2px solid var(--accent);padding:10px}
+canvas{display:block;width:100%;height:auto;aspect-ratio:2/1;image-rendering:pixelated;background:var(--screen)}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+button,select{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;padding:10px 14px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer}
+select{background:var(--field);text-transform:none;letter-spacing:.02em;font-size:.86rem;color:var(--ink);border-color:var(--line)}
+button.solid{background:var(--accent);color:var(--bg);font-weight:700}
+button:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:12px;font-size:.9rem;color:var(--ink2)}
+.row label{display:flex;align-items:center;gap:8px}input[type=range]{accent-color:var(--accent);width:150px}
+.file{display:inline-block}.file input{position:absolute;opacity:0;width:1px;height:1px}
+.pad{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:14px;max-width:320px;touch-action:none}
+.pad button{padding:14px 0;font-size:1rem;letter-spacing:0;user-select:none;-webkit-user-select:none;touch-action:none}
+.pad button.on{background:var(--accent);color:var(--bg)}
+.panel{background:var(--surface);border:1px solid var(--line);padding:16px}
+.panel+.panel{margin-top:16px}
+.regs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px 10px;font-family:var(--f-mono);font-size:.84rem;margin-top:10px}
+.regs span b{color:var(--accent);font-weight:400}
+.sp{display:flex;flex-wrap:wrap;gap:4px 18px;font-family:var(--f-mono);font-size:.84rem;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.sp b{color:var(--accent);font-weight:400}
+ol.dis{list-style:none;margin:10px 0 0;padding:0;font-family:var(--f-mono);font-size:.82rem;display:grid;gap:2px}
+ol.dis li{color:var(--ink2)}ol.dis li:last-child{color:var(--ink)}ol.dis .a{color:var(--accent)}
+.how{margin-top:34px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.how div{border-top:1px solid var(--accent);padding-top:12px}.how p{color:var(--ink2);font-size:.94rem}
+footer{margin-top:30px;font-family:var(--f-mono);font-size:.76rem;color:var(--ink2)}
+.ctl{font-family:var(--f-mono);font-size:.78rem;color:var(--ink2);margin-top:10px}
+@media(max-width:820px){.grid{grid-template-columns:minmax(0,1fr)}.how{grid-template-columns:minmax(0,1fr)}}
+</style>
+<div class="wrap">
+<header>
+  <p class="label">Systems programming · Emulation · JavaScript</p>
+  <h1>CHIP-8 Emulator</h1>
+  <p class="sub">A working emulator of the 1970s CHIP-8 virtual computer, built from scratch in JavaScript. It runs three games and demos I wrote myself, and lets you watch the processor work: live registers and a running disassembly.</p>
+</header>
+<p class="note">CHIP-8 is the classic first emulator project: 35 instructions, a 64 by 32 screen, and 4 KB of memory. You can load your own CHIP-8 programs (.ch8 files). Only load programs you own or that are free homebrew.</p>
+
+<div class="grid">
+  <div>
+    <div class="screen"><canvas id="cv" width="64" height="32" aria-label="CHIP-8 display"></canvas></div>
+    <div class="bar">
+      <select id="rom" aria-label="Program"><option value="rally">Rally (game)</option><option value="keys">Key tester</option><option value="logo">MS logo</option></select>
+      <button class="solid" id="run" type="button">Pause</button><button id="step" type="button">Step</button><button id="reset" type="button">Reset</button>
+      <label class="file"><button type="button" id="loadbtn">Load .ch8</button><input type="file" id="file" accept=".ch8,.bin,.rom"></label>
+    </div>
+    <div class="row">
+      <label>Speed <input type="range" id="spd" min="100" max="2400" step="100" value="900"><span id="spdv">900 Hz</span></label>
+      <label>Quirks <select id="quirk"><option value="modern">Modern</option><option value="vip">Original COSMAC VIP</option></select></label>
+      <label><input type="checkbox" id="snd" checked> Sound</label>
+    </div>
+    <p class="ctl" id="ctl">Rally: press <b>1</b> to move up and <b>Q</b> to move down (CHIP-8 keys 1 and 4). Return the ball to score. Missing ends the rally.</p>
+    <div class="pad" id="pad" aria-label="CHIP-8 keypad"></div>
+  </div>
+  <div>
+    <div class="panel"><h3>Processor</h3>
+      <div class="regs" id="regs"></div>
+      <div class="sp" id="sp"></div>
+    </div>
+    <div class="panel"><h3>Last instructions</h3><ol class="dis" id="dis"></ol></div>
+  </div>
+</div>
+
+<section class="how">
+  <div><h3>The processor</h3><p>Sixteen 8-bit registers, a 16-bit index register, a stack, and two 60 Hz timers. Each step fetches two bytes, decodes the opcode, and runs it.</p></div>
+  <div><h3>The screen</h3><p>Sprites are drawn with XOR, so drawing the same sprite twice erases it. A pixel turned off sets a collision flag. Rally uses that flag to detect a hit on the paddle.</p></div>
+  <div><h3>My own programs</h3><p>I wrote a small assembler in Python and hand-coded each program, so every byte is mine. Nothing here comes from a commercial game.</p></div>
+</section>
+<footer>Keyboard layout: 1 2 3 4 / Q W E R / A S D F / Z X C V map to the CHIP-8 keypad 1 2 3 C / 4 5 6 D / 7 8 9 E / A 0 B F. Quirk settings change how a few instructions behave, because historical interpreters disagreed.</footer>
+</div>
+<script>
+var ROMS={"rally": "AOBlAGQMYBRhCmICYwJoAmkcagGiothIoqrQEotAZgHmoXv+ZgTmoXsCO/4SMGsAOxoSNmsYjACMJI0QjTQ9ABJEYwI9HhJKY/48PhJQYv48ABJWEpSiqtASoqLYSISw2EiAwIHQoqrQEofwZgiGBYfyNwESiGIC9SnZpTUJdQH1KdmlZgP2GGYB9hX2BzYAEowSHGYe9hj2FfcHNwASmhIAwMDAwMDAwMDAwA==", "keys": "8AoA4PApYRxiDdElYwjzGOChEhASAA==", "logo": "AOBgFmEKohLQGGAiohrQGBIQgsaqkoKCgoJ8gIB8AgKCfA=="};
+/* ---------- core ---------- */
+function Chip8(){this.reset();}
+Chip8.prototype.reset=function(){
+  this.mem=new Uint8Array(4096);this.V=new Uint8Array(16);this.I=0;this.pc=0x200;this.sp=0;this.stack=new Uint16Array(16);
+  this.dt=0;this.st=0;this.gfx=new Uint8Array(64*32);this.keys=new Uint8Array(16);this.dirty=true;this.waitKey=-1;this.last=[];this.halted=false;
+  this.q={shiftVy:false,memInc:false,vfReset:false};
+  var F=[0xF0,0x90,0x90,0x90,0xF0,0x20,0x60,0x20,0x20,0x70,0xF0,0x10,0xF0,0x80,0xF0,0xF0,0x10,0xF0,0x10,0xF0,0x90,0x90,0xF0,0x10,0x10,0xF0,0x80,0xF0,0x10,0xF0,0xF0,0x80,0xF0,0x90,0xF0,0xF0,0x10,0x20,0x40,0x40,0xF0,0x90,0xF0,0x90,0xF0,0xF0,0x90,0xF0,0x10,0xF0,0x60,0x90,0xF0,0x90,0x90,0xE0,0x90,0xE0,0x90,0xE0,0xF0,0x80,0x80,0x80,0xF0,0xE0,0x90,0x90,0x90,0xE0,0xF0,0x80,0xF0,0x80,0xF0,0xF0,0x80,0xF0,0x80,0x80];
+  for(var i=0;i<F.length;i++)this.mem[0x50+i]=F[i];
+};
+Chip8.prototype.load=function(b){this.reset();for(var i=0;i<b.length&&0x200+i<4096;i++)this.mem[0x200+i]=b[i];};
+Chip8.prototype.tick=function(){if(this.dt>0)this.dt--;if(this.st>0)this.st--;};
+Chip8.prototype.step=function(){
+  if(this.halted)return;
+  var pc=this.pc,op=(this.mem[pc]<<8)|this.mem[(pc+1)&4095];
+  this.last.push([pc,op]);if(this.last.length>10)this.last.shift();
+  this.pc=(pc+2)&4095;
+  var V=this.V,x=(op>>8)&15,y=(op>>4)&15,n=op&15,nn=op&255,nnn=op&0xFFF,q=this.q;
+  switch(op>>12){
+  case 0: if(op===0x00E0){this.gfx.fill(0);this.dirty=true;}else if(op===0x00EE){if(this.sp===0){this.halted=true;return;}this.pc=this.stack[--this.sp];}break;
+  case 1: this.pc=nnn;break;
+  case 2: if(this.sp>=16){this.halted=true;return;}this.stack[this.sp++]=this.pc;this.pc=nnn;break;
+  case 3: if(V[x]===nn)this.pc=(this.pc+2)&4095;break;
+  case 4: if(V[x]!==nn)this.pc=(this.pc+2)&4095;break;
+  case 5: if(n===0&&V[x]===V[y])this.pc=(this.pc+2)&4095;break;
+  case 6: V[x]=nn;break;
+  case 7: V[x]=(V[x]+nn)&255;break;
+  case 8: {
+    var a=V[x],b=V[y],r,f;
+    switch(n){
+      case 0:V[x]=b;break;
+      case 1:V[x]=a|b;if(q.vfReset)V[15]=0;break;
+      case 2:V[x]=a&b;if(q.vfReset)V[15]=0;break;
+      case 3:V[x]=a^b;if(q.vfReset)V[15]=0;break;
+      case 4:r=a+b;V[x]=r&255;V[15]=r>255?1:0;break;
+      case 5:V[x]=(a-b)&255;V[15]=a>=b?1:0;break;
+      case 6:{var s=q.shiftVy?b:a;f=s&1;V[x]=s>>1;V[15]=f;break;}
+      case 7:V[x]=(b-a)&255;V[15]=b>=a?1:0;break;
+      case 14:{var s2=q.shiftVy?b:a;f=(s2>>7)&1;V[x]=(s2<<1)&255;V[15]=f;break;}
+      default:break;
+    }break;}
+  case 9: if(n===0&&V[x]!==V[y])this.pc=(this.pc+2)&4095;break;
+  case 10: this.I=nnn;break;
+  case 11: this.pc=(nnn+V[0])&4095;break;
+  case 12: V[x]=(Math.random()*256)&nn;break;
+  case 13: {
+    var px=V[x]%64,py=V[y]%32,hit=0;
+    for(var r2=0;r2<n;r2++){var row=this.mem[(this.I+r2)&4095],yy=py+r2;if(yy>=32)break;
+      for(var c=0;c<8;c++){var xx=px+c;if(xx>=64)break;if(row&(0x80>>c)){var k=yy*64+xx;if(this.gfx[k])hit=1;this.gfx[k]^=1;}}}
+    V[15]=hit;this.dirty=true;break;}
+  case 14: if(nn===0x9E){if(this.keys[V[x]&15])this.pc=(this.pc+2)&4095;}else if(nn===0xA1){if(!this.keys[V[x]&15])this.pc=(this.pc+2)&4095;}break;
+  case 15:
+    switch(nn){
+      case 0x07:V[x]=this.dt;break;
+      case 0x0A:{var kk=-1;for(var i=0;i<16;i++)if(this.keys[i]){kk=i;break;}if(kk<0)this.pc=pc;else V[x]=kk;break;}
+      case 0x15:this.dt=V[x];break;
+      case 0x18:this.st=V[x];break;
+      case 0x1E:this.I=(this.I+V[x])&0xFFFF;break;
+      case 0x29:this.I=0x50+(V[x]&15)*5;break;
+      case 0x33:{var v=V[x];this.mem[this.I&4095]=Math.floor(v/100);this.mem[(this.I+1)&4095]=Math.floor(v/10)%10;this.mem[(this.I+2)&4095]=v%10;break;}
+      case 0x55:for(var i2=0;i2<=x;i2++)this.mem[(this.I+i2)&4095]=V[i2];if(q.memInc)this.I=(this.I+x+1)&0xFFFF;break;
+      case 0x65:for(var i3=0;i3<=x;i3++)V[i3]=this.mem[(this.I+i3)&4095];if(q.memInc)this.I=(this.I+x+1)&0xFFFF;break;
+      default:break;
+    }break;
+  }
+};
+function hx(v,w){return v.toString(16).toUpperCase().padStart(w,"0");}
+function dis(op){
+  var x=(op>>8)&15,y=(op>>4)&15,n=op&15,nn=op&255,nnn=op&0xFFF,X="V"+hx(x,1),Y="V"+hx(y,1);
+  switch(op>>12){
+    case 0:return op===0x00E0?"CLS":op===0x00EE?"RET":"SYS "+hx(nnn,3);
+    case 1:return "JP "+hx(nnn,3);case 2:return "CALL "+hx(nnn,3);
+    case 3:return "SE "+X+", "+hx(nn,2);case 4:return "SNE "+X+", "+hx(nn,2);case 5:return "SE "+X+", "+Y;
+    case 6:return "LD "+X+", "+hx(nn,2);case 7:return "ADD "+X+", "+hx(nn,2);
+    case 8:return (["LD","OR","AND","XOR","ADD","SUB","SHR","SUBN","?","?","?","?","?","?","SHL","?"][n])+" "+X+", "+Y;
+    case 9:return "SNE "+X+", "+Y;case 10:return "LD I, "+hx(nnn,3);case 11:return "JP V0, "+hx(nnn,3);
+    case 12:return "RND "+X+", "+hx(nn,2);case 13:return "DRW "+X+", "+Y+", "+n;
+    case 14:return nn===0x9E?"SKP "+X:nn===0xA1?"SKNP "+X:"?";
+    case 15:return ({7:"LD "+X+", DT",10:"LD "+X+", K",21:"LD DT, "+X,24:"LD ST, "+X,30:"ADD I, "+X,41:"LD F, "+X,51:"LD B, "+X,85:"LD [I], "+X,101:"LD "+X+", [I]"})[nn]||"?";
+  }return "?";
+}
+/* ---------- app ---------- */
+var cpu=new Chip8(),running=true,ipf=15,cv=document.getElementById("cv"),ctx=cv.getContext("2d");
+var KM={"1":1,"2":2,"3":3,"4":12,"q":4,"w":5,"e":6,"r":13,"a":7,"s":8,"d":9,"f":14,"z":10,"x":0,"c":11,"v":15};
+var QS={modern:{shiftVy:false,memInc:false,vfReset:false},vip:{shiftVy:true,memInc:true,vfReset:true}};
+var HELP={rally:"Rally: press <b>1</b> to move up and <b>Q</b> to move down (CHIP-8 keys 1 and 4). Return the ball to score. Missing ends the rally.",keys:"Key tester: press any CHIP-8 key and its hex digit appears, with a beep.",logo:"Logo: a static sprite drawing test. Nothing to press."};
+function b64(s){var b=atob(s),a=new Uint8Array(b.length);for(var i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return a;}
+function col(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()||"#E2C27A";}
+var glow=new Float32Array(2048);
+function draw(){
+  var bg=col("--screen"),fg=col("--pix");ctx.globalAlpha=1;ctx.fillStyle=bg;ctx.fillRect(0,0,64,32);ctx.fillStyle=fg;
+  for(var i=0;i<2048;i++){var g=cpu.gfx[i]?1:glow[i]*0.55;glow[i]=g;if(g>0.08){ctx.globalAlpha=g;ctx.fillRect(i&63,i>>6,1,1);}}
+  ctx.globalAlpha=1;cpu.dirty=false;
+}
+function loadRom(bytes){cpu.load(bytes);cpu.q=Object.assign({},QS[document.getElementById("quirk").value]);draw();ui();}
+function pick(){var k=document.getElementById("rom").value;document.getElementById("ctl").innerHTML=HELP[k]||"";loadRom(b64(ROMS[k]));}
+/* debugger panel */
+var regsEl=document.getElementById("regs"),spEl=document.getElementById("sp"),disEl=document.getElementById("dis");
+function ui(){
+  var h="";for(var i=0;i<16;i++)h+="<span><b>V"+hx(i,1)+"</b> "+hx(cpu.V[i],2)+"</span>";regsEl.innerHTML=h;
+  spEl.innerHTML="<span><b>PC</b> "+hx(cpu.pc,3)+"</span><span><b>I</b> "+hx(cpu.I,3)+"</span><span><b>SP</b> "+cpu.sp+"</span><span><b>DT</b> "+hx(cpu.dt,2)+"</span><span><b>ST</b> "+hx(cpu.st,2)+"</span>";
+  var L=cpu.last.slice(-8),d="";for(var j=0;j<L.length;j++)d+="<li><span class=\"a\">"+hx(L[j][0],3)+"</span>  "+hx(L[j][1],4)+"  "+dis(L[j][1])+"</li>";disEl.innerHTML=d||"<li>Not started</li>";
+}
+/* audio */
+var AC=null,osc=null,gain=null;
+function audioOn(){if(AC)return;try{AC=new (window.AudioContext||window.webkitAudioContext)();osc=AC.createOscillator();gain=AC.createGain();osc.type="square";osc.frequency.value=440;gain.gain.value=0;osc.connect(gain);gain.connect(AC.destination);osc.start();}catch(e){AC=null;}}
+function beep(on){if(!AC||!gain)return;gain.gain.value=(on&&document.getElementById("snd").checked)?0.04:0;}
+/* loop */
+var last=0,acc=0,uiT=0;
+function frame(t){
+  if(!last)last=t;acc+=Math.min((t-last)/1000,0.1);last=t;
+  var n=0;
+  while(acc>=1/60&&n<6){acc-=1/60;n++;
+    if(running){for(var i=0;i<ipf;i++)cpu.step();cpu.tick();beep(cpu.st>0);}
+  }
+  draw();
+  if(t-uiT>80){ui();uiT=t;}
+  requestAnimationFrame(frame);
+}
+/* controls */
+var runB=document.getElementById("run");
+function setRun(v){running=v;runB.textContent=v?"Pause":"Run";}
+runB.addEventListener("click",function(){audioOn();if(AC&&AC.state==="suspended")AC.resume();setRun(!running);});
+document.getElementById("step").addEventListener("click",function(){setRun(false);cpu.step();ui();});
+document.getElementById("reset").addEventListener("click",function(){audioOn();pick();setRun(true);});
+document.getElementById("rom").addEventListener("change",function(){audioOn();pick();setRun(true);});
+document.getElementById("quirk").addEventListener("change",function(){cpu.q=Object.assign({},QS[this.value]);});
+var spd=document.getElementById("spd");spd.addEventListener("input",function(){ipf=Math.round(this.value/60);document.getElementById("spdv").textContent=this.value+" Hz";});
+document.getElementById("loadbtn").addEventListener("click",function(){document.getElementById("file").click();});
+document.getElementById("file").addEventListener("change",function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){document.getElementById("ctl").textContent="Loaded "+f.name+" ("+r.result.byteLength+" bytes). Use the keyboard or the keypad below.";loadRom(new Uint8Array(r.result));setRun(true);};r.readAsArrayBuffer(f);this.value="";});
+/* keys */
+document.addEventListener("keydown",function(e){if(e.ctrlKey||e.metaKey||e.altKey)return;var k=KM[e.key.toLowerCase()];if(k!==undefined){cpu.keys[k]=1;padState();audioOn();if(e.target.tagName!=="SELECT"&&e.target.tagName!=="INPUT")e.preventDefault();}});
+document.addEventListener("keyup",function(e){var k=KM[e.key.toLowerCase()];if(k!==undefined){cpu.keys[k]=0;padState();}});
+window.addEventListener("blur",function(){cpu.keys.fill(0);padState();});
+/* on-screen keypad */
+var padEl=document.getElementById("pad"),PL=[1,2,3,12,4,5,6,13,7,8,9,14,10,0,11,15],pb=[];
+PL.forEach(function(v){var b=document.createElement("button");b.type="button";b.textContent=hx(v,1);b.setAttribute("aria-label","Key "+hx(v,1));
+  function down(e){e.preventDefault();cpu.keys[v]=1;audioOn();padState();}function up(e){e.preventDefault();cpu.keys[v]=0;padState();}
+  b.addEventListener("pointerdown",down);b.addEventListener("pointerup",up);b.addEventListener("pointerleave",up);b.addEventListener("pointercancel",up);
+  padEl.appendChild(b);pb[v]=b;});
+function padState(){for(var i=0;i<16;i++)if(pb[i])pb[i].classList.toggle("on",!!cpu.keys[i]);}
+pick();requestAnimationFrame(frame);
+</script>
+</body></html>
